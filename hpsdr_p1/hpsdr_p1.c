@@ -207,10 +207,10 @@ void hpsdr_deinit(hpsdr_config_t **cfg) {
 void hpsdr_start(hpsdr_config_t **cfg) {
     hpsdr_dbg_printf(1, "hpsdr_start\n");
 
-    pthread_create(&iqtransmitter_thread_id, NULL, (*cfg)->cb.tx_thread, NULL);
+    pthread_create(&iqtransmitter_thread_id, NULL, (*cfg)->cb.tx_thread, (void*) (*cfg));
     pthread_detach(iqtransmitter_thread_id);
 
-    pthread_create(&iqreceiver_thread_id, NULL, (*cfg)->cb.rx_thread, NULL);
+    pthread_create(&iqreceiver_thread_id, NULL, (*cfg)->cb.rx_thread, (void*) (*cfg));
     pthread_detach(iqreceiver_thread_id);
 
     pthread_create(&network_thread_id, NULL, hpsdr_network_handler, (void*) (*cfg));

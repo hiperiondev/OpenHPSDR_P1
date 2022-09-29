@@ -92,6 +92,7 @@ typedef struct hpsdr_config {
      protocol_t settings;
            void *rxbuff;
            void *txbuff;
+           void *user;
 } hpsdr_config_t;
 
 /**
