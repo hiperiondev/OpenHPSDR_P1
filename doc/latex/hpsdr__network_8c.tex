@@ -28,7 +28,9 @@ void \mbox{\hyperlink{hpsdr__network_8c_a3a10322272a79186e87de747a69ae82f}{hpsdr
 int \mbox{\hyperlink{hpsdr__network_8c_a7270091a334a813d1113e39c3dda4161}{hpsdr\+\_\+network\+\_\+process}} (void)
 \begin{DoxyCompactList}\small\item\em Network process. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{hpsdr__network_8c_a4544fd2089776972ae6d60b126f71f0b}{hpsdr\+\_\+network\+\_\+send}} (uint8\+\_\+t $\ast$\mbox{\hyperlink{hpsdr__network_8c_a3c01bacddd07cce01e46aaa727ff9d03}{buffer}}, size\+\_\+t len)
-\begin{DoxyCompactList}\small\item\em Network send. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Network send. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{hpsdr__network_8c_a7ca7cb03e00e988d9096ce091a524263}{hpsdr\+\_\+network\+\_\+handler}} (void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em Network handler (task) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -87,7 +89,24 @@ uint8\+\_\+t \mbox{\hyperlink{hpsdr__network_8c_af055b4b148c703eaeda1bedfeda907a
 
 Network deinitialization. 
 
-Network deinitialization \mbox{\Hypertarget{hpsdr__network_8c_a735c16de053d1f2abccdccea3903ea2f}\label{hpsdr__network_8c_a735c16de053d1f2abccdccea3903ea2f}} 
+Network deinitialization \mbox{\Hypertarget{hpsdr__network_8c_a7ca7cb03e00e988d9096ce091a524263}\label{hpsdr__network_8c_a7ca7cb03e00e988d9096ce091a524263}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!hpsdr\_network\_handler@{hpsdr\_network\_handler}}
+\index{hpsdr\_network\_handler@{hpsdr\_network\_handler}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{hpsdr\_network\_handler()}{hpsdr\_network\_handler()}}
+{\footnotesize\ttfamily void$\ast$ hpsdr\+\_\+network\+\_\+handler (\begin{DoxyParamCaption}\item[{void $\ast$}]{arg }\end{DoxyParamCaption})}
+
+
+
+Network handler (task) 
+
+Network handler (task).
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & Arguments for task (not used) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{hpsdr__network_8c_a735c16de053d1f2abccdccea3903ea2f}\label{hpsdr__network_8c_a735c16de053d1f2abccdccea3903ea2f}} 
 \index{hpsdr\_network.c@{hpsdr\_network.c}!hpsdr\_network\_init@{hpsdr\_network\_init}}
 \index{hpsdr\_network\_init@{hpsdr\_network\_init}!hpsdr\_network.c@{hpsdr\_network.c}}
 \doxysubsubsection{\texorpdfstring{hpsdr\_network\_init()}{hpsdr\_network\_init()}}

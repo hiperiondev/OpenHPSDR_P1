@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['parse_5fargs_327',['parse_args',['../hpsdr__test_8c.html#a8ab77940e9f8f362c1242eb44f366bb7',1,'hpsdr_test.c']]],
-  ['penesel_328',['PeneSel',['../structprotocol__t.html#a58e34d90ff1f04e0bb4add176310052d',1,'protocol_t']]],
-  ['pmconfig_329',['PMconfig',['../structprotocol__t.html#a2d1d7b554fea816a898156f7581966a3',1,'protocol_t']]],
-  ['preamp_330',['preamp',['../structprotocol__t.html#a49580a5a6f92131e84df98c2d574a842',1,'protocol_t']]],
-  ['protocol_5ft_331',['protocol_t',['../structprotocol__t.html',1,'']]],
-  ['ptt_332',['ptt',['../structprotocol__t.html#abd17d94d0e03515377fdd29cf794090c',1,'protocol_t']]],
-  ['puresignal_333',['PureSignal',['../structprotocol__t.html#af76609fb463df1e4e117b523fe3b2efe',1,'protocol_t']]]
+  ['op_5fhandler_5fep6_5fid_322',['op_handler_ep6_id',['../hpsdr__network_8c.html#a59284aec1e89efe11f46be95ee80f027',1,'hpsdr_network.c']]],
+  ['opencollectoroutputs_323',['OpenCollectorOutputs',['../structprotocol__t.html#a99b10469de3d0298d61d90515261bcb3',1,'protocol_t']]],
+  ['openhpsdr_5fp1_324',['OpenHPSDR_P1',['../md_README.html',1,'']]],
+  ['option_5fcount_325',['option_count',['../structcag__option__context.html#aba929e53194dbf701855e031dfed8fc7',1,'cag_option_context']]],
+  ['options_326',['options',['../structcag__option__context.html#abf08062c8871250d75a5d44adb94eb99',1,'cag_option_context']]]
 ];

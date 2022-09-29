@@ -74,30 +74,13 @@ $(function() {
 <div class="title">hpsdr_test.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;signal.h&gt;</code><br />
-<code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;errno.h&gt;</code><br />
-<code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &lt;stdbool.h&gt;</code><br />
-<code>#include &lt;limits.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &lt;string.h&gt;</code><br />
-<code>#include &lt;unistd.h&gt;</code><br />
-<code>#include &lt;math.h&gt;</code><br />
-<code>#include &lt;pthread.h&gt;</code><br />
-<code>#include &lt;termios.h&gt;</code><br />
-<code>#include &lt;sys/mman.h&gt;</code><br />
-<code>#include &lt;sys/time.h&gt;</code><br />
-<code>#include &lt;sys/ioctl.h&gt;</code><br />
-<code>#include &lt;sys/socket.h&gt;</code><br />
-<code>#include &lt;netinet/in.h&gt;</code><br />
-<code>#include &lt;netinet/tcp.h&gt;</code><br />
+<code>#include &lt;signal.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="hpsdr__debug_8h_source.html">hpsdr_debug.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hpsdr__definitions_8h_source.html">hpsdr_definitions.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="hpsdr__network_8h_source.html">hpsdr_network.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hpsdr__version_8h_source.html">hpsdr_version.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hpsdr__p1_8h_source.html">hpsdr_p1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="hpsdr__test_8h_source.html">hpsdr_test.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="cargs_8h_source.html">cargs.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -127,20 +110,6 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:aff307349c404c2792ee0c222a801bc5f"><td class="memItemLeft" align="right" valign="top">pthread_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__test_8c.html#aff307349c404c2792ee0c222a801bc5f">iqtransmitter_thread_id</a></td></tr>
-<tr class="separator:aff307349c404c2792ee0c222a801bc5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81b2ddabc08ca74adb49b45a0e1eeb5f"><td class="memItemLeft" align="right" valign="top">pthread_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__test_8c.html#a81b2ddabc08ca74adb49b45a0e1eeb5f">iqreceiver_thread_id</a></td></tr>
-<tr class="separator:a81b2ddabc08ca74adb49b45a0e1eeb5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab6ea3eef5448946162b335005c7ba0f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__test_8c.html#aab6ea3eef5448946162b335005c7ba0f">device_emulation</a></td></tr>
-<tr class="separator:aab6ea3eef5448946162b335005c7ba0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3ae2d053aa28a995bb04fd3be89113e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__test_8c.html#ae3ae2d053aa28a995bb04fd3be89113e">enable_thread</a></td></tr>
-<tr class="separator:ae3ae2d053aa28a995bb04fd3be89113e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8da8e0b3b354d376e435618bcc715265"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__test_8c.html#a8da8e0b3b354d376e435618bcc715265">active_thread</a></td></tr>
-<tr class="separator:a8da8e0b3b354d376e435618bcc715265"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a289ed190008419ee49288535be093d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__test_8c.html#a8a289ed190008419ee49288535be093d">c1</a></td></tr>
-<tr class="separator:a8a289ed190008419ee49288535be093d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d7054db04feaba66495dccf1a8ce86c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__test_8c.html#a3d7054db04feaba66495dccf1a8ce86c">c2</a></td></tr>
-<tr class="separator:a3d7054db04feaba66495dccf1a8ce86c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed56968465a4b18dacd08f77fef94029"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__test_8c.html#aed56968465a4b18dacd08f77fef94029">exit_signal</a> [33][17]</td></tr>
 <tr class="separator:aed56968465a4b18dacd08f77fef94029"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -374,76 +343,6 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a8da8e0b3b354d376e435618bcc715265"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8da8e0b3b354d376e435618bcc715265">&#9670;&nbsp;</a></span>active_thread</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int active_thread</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8a289ed190008419ee49288535be093d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a289ed190008419ee49288535be093d">&#9670;&nbsp;</a></span>c1</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double c1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a3d7054db04feaba66495dccf1a8ce86c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d7054db04feaba66495dccf1a8ce86c">&#9670;&nbsp;</a></span>c2</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double c2</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aab6ea3eef5448946162b335005c7ba0f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab6ea3eef5448946162b335005c7ba0f">&#9670;&nbsp;</a></span>device_emulation</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int device_emulation</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae3ae2d053aa28a995bb04fd3be89113e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3ae2d053aa28a995bb04fd3be89113e">&#9670;&nbsp;</a></span>enable_thread</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int enable_thread</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="aed56968465a4b18dacd08f77fef94029"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aed56968465a4b18dacd08f77fef94029">&#9670;&nbsp;</a></span>exit_signal</h2>
 
@@ -452,34 +351,6 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">char exit_signal[33][17]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a81b2ddabc08ca74adb49b45a0e1eeb5f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a81b2ddabc08ca74adb49b45a0e1eeb5f">&#9670;&nbsp;</a></span>iqreceiver_thread_id</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">pthread_t iqreceiver_thread_id</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aff307349c404c2792ee0c222a801bc5f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aff307349c404c2792ee0c222a801bc5f">&#9670;&nbsp;</a></span>iqtransmitter_thread_id</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">pthread_t iqtransmitter_thread_id</td>
         </tr>
       </table>
 </div><div class="memdoc">

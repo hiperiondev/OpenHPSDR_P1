@@ -1,17 +1,11 @@
 var searchData=
 [
-  ['tail_567',['tail',['../structcbuf__t.html#a9383ce311316eda2a268094b17c45f7d',1,'cbuf_t']]],
-  ['tip_5fring_568',['tip_ring',['../structprotocol__t.html#ac5b378b5070290e9bdc307fc3c03f638',1,'protocol_t']]],
-  ['tv_569',['tv',['../hpsdr__network_8c.html#a9cf96982557d56650f0f4cd3762f05a0',1,'hpsdr_network.c']]],
-  ['tx_5fclass_5fe_570',['TX_class_E',['../structprotocol__t.html#a486b2b96b908719cb3e39b161d41e813',1,'protocol_t']]],
-  ['tx_5fdeinit_571',['tx_deinit',['../structhpsdr__callbacks.html#a6242bacec3cb86dd976154eb5bc998dd',1,'hpsdr_callbacks']]],
-  ['tx_5ffreq_572',['tx_freq',['../structprotocol__t.html#a27770e9b5cdf447038dd30a80c1a2d04',1,'protocol_t']]],
-  ['tx_5finit_573',['tx_init',['../structhpsdr__callbacks.html#a774ba97abe16155ae1b2b70a7a72b419',1,'hpsdr_callbacks']]],
-  ['tx_5fset_5ffreq_574',['tx_set_freq',['../structhpsdr__callbacks.html#ae9e2060481d7b0f6c48a51154980e9c6',1,'hpsdr_callbacks']]],
-  ['tx_5fthread_575',['tx_thread',['../structhpsdr__callbacks.html#a6f06c1ef8be30f1c89c8fd03df085162',1,'hpsdr_callbacks']]],
-  ['txatt_576',['txatt',['../structprotocol__t.html#af0f3d3bfcbd02d2c9a553f913a9af163',1,'protocol_t']]],
-  ['txatt_5fdbl_577',['txatt_dbl',['../hpsdr__ep2_8c.html#aa7caedcd2592b57fb123cea8118e895f',1,'hpsdr_ep2.c']]],
-  ['txbuff_578',['txbuff',['../structhpsdr__config.html#a3bcacb5dcf2eb943266dcf8f01dfb59a',1,'hpsdr_config']]],
-  ['txdrive_579',['txdrive',['../structprotocol__t.html#ab1daca04a365634715e7767e66637454',1,'protocol_t']]],
-  ['txdrv_5fdbl_580',['txdrv_dbl',['../hpsdr__ep2_8c.html#a2ee20bc6d647b82d7134c51273ad967d',1,'hpsdr_ep2.c']]]
+  ['seqnum_557',['seqnum',['../hpsdr__network_8c.html#ad088047c391303bc8e77e28fdc8c1f77',1,'seqnum():&#160;hpsdr_network.c'],['../hpsdr__internals_8h.html#ad088047c391303bc8e77e28fdc8c1f77',1,'seqnum():&#160;hpsdr_network.c']]],
+  ['settings_558',['settings',['../hpsdr__ep2_8c.html#a9ab57a4946f45039189776cba848230c',1,'settings():&#160;hpsdr_ep2.c'],['../hpsdr__protocol_8h.html#a9ab57a4946f45039189776cba848230c',1,'settings():&#160;hpsdr_ep2.c']]],
+  ['sidetone_5fvolume_559',['sidetone_volume',['../structprotocol__t.html#a8f896793bf005de290b47a34c84881ce',1,'protocol_t']]],
+  ['size_560',['size',['../structcbuf__t.html#aa2ab6a7a5108c729ece8d1eeea3f795a',1,'cbuf_t::size()'],['../hpsdr__network_8c.html#a439227feff9d7f55384e8780cfc2eb82',1,'size():&#160;hpsdr_network.c']]],
+  ['sock_5ftcp_5fclient_561',['sock_TCP_Client',['../hpsdr__network_8c.html#ab1b332946730c60cbb633ab3fc3328cf',1,'hpsdr_network.c']]],
+  ['sock_5ftcp_5fserver_562',['sock_TCP_Server',['../hpsdr__network_8c.html#a36dc067128e2b4f0ecb76350f97da779',1,'hpsdr_network.c']]],
+  ['sock_5fudp_563',['sock_udp',['../hpsdr__network_8c.html#a5e376a465b645de2286272cd45aacd2f',1,'hpsdr_network.c']]],
+  ['src122_564',['src122',['../structprotocol__t.html#a028867f0a269e21c1b2b359df4b1d79a',1,'protocol_t']]]
 ];

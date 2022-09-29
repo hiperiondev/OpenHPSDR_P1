@@ -34,7 +34,6 @@
 #include "hpsdr_version.h"
 #include "hpsdr_p1.h"
 
-#include "hpsdr_test.h"
 #include "cargs.h"
 
 char exit_signal[33][17] = {
@@ -195,7 +194,7 @@ void parse_args(int argc, char *argv[]) {
 }
 
 int main(int argc, char *argv[]) {
-    hpsdr_dbg_printf(0, "OpenHPSDR_p1 version: %d.%d.%d\n", HPSDR_VERSION_MAJOR, HPSDR_VERSION_MINOR, HPSDR_VERSION_PATCH);
+    printf("OpenHPSDR_p1 version: %d.%d.%d\n", HPSDR_VERSION_MAJOR, HPSDR_VERSION_MINOR, HPSDR_VERSION_PATCH);
 
     cfg = malloc(sizeof(hpsdr_config_t));
 
