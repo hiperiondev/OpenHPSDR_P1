@@ -141,4 +141,50 @@ void hpsdr_stop(void);
  */
 void hpsdr_clear_config(hpsdr_config_t **cfg);
 
+/**
+ * @brief Write to tx buffer
+ *
+ * Push to tx buffer
+ *
+ * @param cfg configuration
+ * @param iq sample
+ * @param size sample size
+ * @return number of bytes wrote
+ */
+int hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq, const int size);
+
+/**
+ * @brief Write to rx buffer
+ *
+ * Push to rx buffer
+ *
+ * @param cfg configuration
+ * @param iq sample
+ * @param size sample size
+ * @return number of bytes wrote
+ */
+int hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq, const int size);
+
+/**
+ * @brief Read from tx buffer
+ *
+ * Push to tx buffer
+ *
+ * @param cfg configuration
+ * @param size size to read
+ * @return data read
+ */
+float _Complex* hpsdr_txbuffer_read(hpsdr_config_t **cfg, const int size);
+
+/**
+ * @brief Read from rx buffer
+ *
+ * Push to rx buffer
+ *
+ * @param cfg configuration
+ * @param size size to read
+ * @return data read
+ */
+float _Complex* hpsdr_rxbuffer_read(hpsdr_config_t **cfg, const int size);
+
 #endif /* HPSDR_P1_H_ */

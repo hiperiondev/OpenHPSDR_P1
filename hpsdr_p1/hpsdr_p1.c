@@ -258,3 +258,18 @@ void hpsdr_stop(void) {
     pthread_cancel(iqtransmitter_thread_id);
 }
 
+int hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq, const int size) {
+    return cbuf_offer((*cfg)->txbuff, (void*) iq, size);
+}
+
+int hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq, const int size) {
+    return cbuf_offer((*cfg)->rxbuff, (void*) iq, size);
+}
+
+float _Complex* hpsdr_txbuffer_read(hpsdr_config_t **cfg, const int size) {
+    return (float _Complex*) cbuf_poll((*cfg)->txbuff, size);
+}
+
+float _Complex* hpsdr_rxbuffer_read(hpsdr_config_t **cfg, const int size) {
+    return (float _Complex*) cbuf_poll((*cfg)->rxbuff, size);
+}
