@@ -50,7 +50,6 @@
  */
 typedef uint8_t (*hw_init)(void);
 typedef uint8_t (*hw_deinit)(void);
-typedef uint8_t (*hw_set_freq)(uint8_t id, uint64_t freq_hz);
 typedef   void* (*hw_thread)(void *data);
 typedef    void (*ep2_callback)(int func, char* name);
 
@@ -73,12 +72,10 @@ typedef struct global {
 typedef struct callbacks {
          hw_init tx_init;     // transmitter initialize callback
        hw_deinit tx_deinit;   // transmitter deinitialize callback
-     hw_set_freq tx_set_freq; // transmitter set frequency callback
        hw_thread tx_thread;   // transmitter thread callback
 
          hw_init rx_init;     // receiver initialize callback
        hw_deinit rx_deinit;   // receiver deinitialize callback
-     hw_set_freq rx_set_freq; // receiver set frequency callback
        hw_thread rx_thread;   // receiver thread callback
 
     ep2_callback ep2;         // ep2 packet callback

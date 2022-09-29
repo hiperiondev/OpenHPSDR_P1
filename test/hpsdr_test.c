@@ -85,9 +85,6 @@ uint8_t iqtransmitter_deinit(void) {
     return 0;
 }
 
-uint8_t iqtransmitter_set_freq(uint8_t id, uint64_t freq_hz) {
-    return 0;
-}
 
 void* iqtransmitter_thread(void *data) {
     return NULL;
@@ -98,10 +95,6 @@ uint8_t iqreceiver_init(void) {
 }
 
 uint8_t iqreceiver_deinit(void) {
-    return 0;
-}
-
-uint8_t iqreceiver_set_freq(uint8_t id, uint64_t freq_hz) {
     return 0;
 }
 
@@ -216,11 +209,9 @@ int main(int argc, char *argv[]) {
     // configure callbacks
         cfg->cb.tx_init = iqtransmitter_init;
       cfg->cb.tx_deinit = iqtransmitter_deinit;
-    cfg->cb.tx_set_freq = iqtransmitter_set_freq;
       cfg->cb.tx_thread = iqtransmitter_thread;
         cfg->cb.rx_init = iqreceiver_init;
       cfg->cb.rx_deinit = iqreceiver_deinit;
-    cfg->cb.rx_set_freq = iqreceiver_set_freq;
       cfg->cb.rx_thread = iqreceiver_thread;
             cfg->cb.ep2 = ep2_cbk;
 

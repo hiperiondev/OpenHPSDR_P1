@@ -180,7 +180,7 @@ void hpsdr_init(hpsdr_config_t **cfg) {
             c2 = 0.090;
             break;
     }
-;
+
     (*cfg)->txbuff = cbuf_new(BUFFLEN * sizeof(float _Complex));
     (*cfg)->rxbuff = cbuf_new(BUFFLEN * sizeof(float _Complex));
 
