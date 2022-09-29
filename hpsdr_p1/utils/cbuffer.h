@@ -3,8 +3,8 @@
 
 typedef struct {
     unsigned long int size;
-    unsigned int head, tail;
-    void *data;
+         unsigned int head, tail;
+                 void *data;
 } cbuf_t;
 
 /** Create new circular buffer.

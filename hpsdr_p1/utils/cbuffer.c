@@ -14,11 +14,6 @@
 
 #define fail() assert(0)
 
-/** OSX needs some help here */
-#ifndef MAP_ANONYMOUS
-#  define MAP_ANONYMOUS MAP_ANON
-#endif
-
 static void __create_buffer_mirror(cbuf_t *cb) {
     char path[] = "/tmp/cb-XXXXXX";
     int fd, status;
