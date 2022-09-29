@@ -22,7 +22,9 @@ void (*ep2_callback)(int func, char* name);
 
 Main thread for receive/transmit
 
-This process push/poll data from IQ buffer and comunicate with hardware
+This process push/poll data from IQ buffer and comunicate with hardware.
+
+Data receive hpsdr_config_t *cfg
 ```
 void* (*hw_thread)(void *data);
 ```
