@@ -5,37 +5,46 @@ It is only necessary to implement the hardware control functions.
 
 ## Callbacks
 
-Functions for create and destroy hardware infrastructure.
+### Functions for create and destroy hardware infrastructure.
 
-This functions have not requirements and are called at start and end of the system
-```
-uint8_t (*hw_init)(void);
-uint8_t (*hw_deinit)(void);
-```
+This functions have not requirements and are called at start and end of the system.
 
-Function for manage changes in internal setting.
+> __uint8_t (*hw_init)(void)__.
+>
+> __uint8_t (*hw_deinit)(void)__.
+
+### Function for manage changes in internal setting.
 
 Every time an ep2 packet change an internal state this function is called
-```
-void (*ep2_callback)(int func, char* name);
-```
 
-Main thread for receive/transmit
+> __void (*ep2_callback)(int func, char* name)__
+
+### Main thread for receive/transmit
 
 This process push/poll data from IQ buffer and comunicate with hardware.
 
 Data receive hpsdr_config_t *cfg
-```
-void* (*hw_thread)(void *data);
-```
+
+> __void* (*hw_thread)(void *data)__
 
 ## Buffers
-...
 
+RX/TX buffers are circular queues. All data write/read on an overflow/underflow conditions are discarded
 
+### write functions
+
+> __int hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq, const int size)__
+> 
+> __int hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq, const int size)__
+
+### read functions
+
+> __float _Complex* hpsdr_txbuffer_read(hpsdr_config_t **cfg, const int size)__
+> 
+> __float _Complex* hpsdr_rxbuffer_read(hpsdr_config_t **cfg, const int size)__
 
 ## TODO
-* [ ] Add documentation
+* [x] Add documentation
 * [x] Add Doxygen structure
 * [ ] Complete protocol
    * [x] transmission
