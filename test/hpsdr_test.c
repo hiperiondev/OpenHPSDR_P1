@@ -87,6 +87,7 @@ uint8_t iqtransmitter_deinit(void) {
 
 
 void* iqtransmitter_thread(void *data) {
+    while(1);
     return NULL;
 }
 
@@ -99,6 +100,7 @@ uint8_t iqreceiver_deinit(void) {
 }
 
 void* iqreceiver_thread(void *data) {
+    while(1);
     return NULL;
 }
 
@@ -125,11 +127,10 @@ static struct cag_option options[] = {
 
 static void terminate(int num) {
     fprintf(stderr, "Caught signal - Terminating 0x%x/%d(%s)\n", num, num, exit_signal[num]);
-    cfg->cb.tx_deinit();
     exit(1);
 }
 
-void parse_args(int argc, char *argv[]) {
+void parse_args(hpsdr_config_t *cfg, int argc, char *argv[]) {
     char identifier;
     const char *value;
     cag_option_context context;
@@ -189,7 +190,7 @@ void parse_args(int argc, char *argv[]) {
 int main(int argc, char *argv[]) {
     printf("OpenHPSDR_p1 version: %d.%d.%d\n", HPSDR_VERSION_MAJOR, HPSDR_VERSION_MINOR, HPSDR_VERSION_PATCH);
 
-    cfg = malloc(sizeof(hpsdr_config_t));
+    hpsdr_config_t *cfg = malloc(sizeof(hpsdr_config_t));
     hpsdr_clear_config(&cfg);
 
     for (int i = 0; i < 64; i++) {
@@ -200,7 +201,7 @@ int main(int argc, char *argv[]) {
         sigaction(i, &sa, NULL);
     }
 
-    parse_args(argc, argv);
+    parse_args(cfg, argc, argv);
 
     if (cfg->global.debug) {
         hpsdr_dbg_setlevel(1);

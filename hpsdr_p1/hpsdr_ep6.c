@@ -43,6 +43,8 @@
 void* ep6_handler(void *arg) {
     hpsdr_dbg_printf(1, "Start handler ep6\n");
 
+    hpsdr_config_t *cfg = (hpsdr_config_t*) arg;
+
     static double txlevel;
     int i, j;
     int k, n;

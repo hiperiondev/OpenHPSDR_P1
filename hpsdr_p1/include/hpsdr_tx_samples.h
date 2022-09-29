@@ -30,6 +30,7 @@
 
 #include <stdint.h>
 
+#include "hpsdr_p1.h"
 /**
  * @brief Receiver
  *
@@ -37,6 +38,6 @@
  *
  * @param buffer Received buffer.
  */
-void samples_rcv(uint8_t *buffer);
+void samples_rcv(hpsdr_config_t *cfg, uint8_t *buffer);
 
 #endif /* HPSDR_TX_SAMPLES_H_ */

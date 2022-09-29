@@ -154,7 +154,7 @@ void hpsdr_network_deinit(void) {
     }
 }
 
-int hpsdr_network_process(void) {
+int hpsdr_network_process(hpsdr_config_t *cfg) {
     memcpy(buffer, id, 4);
 
     if (sock_TCP_Client > -1) {
@@ -250,11 +250,11 @@ int hpsdr_network_process(void) {
 
             last_seqnum = seqnum;
 
-            ep2_handler(buffer + 11);
-            ep2_handler(buffer + 523);
+            ep2_handler(cfg, buffer + 11);
+            ep2_handler(cfg, buffer + 523);
 
             if (active_thread) {
-                samples_rcv(buffer);
+                samples_rcv(cfg, buffer);
             }
             break;
 
@@ -341,7 +341,7 @@ int hpsdr_network_process(void) {
             enable_thread = 1;
             active_thread = 1;
 
-            if (pthread_create(&op_handler_ep6_id, NULL, ep6_handler, NULL) < 0) {
+            if (pthread_create(&op_handler_ep6_id, NULL, ep6_handler, (void*) cfg) < 0) {
                 hpsdr_dbg_printf(1, "ERROR: create protocol thread");
                 return EXIT_FAILURE;
             }
@@ -405,9 +405,10 @@ void hpsdr_network_send(uint8_t *buffer, size_t len) {
 }
 
 void* hpsdr_network_handler(void *arg) {
+    hpsdr_config_t *cfg = (hpsdr_config_t*) arg;
     hpsdr_network_init();
     while (1) {
-        if (hpsdr_network_process() != EXIT_SUCCESS) break;
+        if (hpsdr_network_process(cfg) != EXIT_SUCCESS) break;
     }
     hpsdr_network_deinit();
     return NULL;

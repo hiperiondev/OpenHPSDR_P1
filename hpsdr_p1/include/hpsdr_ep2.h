@@ -30,6 +30,8 @@
 
 #include <stdint.h>
 
+#include "hpsdr_p1.h"
+
 #define FR_EP2_PTT(fr)                  (fr[0] & 1)
 #define FR_EP2_RATE(fr)                 ((fr[1] & 0x03) >> 0)
 #define FR_EP2_REF10(fr)                ((fr[1] & 0x0C) >> 3)
@@ -104,6 +106,6 @@
  *
  * @param frame The received frame.
  */
-void ep2_handler(uint8_t *frame);
+void ep2_handler(hpsdr_config_t *cfg, uint8_t *frame);
 
 #endif /* HPSDR_EP2_H_ */

@@ -45,7 +45,7 @@ static double last_i_sample = 0.0;
 static double last_q_sample = 0.0;
 static double isample, qsample;
 
-void samples_rcv(uint8_t *buffer) {
+void samples_rcv(hpsdr_config_t *cfg, uint8_t *buffer) {
     // Put TX IQ samples into the ring buffer
     // In the protocol 1, samples come in groups of 8 bytes L1 L0 R1 R0 I1 I0 Q1 Q0
     // Here, L1/L0 and R1/R0 are audio samples, and I1/I0 and Q1/Q0 are the TX iq samples

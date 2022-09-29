@@ -28,6 +28,8 @@
 #ifndef HPSDR_NETWORK_H_
 #define HPSDR_NETWORK_H_
 
+#include "hpsdr_p1.h"
+
 /**
  * @brief Network initialization
  *
@@ -51,7 +53,7 @@ void hpsdr_network_deinit(void);
  *
  * @return Status.
  */
-int hpsdr_network_process(void);
+int hpsdr_network_process(hpsdr_config_t *cfg);
 
 /**
  * @brief Network send

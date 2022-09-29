@@ -35,7 +35,6 @@
 #include "hpsdr_p1.h"
 #include "cbuffer.h"
 
-hpsdr_config_t *cfg;
 int enable_thread;
 int active_thread;
 double c1, c2;
@@ -214,7 +213,7 @@ void hpsdr_start(hpsdr_config_t **cfg) {
     pthread_create(&iqreceiver_thread_id, NULL, (*cfg)->cb.rx_thread, NULL);
     pthread_detach(iqreceiver_thread_id);
 
-    pthread_create(&network_thread_id, NULL, hpsdr_network_handler, NULL);
+    pthread_create(&network_thread_id, NULL, hpsdr_network_handler, (void*) (*cfg));
     pthread_detach(network_thread_id);
 }
 

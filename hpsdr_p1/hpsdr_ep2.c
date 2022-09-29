@@ -45,7 +45,7 @@ double txdrv_dbl = 0.99;
 		        cfg->cb.ep2(fun, c); \
 		    }
 
-void ep2_handler(uint8_t *frame) {
+void ep2_handler(hpsdr_config_t *cfg, uint8_t *frame) {
     uint16_t data;
     int rc;
     int mod;
