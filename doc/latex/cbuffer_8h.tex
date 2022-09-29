@@ -1,0 +1,174 @@
+\hypertarget{cbuffer_8h}{}\doxysection{cbuffer.\+h File Reference}
+\label{cbuffer_8h}\index{cbuffer.h@{cbuffer.h}}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcbuf__t}{cbuf\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structcbuf__t}{cbuf\+\_\+t}} $\ast$ \mbox{\hyperlink{cbuffer_8h_a3feee4acceb69387efa6055c1f5d081c}{cbuf\+\_\+new}} (const unsigned int order)
+\item 
+void \mbox{\hyperlink{cbuffer_8h_a14f7bbd9e677cd99a3179f1517841cd5}{cbuf\+\_\+free}} (\mbox{\hyperlink{structcbuf__t}{cbuf\+\_\+t}} $\ast$cb)
+\item 
+int \mbox{\hyperlink{cbuffer_8h_a0bc13daf129fdf56d648c3aa017a8333}{cbuf\+\_\+offer}} (\mbox{\hyperlink{structcbuf__t}{cbuf\+\_\+t}} $\ast$cb, void $\ast$data, const int \mbox{\hyperlink{hpsdr__network_8c_a439227feff9d7f55384e8780cfc2eb82}{size}})
+\item 
+void $\ast$ \mbox{\hyperlink{cbuffer_8h_ab1d185a388005c1fe6d4dfd414d4fcbc}{cbuf\+\_\+peek}} (const \mbox{\hyperlink{structcbuf__t}{cbuf\+\_\+t}} $\ast$cb)
+\item 
+void $\ast$ \mbox{\hyperlink{cbuffer_8h_afa324e8143c69fae47190328139eadb0}{cbuf\+\_\+poll}} (\mbox{\hyperlink{structcbuf__t}{cbuf\+\_\+t}} $\ast$cb, const unsigned int \mbox{\hyperlink{hpsdr__network_8c_a439227feff9d7f55384e8780cfc2eb82}{size}})
+\item 
+int \mbox{\hyperlink{cbuffer_8h_a970ec29513a24bb239da1312b749d849}{cbuf\+\_\+size}} (const \mbox{\hyperlink{structcbuf__t}{cbuf\+\_\+t}} $\ast$cb)
+\item 
+int \mbox{\hyperlink{cbuffer_8h_a2d2d78e194cf378854a4f9a3bb7b157f}{cbuf\+\_\+usedspace}} (const \mbox{\hyperlink{structcbuf__t}{cbuf\+\_\+t}} $\ast$cb)
+\item 
+int \mbox{\hyperlink{cbuffer_8h_a66cdbdca2f3869e4f6475ce1ac13706e}{cbuf\+\_\+unusedspace}} (const \mbox{\hyperlink{structcbuf__t}{cbuf\+\_\+t}} $\ast$cb)
+\item 
+int \mbox{\hyperlink{cbuffer_8h_aec64732f4cc77395717d046f1da01f9d}{cbuf\+\_\+is\+\_\+empty}} (const \mbox{\hyperlink{structcbuf__t}{cbuf\+\_\+t}} $\ast$cb)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{cbuffer_8h_a14f7bbd9e677cd99a3179f1517841cd5}\label{cbuffer_8h_a14f7bbd9e677cd99a3179f1517841cd5}} 
+\index{cbuffer.h@{cbuffer.h}!cbuf\_free@{cbuf\_free}}
+\index{cbuf\_free@{cbuf\_free}!cbuffer.h@{cbuffer.h}}
+\doxysubsubsection{\texorpdfstring{cbuf\_free()}{cbuf\_free()}}
+{\footnotesize\ttfamily void cbuf\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcbuf__t}{cbuf\+\_\+t}} $\ast$}]{cb }\end{DoxyParamCaption})}
+
+Free memory used by circular buffer 
+\begin{DoxyParams}{Parameters}
+{\em cb} & The circular buffer. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cbuffer_8h_aec64732f4cc77395717d046f1da01f9d}\label{cbuffer_8h_aec64732f4cc77395717d046f1da01f9d}} 
+\index{cbuffer.h@{cbuffer.h}!cbuf\_is\_empty@{cbuf\_is\_empty}}
+\index{cbuf\_is\_empty@{cbuf\_is\_empty}!cbuffer.h@{cbuffer.h}}
+\doxysubsubsection{\texorpdfstring{cbuf\_is\_empty()}{cbuf\_is\_empty()}}
+{\footnotesize\ttfamily int cbuf\+\_\+is\+\_\+empty (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcbuf__t}{cbuf\+\_\+t}} $\ast$}]{cb }\end{DoxyParamCaption})}
+
+Tell if the circular buffer is empty. 
+\begin{DoxyParams}{Parameters}
+{\em cb} & The circular buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if empty; otherwise 0 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cbuffer_8h_a3feee4acceb69387efa6055c1f5d081c}\label{cbuffer_8h_a3feee4acceb69387efa6055c1f5d081c}} 
+\index{cbuffer.h@{cbuffer.h}!cbuf\_new@{cbuf\_new}}
+\index{cbuf\_new@{cbuf\_new}!cbuffer.h@{cbuffer.h}}
+\doxysubsubsection{\texorpdfstring{cbuf\_new()}{cbuf\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcbuf__t}{cbuf\+\_\+t}}$\ast$ cbuf\+\_\+new (\begin{DoxyParamCaption}\item[{const unsigned int}]{order }\end{DoxyParamCaption})}
+
+Create new circular buffer. 
+\begin{DoxyParams}{Parameters}
+{\em order} & Size of the circular buffer when taking this as a power of 2. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to new circular buffer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cbuffer_8h_a0bc13daf129fdf56d648c3aa017a8333}\label{cbuffer_8h_a0bc13daf129fdf56d648c3aa017a8333}} 
+\index{cbuffer.h@{cbuffer.h}!cbuf\_offer@{cbuf\_offer}}
+\index{cbuf\_offer@{cbuf\_offer}!cbuffer.h@{cbuffer.h}}
+\doxysubsubsection{\texorpdfstring{cbuf\_offer()}{cbuf\_offer()}}
+{\footnotesize\ttfamily int cbuf\+\_\+offer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcbuf__t}{cbuf\+\_\+t}} $\ast$}]{cb,  }\item[{void $\ast$}]{data,  }\item[{const int}]{size }\end{DoxyParamCaption})}
+
+Write data to the tail of the circular buffer. Increases the position of the tail. This copies data to the circular buffer using memcpy. After calling you should free the data if you don\textquotesingle{}t need it anymore.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cb} & The circular buffer. \\
+\hline
+{\em data} & Buffer to be written to the circular buffer. \\
+\hline
+{\em size} & Size of the buffer to be added to the circular buffer in bytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of bytes offered 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cbuffer_8h_ab1d185a388005c1fe6d4dfd414d4fcbc}\label{cbuffer_8h_ab1d185a388005c1fe6d4dfd414d4fcbc}} 
+\index{cbuffer.h@{cbuffer.h}!cbuf\_peek@{cbuf\_peek}}
+\index{cbuf\_peek@{cbuf\_peek}!cbuffer.h@{cbuffer.h}}
+\doxysubsubsection{\texorpdfstring{cbuf\_peek()}{cbuf\_peek()}}
+{\footnotesize\ttfamily void$\ast$ cbuf\+\_\+peek (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcbuf__t}{cbuf\+\_\+t}} $\ast$}]{cb }\end{DoxyParamCaption})}
+
+Look at data at the circular buffer\textquotesingle{}s head. Use cbuf\+\_\+usedspace to determine how much data in bytes can be read. 
+\begin{DoxyParams}{Parameters}
+{\em cb} & The circular buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to the head of the circular buffer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cbuffer_8h_afa324e8143c69fae47190328139eadb0}\label{cbuffer_8h_afa324e8143c69fae47190328139eadb0}} 
+\index{cbuffer.h@{cbuffer.h}!cbuf\_poll@{cbuf\_poll}}
+\index{cbuf\_poll@{cbuf\_poll}!cbuffer.h@{cbuffer.h}}
+\doxysubsubsection{\texorpdfstring{cbuf\_poll()}{cbuf\_poll()}}
+{\footnotesize\ttfamily void$\ast$ cbuf\+\_\+poll (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcbuf__t}{cbuf\+\_\+t}} $\ast$}]{cb,  }\item[{const unsigned int}]{size }\end{DoxyParamCaption})}
+
+Release data at the head from the circular buffer. Increase the position of the head.
+
+WARNING\+: this is a dangerous call if\+:
+\begin{DoxyEnumerate}
+\item You are using the returned data pointer.
+\item Another thread has offerred data to the circular buffer.
+\end{DoxyEnumerate}
+
+If you want to access the data from the returned pointer you are better off using cbuf\+\_\+peek.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cb} & The circular buffer. \\
+\hline
+{\em size} & Number of bytes to release \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to data; NULL if we can\textquotesingle{}t poll this much data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cbuffer_8h_a970ec29513a24bb239da1312b749d849}\label{cbuffer_8h_a970ec29513a24bb239da1312b749d849}} 
+\index{cbuffer.h@{cbuffer.h}!cbuf\_size@{cbuf\_size}}
+\index{cbuf\_size@{cbuf\_size}!cbuffer.h@{cbuffer.h}}
+\doxysubsubsection{\texorpdfstring{cbuf\_size()}{cbuf\_size()}}
+{\footnotesize\ttfamily int cbuf\+\_\+size (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcbuf__t}{cbuf\+\_\+t}} $\ast$}]{cb }\end{DoxyParamCaption})}
+
+Size in bytes of the circular buffer. Is equal to 2 $^\wedge$ order.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cb} & The circular buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+size of the circular buffer in bytes 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cbuffer_8h_a66cdbdca2f3869e4f6475ce1ac13706e}\label{cbuffer_8h_a66cdbdca2f3869e4f6475ce1ac13706e}} 
+\index{cbuffer.h@{cbuffer.h}!cbuf\_unusedspace@{cbuf\_unusedspace}}
+\index{cbuf\_unusedspace@{cbuf\_unusedspace}!cbuffer.h@{cbuffer.h}}
+\doxysubsubsection{\texorpdfstring{cbuf\_unusedspace()}{cbuf\_unusedspace()}}
+{\footnotesize\ttfamily int cbuf\+\_\+unusedspace (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcbuf__t}{cbuf\+\_\+t}} $\ast$}]{cb }\end{DoxyParamCaption})}
+
+Tell how much data we can write in bytes to the circular buffer. 
+\begin{DoxyParams}{Parameters}
+{\em cb} & The circular buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of bytes of how much data can be written 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cbuffer_8h_a2d2d78e194cf378854a4f9a3bb7b157f}\label{cbuffer_8h_a2d2d78e194cf378854a4f9a3bb7b157f}} 
+\index{cbuffer.h@{cbuffer.h}!cbuf\_usedspace@{cbuf\_usedspace}}
+\index{cbuf\_usedspace@{cbuf\_usedspace}!cbuffer.h@{cbuffer.h}}
+\doxysubsubsection{\texorpdfstring{cbuf\_usedspace()}{cbuf\_usedspace()}}
+{\footnotesize\ttfamily int cbuf\+\_\+usedspace (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcbuf__t}{cbuf\+\_\+t}} $\ast$}]{cb }\end{DoxyParamCaption})}
+
+Tell how much data has been written in bytes to the circular buffer. 
+\begin{DoxyParams}{Parameters}
+{\em cb} & The circular buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of bytes of how data has been written 
+\end{DoxyReturn}

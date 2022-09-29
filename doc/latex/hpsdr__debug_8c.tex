@@ -1,0 +1,85 @@
+\hypertarget{hpsdr__debug_8c}{}\doxysection{hpsdr\+\_\+debug.\+c File Reference}
+\label{hpsdr__debug_8c}\index{hpsdr\_debug.c@{hpsdr\_debug.c}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}hpsdr\+\_\+debug.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{hpsdr__debug_8c_ac9680a50defcc116ea3099bddd3fc1d2}{hpsdr\+\_\+dbg\+\_\+setlevel}} (int Level)
+\begin{DoxyCompactList}\small\item\em Set the debug level. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{hpsdr__debug_8c_ad382afe2195ecd1834907c543559141b}{hpsdr\+\_\+dbg\+\_\+getlevel}} (void)
+\begin{DoxyCompactList}\small\item\em Get the debug level.. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hpsdr__debug_8c_a2c413d533ae2a272d192cb87fcd01af7}{hpsdr\+\_\+dbg\+\_\+printf}} (int Level, const char $\ast$fmt,...)
+\begin{DoxyCompactList}\small\item\em The debug printf. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{hpsdr__debug_8c_af3f409255620fe5d579595a0d6f45bb3}{hpsdr\+\_\+debug\+\_\+id}} = 1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{hpsdr__debug_8c_ad382afe2195ecd1834907c543559141b}\label{hpsdr__debug_8c_ad382afe2195ecd1834907c543559141b}} 
+\index{hpsdr\_debug.c@{hpsdr\_debug.c}!hpsdr\_dbg\_getlevel@{hpsdr\_dbg\_getlevel}}
+\index{hpsdr\_dbg\_getlevel@{hpsdr\_dbg\_getlevel}!hpsdr\_debug.c@{hpsdr\_debug.c}}
+\doxysubsubsection{\texorpdfstring{hpsdr\_dbg\_getlevel()}{hpsdr\_dbg\_getlevel()}}
+{\footnotesize\ttfamily int hpsdr\+\_\+dbg\+\_\+getlevel (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Get the debug level.. 
+
+Get the debug level.
+
+\begin{DoxyReturn}{Returns}
+debug level. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{hpsdr__debug_8c_a2c413d533ae2a272d192cb87fcd01af7}\label{hpsdr__debug_8c_a2c413d533ae2a272d192cb87fcd01af7}} 
+\index{hpsdr\_debug.c@{hpsdr\_debug.c}!hpsdr\_dbg\_printf@{hpsdr\_dbg\_printf}}
+\index{hpsdr\_dbg\_printf@{hpsdr\_dbg\_printf}!hpsdr\_debug.c@{hpsdr\_debug.c}}
+\doxysubsubsection{\texorpdfstring{hpsdr\_dbg\_printf()}{hpsdr\_dbg\_printf()}}
+{\footnotesize\ttfamily void hpsdr\+\_\+dbg\+\_\+printf (\begin{DoxyParamCaption}\item[{int}]{Level,  }\item[{const char $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+The debug printf. 
+
+The debug printf.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Level} & Debug Level. \\
+\hline
+{\em fmt} & Format. \\
+\hline
+{\em others} & Like printf \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{hpsdr__debug_8c_ac9680a50defcc116ea3099bddd3fc1d2}\label{hpsdr__debug_8c_ac9680a50defcc116ea3099bddd3fc1d2}} 
+\index{hpsdr\_debug.c@{hpsdr\_debug.c}!hpsdr\_dbg\_setlevel@{hpsdr\_dbg\_setlevel}}
+\index{hpsdr\_dbg\_setlevel@{hpsdr\_dbg\_setlevel}!hpsdr\_debug.c@{hpsdr\_debug.c}}
+\doxysubsubsection{\texorpdfstring{hpsdr\_dbg\_setlevel()}{hpsdr\_dbg\_setlevel()}}
+{\footnotesize\ttfamily void hpsdr\+\_\+dbg\+\_\+setlevel (\begin{DoxyParamCaption}\item[{int}]{Level }\end{DoxyParamCaption})}
+
+
+
+Set the debug level. 
+
+Set the debug level.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Level} & The debug level. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{hpsdr__debug_8c_af3f409255620fe5d579595a0d6f45bb3}\label{hpsdr__debug_8c_af3f409255620fe5d579595a0d6f45bb3}} 
+\index{hpsdr\_debug.c@{hpsdr\_debug.c}!hpsdr\_debug\_id@{hpsdr\_debug\_id}}
+\index{hpsdr\_debug\_id@{hpsdr\_debug\_id}!hpsdr\_debug.c@{hpsdr\_debug.c}}
+\doxysubsubsection{\texorpdfstring{hpsdr\_debug\_id}{hpsdr\_debug\_id}}
+{\footnotesize\ttfamily int hpsdr\+\_\+debug\+\_\+id = 1}
+

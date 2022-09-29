@@ -1,0 +1,224 @@
+\hypertarget{cargs_8h}{}\doxysection{cargs.\+h File Reference}
+\label{cargs_8h}\index{cargs.h@{cargs.h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcag__option}{cag\+\_\+option}}
+\item 
+struct \mbox{\hyperlink{structcag__option__context}{cag\+\_\+option\+\_\+context}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{cargs_8h_ac2fe41d2e6afacfe188b6ff3f0205411}{CAG\+\_\+\+LIBRARY\+\_\+H}}
+\item 
+\#define \mbox{\hyperlink{cargs_8h_a02c4b66f3e1449f12ecb1f21d0f0023a}{CAG\+\_\+\+EXPORT}}
+\item 
+\#define \mbox{\hyperlink{cargs_8h_a6da2acbee0a830533fc296a0af29c451}{CAG\+\_\+\+IMPORT}}
+\item 
+\#define \mbox{\hyperlink{cargs_8h_a8c664b8d7097c5cae516736084e3f67a}{CAG\+\_\+\+PUBLIC}}
+\item 
+\#define \mbox{\hyperlink{cargs_8h_afa765c7170d039d75c15dd7ca4a5df10}{CAG\+\_\+\+ARRAY\+\_\+\+SIZE}}(arr)~(sizeof(arr) / sizeof((arr)\mbox{[}0\mbox{]}))
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structcag__option}{cag\+\_\+option}} \mbox{\hyperlink{cargs_8h_af074c7743355aa43d38b209b9f30cdc3}{cag\+\_\+option}}
+\item 
+typedef struct \mbox{\hyperlink{structcag__option__context}{cag\+\_\+option\+\_\+context}} \mbox{\hyperlink{cargs_8h_a3807c9e412641303b1a61728751ecf8f}{cag\+\_\+option\+\_\+context}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{cargs_8h_a8c664b8d7097c5cae516736084e3f67a}{CAG\+\_\+\+PUBLIC}} void \mbox{\hyperlink{cargs_8h_afb322b0c732fa9df19f6b767b170774e}{cag\+\_\+option\+\_\+print}} (const \mbox{\hyperlink{structcag__option}{cag\+\_\+option}} $\ast$options, size\+\_\+t option\+\_\+count, FILE $\ast$destination)
+\begin{DoxyCompactList}\small\item\em Prints all options to the terminal. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{cargs_8h_a8c664b8d7097c5cae516736084e3f67a}{CAG\+\_\+\+PUBLIC}} void \mbox{\hyperlink{cargs_8h_a1c4ad2bb1e897d5f00ab4add05e5e5e3}{cag\+\_\+option\+\_\+prepare}} (\mbox{\hyperlink{structcag__option__context}{cag\+\_\+option\+\_\+context}} $\ast$context, const \mbox{\hyperlink{structcag__option}{cag\+\_\+option}} $\ast$options, size\+\_\+t option\+\_\+count, int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Prepare argument options context for parsing. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{cargs_8h_a8c664b8d7097c5cae516736084e3f67a}{CAG\+\_\+\+PUBLIC}} bool \mbox{\hyperlink{cargs_8h_a2b1ed33caeb9298127af2a395037b114}{cag\+\_\+option\+\_\+fetch}} (\mbox{\hyperlink{structcag__option__context}{cag\+\_\+option\+\_\+context}} $\ast$context)
+\begin{DoxyCompactList}\small\item\em Fetches an option from the argument list. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{cargs_8h_a8c664b8d7097c5cae516736084e3f67a}{CAG\+\_\+\+PUBLIC}} char \mbox{\hyperlink{cargs_8h_a182c34456ce2654ab5c1475ee6f1f6da}{cag\+\_\+option\+\_\+get}} (const \mbox{\hyperlink{structcag__option__context}{cag\+\_\+option\+\_\+context}} $\ast$context)
+\begin{DoxyCompactList}\small\item\em Gets the identifier of the option. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{cargs_8h_a8c664b8d7097c5cae516736084e3f67a}{CAG\+\_\+\+PUBLIC}} const char $\ast$ \mbox{\hyperlink{cargs_8h_a33de29ffc33c06102cc4579e49f3b707}{cag\+\_\+option\+\_\+get\+\_\+value}} (const \mbox{\hyperlink{structcag__option__context}{cag\+\_\+option\+\_\+context}} $\ast$context)
+\begin{DoxyCompactList}\small\item\em Gets the value from the option. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{cargs_8h_a8c664b8d7097c5cae516736084e3f67a}{CAG\+\_\+\+PUBLIC}} int \mbox{\hyperlink{cargs_8h_a5cf196ffbde8da22abc44fedf0fada53}{cag\+\_\+option\+\_\+get\+\_\+index}} (const \mbox{\hyperlink{structcag__option__context}{cag\+\_\+option\+\_\+context}} $\ast$context)
+\begin{DoxyCompactList}\small\item\em Gets the current index of the context. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{cargs_8h_afa765c7170d039d75c15dd7ca4a5df10}\label{cargs_8h_afa765c7170d039d75c15dd7ca4a5df10}} 
+\index{cargs.h@{cargs.h}!CAG\_ARRAY\_SIZE@{CAG\_ARRAY\_SIZE}}
+\index{CAG\_ARRAY\_SIZE@{CAG\_ARRAY\_SIZE}!cargs.h@{cargs.h}}
+\doxysubsubsection{\texorpdfstring{CAG\_ARRAY\_SIZE}{CAG\_ARRAY\_SIZE}}
+{\footnotesize\ttfamily \#define CAG\+\_\+\+ARRAY\+\_\+\+SIZE(\begin{DoxyParamCaption}\item[{}]{arr }\end{DoxyParamCaption})~(sizeof(arr) / sizeof((arr)\mbox{[}0\mbox{]}))}
+
+This is just a small macro which calculates the size of an array. \mbox{\Hypertarget{cargs_8h_a02c4b66f3e1449f12ecb1f21d0f0023a}\label{cargs_8h_a02c4b66f3e1449f12ecb1f21d0f0023a}} 
+\index{cargs.h@{cargs.h}!CAG\_EXPORT@{CAG\_EXPORT}}
+\index{CAG\_EXPORT@{CAG\_EXPORT}!cargs.h@{cargs.h}}
+\doxysubsubsection{\texorpdfstring{CAG\_EXPORT}{CAG\_EXPORT}}
+{\footnotesize\ttfamily \#define CAG\+\_\+\+EXPORT}
+
+\mbox{\Hypertarget{cargs_8h_a6da2acbee0a830533fc296a0af29c451}\label{cargs_8h_a6da2acbee0a830533fc296a0af29c451}} 
+\index{cargs.h@{cargs.h}!CAG\_IMPORT@{CAG\_IMPORT}}
+\index{CAG\_IMPORT@{CAG\_IMPORT}!cargs.h@{cargs.h}}
+\doxysubsubsection{\texorpdfstring{CAG\_IMPORT}{CAG\_IMPORT}}
+{\footnotesize\ttfamily \#define CAG\+\_\+\+IMPORT}
+
+\mbox{\Hypertarget{cargs_8h_ac2fe41d2e6afacfe188b6ff3f0205411}\label{cargs_8h_ac2fe41d2e6afacfe188b6ff3f0205411}} 
+\index{cargs.h@{cargs.h}!CAG\_LIBRARY\_H@{CAG\_LIBRARY\_H}}
+\index{CAG\_LIBRARY\_H@{CAG\_LIBRARY\_H}!cargs.h@{cargs.h}}
+\doxysubsubsection{\texorpdfstring{CAG\_LIBRARY\_H}{CAG\_LIBRARY\_H}}
+{\footnotesize\ttfamily \#define CAG\+\_\+\+LIBRARY\+\_\+H}
+
+This is a simple alternative cross-\/platform implementation of getopt, which is used to parse argument strings submitted to the executable (argc and argv which are received in the main function). \mbox{\Hypertarget{cargs_8h_a8c664b8d7097c5cae516736084e3f67a}\label{cargs_8h_a8c664b8d7097c5cae516736084e3f67a}} 
+\index{cargs.h@{cargs.h}!CAG\_PUBLIC@{CAG\_PUBLIC}}
+\index{CAG\_PUBLIC@{CAG\_PUBLIC}!cargs.h@{cargs.h}}
+\doxysubsubsection{\texorpdfstring{CAG\_PUBLIC}{CAG\_PUBLIC}}
+{\footnotesize\ttfamily \#define CAG\+\_\+\+PUBLIC}
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{cargs_8h_af074c7743355aa43d38b209b9f30cdc3}\label{cargs_8h_af074c7743355aa43d38b209b9f30cdc3}} 
+\index{cargs.h@{cargs.h}!cag\_option@{cag\_option}}
+\index{cag\_option@{cag\_option}!cargs.h@{cargs.h}}
+\doxysubsubsection{\texorpdfstring{cag\_option}{cag\_option}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structcag__option}{cag\+\_\+option}} \mbox{\hyperlink{structcag__option}{cag\+\_\+option}}}
+
+An option is used to describe a flag/argument option submitted when the program is run. \mbox{\Hypertarget{cargs_8h_a3807c9e412641303b1a61728751ecf8f}\label{cargs_8h_a3807c9e412641303b1a61728751ecf8f}} 
+\index{cargs.h@{cargs.h}!cag\_option\_context@{cag\_option\_context}}
+\index{cag\_option\_context@{cag\_option\_context}!cargs.h@{cargs.h}}
+\doxysubsubsection{\texorpdfstring{cag\_option\_context}{cag\_option\_context}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structcag__option__context}{cag\+\_\+option\+\_\+context}} \mbox{\hyperlink{structcag__option__context}{cag\+\_\+option\+\_\+context}}}
+
+A context is used to iterate over all options provided. It stores the parsing state. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{cargs_8h_a2b1ed33caeb9298127af2a395037b114}\label{cargs_8h_a2b1ed33caeb9298127af2a395037b114}} 
+\index{cargs.h@{cargs.h}!cag\_option\_fetch@{cag\_option\_fetch}}
+\index{cag\_option\_fetch@{cag\_option\_fetch}!cargs.h@{cargs.h}}
+\doxysubsubsection{\texorpdfstring{cag\_option\_fetch()}{cag\_option\_fetch()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cargs_8h_a8c664b8d7097c5cae516736084e3f67a}{CAG\+\_\+\+PUBLIC}} bool cag\+\_\+option\+\_\+fetch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcag__option__context}{cag\+\_\+option\+\_\+context}} $\ast$}]{context }\end{DoxyParamCaption})}
+
+
+
+Fetches an option from the argument list. 
+
+This function fetches a single option from the argument list. The context will be moved to that item. Information can be extracted from the context after the item has been fetched. The arguments will be re-\/ordered, which means that non-\/option arguments will be moved to the end of the argument list. After all options have been fetched, all non-\/option arguments will be positioned after the index of the context.
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & The context from which we will fetch the option. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if there was another option or false if the end is reached. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cargs_8h_a182c34456ce2654ab5c1475ee6f1f6da}\label{cargs_8h_a182c34456ce2654ab5c1475ee6f1f6da}} 
+\index{cargs.h@{cargs.h}!cag\_option\_get@{cag\_option\_get}}
+\index{cag\_option\_get@{cag\_option\_get}!cargs.h@{cargs.h}}
+\doxysubsubsection{\texorpdfstring{cag\_option\_get()}{cag\_option\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cargs_8h_a8c664b8d7097c5cae516736084e3f67a}{CAG\+\_\+\+PUBLIC}} char cag\+\_\+option\+\_\+get (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcag__option__context}{cag\+\_\+option\+\_\+context}} $\ast$}]{context }\end{DoxyParamCaption})}
+
+
+
+Gets the identifier of the option. 
+
+This function gets the identifier of the option, which should be unique to this option and can be used to determine what kind of option this is.
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & The context from which the option was fetched. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the identifier of the option. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cargs_8h_a5cf196ffbde8da22abc44fedf0fada53}\label{cargs_8h_a5cf196ffbde8da22abc44fedf0fada53}} 
+\index{cargs.h@{cargs.h}!cag\_option\_get\_index@{cag\_option\_get\_index}}
+\index{cag\_option\_get\_index@{cag\_option\_get\_index}!cargs.h@{cargs.h}}
+\doxysubsubsection{\texorpdfstring{cag\_option\_get\_index()}{cag\_option\_get\_index()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cargs_8h_a8c664b8d7097c5cae516736084e3f67a}{CAG\+\_\+\+PUBLIC}} int cag\+\_\+option\+\_\+get\+\_\+index (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcag__option__context}{cag\+\_\+option\+\_\+context}} $\ast$}]{context }\end{DoxyParamCaption})}
+
+
+
+Gets the current index of the context. 
+
+This function gets the index within the argv arguments of the context. The context always points to the next item which it will inspect. This is particularly useful to inspect the original argument array, or to get non-\/option arguments after option fetching has finished.
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & The context from which the option was fetched. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the current index of the context. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cargs_8h_a33de29ffc33c06102cc4579e49f3b707}\label{cargs_8h_a33de29ffc33c06102cc4579e49f3b707}} 
+\index{cargs.h@{cargs.h}!cag\_option\_get\_value@{cag\_option\_get\_value}}
+\index{cag\_option\_get\_value@{cag\_option\_get\_value}!cargs.h@{cargs.h}}
+\doxysubsubsection{\texorpdfstring{cag\_option\_get\_value()}{cag\_option\_get\_value()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cargs_8h_a8c664b8d7097c5cae516736084e3f67a}{CAG\+\_\+\+PUBLIC}} const char$\ast$ cag\+\_\+option\+\_\+get\+\_\+value (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcag__option__context}{cag\+\_\+option\+\_\+context}} $\ast$}]{context }\end{DoxyParamCaption})}
+
+
+
+Gets the value from the option. 
+
+This function gets the value from the option, if any. If the option does not contain a value, this function will return NULL.
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & The context from which the option was fetched. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a pointer to the value or NULL if there is no value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cargs_8h_a1c4ad2bb1e897d5f00ab4add05e5e5e3}\label{cargs_8h_a1c4ad2bb1e897d5f00ab4add05e5e5e3}} 
+\index{cargs.h@{cargs.h}!cag\_option\_prepare@{cag\_option\_prepare}}
+\index{cag\_option\_prepare@{cag\_option\_prepare}!cargs.h@{cargs.h}}
+\doxysubsubsection{\texorpdfstring{cag\_option\_prepare()}{cag\_option\_prepare()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cargs_8h_a8c664b8d7097c5cae516736084e3f67a}{CAG\+\_\+\+PUBLIC}} void cag\+\_\+option\+\_\+prepare (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcag__option__context}{cag\+\_\+option\+\_\+context}} $\ast$}]{context,  }\item[{const \mbox{\hyperlink{structcag__option}{cag\+\_\+option}} $\ast$}]{options,  }\item[{size\+\_\+t}]{option\+\_\+count,  }\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Prepare argument options context for parsing. 
+
+This function prepares the context for iteration and initializes the context with the supplied options and arguments. After the context has been prepared, it can be used to fetch arguments from it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & The context which will be initialized. \\
+\hline
+{\em options} & The registered options which are available for the program. \\
+\hline
+{\em option\+\_\+count} & The amount of options which are available for the program. \\
+\hline
+{\em argc} & The amount of arguments the user supplied in the main function. \\
+\hline
+{\em argv} & A pointer to the arguments of the main function. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cargs_8h_afb322b0c732fa9df19f6b767b170774e}\label{cargs_8h_afb322b0c732fa9df19f6b767b170774e}} 
+\index{cargs.h@{cargs.h}!cag\_option\_print@{cag\_option\_print}}
+\index{cag\_option\_print@{cag\_option\_print}!cargs.h@{cargs.h}}
+\doxysubsubsection{\texorpdfstring{cag\_option\_print()}{cag\_option\_print()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cargs_8h_a8c664b8d7097c5cae516736084e3f67a}{CAG\+\_\+\+PUBLIC}} void cag\+\_\+option\+\_\+print (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcag__option}{cag\+\_\+option}} $\ast$}]{options,  }\item[{size\+\_\+t}]{option\+\_\+count,  }\item[{FILE $\ast$}]{destination }\end{DoxyParamCaption})}
+
+
+
+Prints all options to the terminal. 
+
+This function prints all options to the terminal. This can be used to generate the output for a \char`\"{}-\/-\/help\char`\"{} option.
+
+
+\begin{DoxyParams}{Parameters}
+{\em options} & The options which will be printed. \\
+\hline
+{\em option\+\_\+count} & The option count which will be printed. \\
+\hline
+{\em destination} & The destination where the output will be printed. \\
+\hline
+\end{DoxyParams}

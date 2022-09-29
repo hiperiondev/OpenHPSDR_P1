@@ -1,0 +1,562 @@
+\hypertarget{hpsdr__ep2_8h}{}\doxysection{hpsdr\+\_\+ep2.\+h File Reference}
+\label{hpsdr__ep2_8h}\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a55a4331b534ab541c74f747cef31865c}{FR\+\_\+\+EP2\+\_\+\+PTT}}(fr)~(fr\mbox{[}0\mbox{]} \& 1)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a7d3be4ffb4cab8857e16e06cb0382a99}{FR\+\_\+\+EP2\+\_\+\+RATE}}(fr)~((fr\mbox{[}1\mbox{]} \& 0x03) $>$$>$ 0)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a4ad868dea5408a6b39dce795a93040fe}{FR\+\_\+\+EP2\+\_\+\+REF10}}(fr)~((fr\mbox{[}1\mbox{]} \& 0x0C) $>$$>$ 3)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_ae4f7d8da4ecd8766f0fc5d9c77392bb3}{FR\+\_\+\+EP2\+\_\+\+SRC122}}(fr)~((fr\mbox{[}1\mbox{]} \& 0x10) $>$$>$ 4)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a1a4cc38190dd0f3acd9dc2ef586c9b93}{FR\+\_\+\+EP2\+\_\+\+PMCONFIG}}(fr)~((fr\mbox{[}1\mbox{]} \& 0x60) $>$$>$ 5)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a24ce501d61c0ed6ff47c95c1a5fc751b}{FR\+\_\+\+EP2\+\_\+\+MICSRC}}(fr)~((fr\mbox{[}1\mbox{]} \& 0x80) $>$$>$ 7)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a7fd2e477954cf6c23f77fc8a0a4008eb}{FR\+\_\+\+EP2\+\_\+\+TXCLASSC}}(fr)~(fr\mbox{[}2\mbox{]} \& 1)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a6727e39610e21dad9d0ed15c6ca78696}{FR\+\_\+\+EP2\+\_\+\+OPENCOLLECTOROUTPUTS}}(fr)~((fr\mbox{[}2\mbox{]} \& 0xfe) $>$$>$ 1)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a25314fb3b4d10e016866a30786fd56b9}{FR\+\_\+\+EP2\+\_\+\+RECEIVERS}}(fr)~(((fr\mbox{[}4\mbox{]} $>$$>$ 3) \& 7) + 1)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_accdac1685923015e3ea04ce098f9bf43}{FR\+\_\+\+EP2\+\_\+\+MICTS}}(fr)~(((fr\mbox{[}4\mbox{]} $>$$>$ 6) \& 1))
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a75158bca33d2892f155af19e1431a042}{FR\+\_\+\+EP2\+\_\+\+COMMONMERCURYFREQ}}(fr)~((fr\mbox{[}4\mbox{]} $>$$>$ 7) \& 1)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a4d2ba3e79a17101c5feb2f36525aa281}{FR\+\_\+\+EP2\+\_\+\+ALEXATT}}(fr)~(fr\mbox{[}3\mbox{]} \& 0x03)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a3375dc65a582bbe31754d5f04f8475f9}{FR\+\_\+\+EP2\+\_\+\+PREAMP}}(fr)~((fr\mbox{[}3\mbox{]} \& 0x04) $>$$>$ 2)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a36269a382cdb341f99e07a7f427347eb}{FR\+\_\+\+EP2\+\_\+\+LTDITHER}}(fr)~((fr\mbox{[}3\mbox{]} \& 0x08) $>$$>$ 3)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_ac7855b59aa4caf9eaf767b23fb049e69}{FR\+\_\+\+EP2\+\_\+\+LTRANDOM}}(fr)~((fr\mbox{[}3\mbox{]} \& 0x10) $>$$>$ 4)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_aa2d24c450bde5da55cf85bd03fc8f0bd}{FR\+\_\+\+EP2\+\_\+\+ALEXRXANT}}(fr)~((fr\mbox{[}3\mbox{]} \& 0x60) $>$$>$ 5)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_ace9f6f1f60bae3bbf121bbd4a4e51c7d}{FR\+\_\+\+EP2\+\_\+\+ALEXXRXOUT}}(fr)~((fr\mbox{[}3\mbox{]} \& 0x80) $>$$>$ 7)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a124fe9378ab9d2a38bc2bbb2af453863}{FR\+\_\+\+EP2\+\_\+\+ALETXREL}}(fr)~((fr\mbox{[}4\mbox{]} $>$$>$ 0) \& 3)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_ab8608de76a8cab9fccf00c80bb1eb508}{FR\+\_\+\+EP2\+\_\+\+DUPLEX}}(fr)~((fr\mbox{[}4\mbox{]} $>$$>$ 2) \& 1)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_ae3414734fd3ef4cd34e30dc8a04f1795}{FR\+\_\+\+EP2\+\_\+\+TXFREQ}}(fr)~((fr\mbox{[}4\mbox{]} $\vert$ (fr\mbox{[}3\mbox{]} $<$$<$ 8) $\vert$ (fr\mbox{[}2\mbox{]} $<$$<$ 16) $\vert$ (fr\mbox{[}1\mbox{]} $<$$<$ 24)))
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_aac8ca34fdfd1afc9d6f4affafbdabeb5}{FR\+\_\+\+EP2\+\_\+\+RXFREQ}}(fr)~(fr\mbox{[}4\mbox{]} $\vert$ (fr\mbox{[}3\mbox{]} $<$$<$ 8)  $\vert$ (fr\mbox{[}2\mbox{]} $<$$<$ 16) $\vert$ (fr\mbox{[}1\mbox{]} $<$$<$ 24))
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a6ed970bb5d5e0345849ee09585b24754}{FR\+\_\+\+EP2\+\_\+\+TXDRIVE}}(fr)~(fr\mbox{[}1\mbox{]})
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a005b506ffe1956652fc113002cbcf544}{FR\+\_\+\+EP2\+\_\+\+HERMESCONFIG}}(fr)~(fr\mbox{[}2\mbox{]} \& 0x3F)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a2260a0f3b668a48ec2ca53e9ccb56060}{FR\+\_\+\+EP2\+\_\+\+ALEXMANUALHPFLPF}}(fr)~((fr\mbox{[}2\mbox{]} $>$$>$ 6) \& 0x01)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_abd4f061d83fee01d9b2ff06e4240fde2}{FR\+\_\+\+EP2\+\_\+\+VNA}}(fr)~((fr\mbox{[}2\mbox{]} $>$$>$ 7) \& 0x01)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_ab137083c605bf0bd985e12b6f5a60afb}{FR\+\_\+\+EP2\+\_\+\+ALEXHPF}}(fr)~(fr\mbox{[}3\mbox{]} \& 0x1F)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a52eac28ec0365e71f7ce4594cabc1fee}{FR\+\_\+\+EP2\+\_\+\+ALEXBYPASS}}(fr)~((fr\mbox{[}3\mbox{]} $>$$>$ 5) \& 0x01)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_ad8cb59b81daf3436e97b99bd1b5f52db}{FR\+\_\+\+EP2\+\_\+\+LNA6M}}(fr)~((fr\mbox{[}3\mbox{]} $>$$>$ 6) \& 0x01)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a98f3625137729fda3a93f64469b37a57}{FR\+\_\+\+EP2\+\_\+\+ALEXTRDISABLE}}(fr)~((fr\mbox{[}3\mbox{]} $>$$>$ 7) \& 0x01)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a4dde879b694770ab01f7c5bd3f35ebb6}{FR\+\_\+\+EP2\+\_\+\+ALEXLPF}}(fr)~(fr\mbox{[}4\mbox{]})
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a314396bb6d01e66cec18a0b9caaac171}{FR\+\_\+\+EP2\+\_\+\+ADC1\+PREAMP}}(fr)~((fr\mbox{[}1\mbox{]} \& 0x01) $>$$>$ 0)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_aa5c958189038ff6395e3a0a019e1ea34}{FR\+\_\+\+EP2\+\_\+\+ADC2\+PREAMP}}(fr)~((fr\mbox{[}1\mbox{]} \& 0x02) $>$$>$ 1)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a55e3be0fc20ed608fe04c8216333c301}{FR\+\_\+\+EP2\+\_\+\+ADC3\+PREAMP}}(fr)~((fr\mbox{[}1\mbox{]} \& 0x04) $>$$>$ 2)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a9ae1df8ec79878cee17cd98475e85703}{FR\+\_\+\+EP2\+\_\+\+ADC4\+PREAMP}}(fr)~((fr\mbox{[}1\mbox{]} \& 0x08) $>$$>$ 3)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_aac6359d12bc8cc1c7f0393ca9c442081}{FR\+\_\+\+EP2\+\_\+\+TIPRING}}(fr)~((fr\mbox{[}1\mbox{]} \& 0x10) $>$$>$ 4)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a1ac3fc23c9117fbdf835e4d622511e45}{FR\+\_\+\+EP2\+\_\+\+MICBIAS}}(fr)~((fr\mbox{[}1\mbox{]} \& 0x20) $>$$>$ 5)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a38314c75fe8bd88bc6f4a3624e0c4efb}{FR\+\_\+\+EP2\+\_\+\+MICPTT}}(fr)~((fr\mbox{[}1\mbox{]} \& 0x40) $>$$>$ 6)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a6274e07f645bdc58c3bd0c1056292d5d}{FR\+\_\+\+EP2\+\_\+\+LINEGAIN}}(fr)~((fr\mbox{[}2\mbox{]} \& 0x1F) $>$$>$ 0)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a4e1963bf384bef55b957e84c40d58b82}{FR\+\_\+\+EP2\+\_\+\+MERTXATT0}}(fr)~((fr\mbox{[}2\mbox{]} \& 0x20) $>$$>$ 5)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_aa38bdad49ed26a28995f026bdf0ab757}{FR\+\_\+\+EP2\+\_\+\+PURESIGNAL}}(fr)~((fr\mbox{[}2\mbox{]} \& 0x40) $>$$>$ 6)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a24447d532dbc508e442e224c9f90daa5}{FR\+\_\+\+EP2\+\_\+\+PENESEL}}(fr)~((fr\mbox{[}2\mbox{]} \& 0x80) $>$$>$ 7)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_af550005a509f52340a8426262999dbdc}{FR\+\_\+\+EP2\+\_\+\+METISDB9}}(fr)~((fr\mbox{[}3\mbox{]} \& 0x0F) $>$$>$ 0)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_af48e503c8083f6c380bd104099184e58}{FR\+\_\+\+EP2\+\_\+\+MERTXATT1}}(fr)~((fr\mbox{[}3\mbox{]} \& 0x10) $>$$>$ 4)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_ac14047e5f64ead3c1d1075197557d01d}{FR\+\_\+\+EP2\+\_\+\+RX1\+HLATTGAIN}}(fr)~(37 -\/ (fr\mbox{[}4\mbox{]} \& 0x3F))
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a95735e6586abbac8a3e2cd8d746dfc8d}{FR\+\_\+\+EP2\+\_\+\+RX1\+ATT}}(fr)~((fr\mbox{[}4\mbox{]} \& 0x1F) $>$$>$ 0x0F)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_ac7ebde97fb50cf0cd0c7285431d9ffe2}{FR\+\_\+\+EP2\+\_\+\+RX1\+ATTENABLE}}(fr)~((fr\mbox{[}4\mbox{]} \& 0x20) $>$$>$ 5)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_abcb797429fb1c1a421acddc65e60e06b}{FR\+\_\+\+EP2\+\_\+\+RX2\+ATT}}(fr)~(fr\mbox{[}1\mbox{]} \& 0x1f)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a6051e3fdf95e91075d1253e6b02a3dbe}{FR\+\_\+\+EP2\+\_\+\+CWREV}}(fr)~((fr\mbox{[}2\mbox{]} $>$$>$ 6) \& 1)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_adde52b1d610231bbd608899ed12ba525}{FR\+\_\+\+EP2\+\_\+\+CWSPEED}}(fr)~(fr\mbox{[}3\mbox{]} \& 63)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a1bcd5a12405014b7cb11e1687ce39d74}{FR\+\_\+\+EP2\+\_\+\+CWMODE}}(fr)~((fr\mbox{[}3\mbox{]} $>$$>$ 6) \& 3)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_afadce804880fa4751d9552c69549b3e1}{FR\+\_\+\+EP2\+\_\+\+CWWEIGHT}}(fr)~(fr\mbox{[}4\mbox{]} \& 127)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a7423dc659a355b2088199671631cfa3c}{FR\+\_\+\+EP2\+\_\+\+CWSPACING}}(fr)~((fr\mbox{[}4\mbox{]} $>$$>$ 7) \& 1)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_ad0bbc7ac24687b13bb32ea1ff4fefb55}{FR\+\_\+\+EP2\+\_\+\+C25\+EXTBOARDDATA}}(fr)~((fr\mbox{[}2\mbox{]} $<$$<$ 8) $\vert$ fr\mbox{[}1\mbox{]})
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a9f935b84893a1fbcbe63c8de913c9c70}{FR\+\_\+\+EP2\+\_\+\+RX1\+ADC}}(fr)~((fr\mbox{[}1\mbox{]} \& 0x03) $>$$>$ 0)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_af5c8dd4c87354dfe69b57faddc8215f9}{FR\+\_\+\+EP2\+\_\+\+RX2\+ADC}}(fr)~((fr\mbox{[}1\mbox{]} \& 0x0C) $>$$>$ 2)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a46edbdb6ffe531d01de22f8f703bcfbd}{FR\+\_\+\+EP2\+\_\+\+RX3\+ADC}}(fr)~((fr\mbox{[}1\mbox{]} \& 0x30) $>$$>$ 4)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_af2f0c768887db167b8fe7004261a6344}{FR\+\_\+\+EP2\+\_\+\+RX4\+ADC}}(fr)~((fr\mbox{[}1\mbox{]} \& 0x\+C0) $>$$>$ 6)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_aaacb2bb39757a301cde6196bf1ac9dd7}{FR\+\_\+\+EP2\+\_\+\+RX5\+ADC}}(fr)~((fr\mbox{[}2\mbox{]} \& 0x03) $>$$>$ 0)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_afe3c50eee09c8cf8b366ab1c93154143}{FR\+\_\+\+EP2\+\_\+\+RX6\+ADC}}(fr)~((fr\mbox{[}2\mbox{]} \& 0x0C) $>$$>$ 2)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a86f7b2bba3e2a64bfeeefa5d98d89b4a}{FR\+\_\+\+EP2\+\_\+\+RX7\+ADC}}(fr)~((fr\mbox{[}2\mbox{]} \& 0x30) $>$$>$ 4)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a206cb9cea0cf76adc9fc0169c800a4bb}{FR\+\_\+\+EP2\+\_\+\+TXATT}}(fr)~((fr\mbox{[}3\mbox{]} \& 0x1f))
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_aabe78ec5a4661a33d89c84109baf36c0}{FR\+\_\+\+EP2\+\_\+\+CWINT}}(fr)~(fr\mbox{[}1\mbox{]} \& 1)
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_acf9cafdd35d45f5d44b13017cb432171}{FR\+\_\+\+EP2\+\_\+\+CWDELAY}}(fr)~(frame\mbox{[}3\mbox{]})
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_a8697ba969260b9a5d07daf1b49ff5f0f}{FR\+\_\+\+EP2\+\_\+\+SIDETONEVOLUME}}(fr)~(fr\mbox{[}2\mbox{]})
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_aebfcece4c6035f8fd30a3f3d3a57a52a}{FR\+\_\+\+EP2\+\_\+\+CWHANG}}(fr)~((fr\mbox{[}1\mbox{]} $<$$<$ 2) $\vert$ (fr\mbox{[}2\mbox{]} \& 3))
+\item 
+\#define \mbox{\hyperlink{hpsdr__ep2_8h_ac811f9fb7f28dab0b0d05314c9e34c92}{FR\+\_\+\+EP2\+\_\+\+SIDETONEFREQ}}(fr)~((fr\mbox{[}3\mbox{]} $<$$<$ 4) $\vert$ (fr\mbox{[}4\mbox{]} \& 255))
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{hpsdr__ep2_8h_a718176035673868460f2a21f950f8158}{ep2\+\_\+handler}} (uint8\+\_\+t $\ast$frame)
+\begin{DoxyCompactList}\small\item\em EP2 handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{hpsdr__ep2_8h_a314396bb6d01e66cec18a0b9caaac171}\label{hpsdr__ep2_8h_a314396bb6d01e66cec18a0b9caaac171}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_ADC1PREAMP@{FR\_EP2\_ADC1PREAMP}}
+\index{FR\_EP2\_ADC1PREAMP@{FR\_EP2\_ADC1PREAMP}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_ADC1PREAMP}{FR\_EP2\_ADC1PREAMP}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+ADC1\+PREAMP(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}1\mbox{]} \& 0x01) $>$$>$ 0)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_aa5c958189038ff6395e3a0a019e1ea34}\label{hpsdr__ep2_8h_aa5c958189038ff6395e3a0a019e1ea34}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_ADC2PREAMP@{FR\_EP2\_ADC2PREAMP}}
+\index{FR\_EP2\_ADC2PREAMP@{FR\_EP2\_ADC2PREAMP}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_ADC2PREAMP}{FR\_EP2\_ADC2PREAMP}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+ADC2\+PREAMP(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}1\mbox{]} \& 0x02) $>$$>$ 1)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a55e3be0fc20ed608fe04c8216333c301}\label{hpsdr__ep2_8h_a55e3be0fc20ed608fe04c8216333c301}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_ADC3PREAMP@{FR\_EP2\_ADC3PREAMP}}
+\index{FR\_EP2\_ADC3PREAMP@{FR\_EP2\_ADC3PREAMP}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_ADC3PREAMP}{FR\_EP2\_ADC3PREAMP}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+ADC3\+PREAMP(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}1\mbox{]} \& 0x04) $>$$>$ 2)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a9ae1df8ec79878cee17cd98475e85703}\label{hpsdr__ep2_8h_a9ae1df8ec79878cee17cd98475e85703}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_ADC4PREAMP@{FR\_EP2\_ADC4PREAMP}}
+\index{FR\_EP2\_ADC4PREAMP@{FR\_EP2\_ADC4PREAMP}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_ADC4PREAMP}{FR\_EP2\_ADC4PREAMP}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+ADC4\+PREAMP(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}1\mbox{]} \& 0x08) $>$$>$ 3)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a124fe9378ab9d2a38bc2bbb2af453863}\label{hpsdr__ep2_8h_a124fe9378ab9d2a38bc2bbb2af453863}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_ALETXREL@{FR\_EP2\_ALETXREL}}
+\index{FR\_EP2\_ALETXREL@{FR\_EP2\_ALETXREL}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_ALETXREL}{FR\_EP2\_ALETXREL}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+ALETXREL(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}4\mbox{]} $>$$>$ 0) \& 3)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a4d2ba3e79a17101c5feb2f36525aa281}\label{hpsdr__ep2_8h_a4d2ba3e79a17101c5feb2f36525aa281}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_ALEXATT@{FR\_EP2\_ALEXATT}}
+\index{FR\_EP2\_ALEXATT@{FR\_EP2\_ALEXATT}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_ALEXATT}{FR\_EP2\_ALEXATT}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+ALEXATT(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~(fr\mbox{[}3\mbox{]} \& 0x03)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a52eac28ec0365e71f7ce4594cabc1fee}\label{hpsdr__ep2_8h_a52eac28ec0365e71f7ce4594cabc1fee}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_ALEXBYPASS@{FR\_EP2\_ALEXBYPASS}}
+\index{FR\_EP2\_ALEXBYPASS@{FR\_EP2\_ALEXBYPASS}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_ALEXBYPASS}{FR\_EP2\_ALEXBYPASS}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+ALEXBYPASS(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}3\mbox{]} $>$$>$ 5) \& 0x01)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_ab137083c605bf0bd985e12b6f5a60afb}\label{hpsdr__ep2_8h_ab137083c605bf0bd985e12b6f5a60afb}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_ALEXHPF@{FR\_EP2\_ALEXHPF}}
+\index{FR\_EP2\_ALEXHPF@{FR\_EP2\_ALEXHPF}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_ALEXHPF}{FR\_EP2\_ALEXHPF}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+ALEXHPF(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~(fr\mbox{[}3\mbox{]} \& 0x1F)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a4dde879b694770ab01f7c5bd3f35ebb6}\label{hpsdr__ep2_8h_a4dde879b694770ab01f7c5bd3f35ebb6}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_ALEXLPF@{FR\_EP2\_ALEXLPF}}
+\index{FR\_EP2\_ALEXLPF@{FR\_EP2\_ALEXLPF}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_ALEXLPF}{FR\_EP2\_ALEXLPF}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+ALEXLPF(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~(fr\mbox{[}4\mbox{]})}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a2260a0f3b668a48ec2ca53e9ccb56060}\label{hpsdr__ep2_8h_a2260a0f3b668a48ec2ca53e9ccb56060}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_ALEXMANUALHPFLPF@{FR\_EP2\_ALEXMANUALHPFLPF}}
+\index{FR\_EP2\_ALEXMANUALHPFLPF@{FR\_EP2\_ALEXMANUALHPFLPF}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_ALEXMANUALHPFLPF}{FR\_EP2\_ALEXMANUALHPFLPF}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+ALEXMANUALHPFLPF(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}2\mbox{]} $>$$>$ 6) \& 0x01)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_aa2d24c450bde5da55cf85bd03fc8f0bd}\label{hpsdr__ep2_8h_aa2d24c450bde5da55cf85bd03fc8f0bd}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_ALEXRXANT@{FR\_EP2\_ALEXRXANT}}
+\index{FR\_EP2\_ALEXRXANT@{FR\_EP2\_ALEXRXANT}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_ALEXRXANT}{FR\_EP2\_ALEXRXANT}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+ALEXRXANT(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}3\mbox{]} \& 0x60) $>$$>$ 5)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a98f3625137729fda3a93f64469b37a57}\label{hpsdr__ep2_8h_a98f3625137729fda3a93f64469b37a57}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_ALEXTRDISABLE@{FR\_EP2\_ALEXTRDISABLE}}
+\index{FR\_EP2\_ALEXTRDISABLE@{FR\_EP2\_ALEXTRDISABLE}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_ALEXTRDISABLE}{FR\_EP2\_ALEXTRDISABLE}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+ALEXTRDISABLE(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}3\mbox{]} $>$$>$ 7) \& 0x01)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_ace9f6f1f60bae3bbf121bbd4a4e51c7d}\label{hpsdr__ep2_8h_ace9f6f1f60bae3bbf121bbd4a4e51c7d}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_ALEXXRXOUT@{FR\_EP2\_ALEXXRXOUT}}
+\index{FR\_EP2\_ALEXXRXOUT@{FR\_EP2\_ALEXXRXOUT}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_ALEXXRXOUT}{FR\_EP2\_ALEXXRXOUT}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+ALEXXRXOUT(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}3\mbox{]} \& 0x80) $>$$>$ 7)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_ad0bbc7ac24687b13bb32ea1ff4fefb55}\label{hpsdr__ep2_8h_ad0bbc7ac24687b13bb32ea1ff4fefb55}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_C25EXTBOARDDATA@{FR\_EP2\_C25EXTBOARDDATA}}
+\index{FR\_EP2\_C25EXTBOARDDATA@{FR\_EP2\_C25EXTBOARDDATA}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_C25EXTBOARDDATA}{FR\_EP2\_C25EXTBOARDDATA}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+C25\+EXTBOARDDATA(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}2\mbox{]} $<$$<$ 8) $\vert$ fr\mbox{[}1\mbox{]})}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a75158bca33d2892f155af19e1431a042}\label{hpsdr__ep2_8h_a75158bca33d2892f155af19e1431a042}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_COMMONMERCURYFREQ@{FR\_EP2\_COMMONMERCURYFREQ}}
+\index{FR\_EP2\_COMMONMERCURYFREQ@{FR\_EP2\_COMMONMERCURYFREQ}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_COMMONMERCURYFREQ}{FR\_EP2\_COMMONMERCURYFREQ}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+COMMONMERCURYFREQ(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}4\mbox{]} $>$$>$ 7) \& 1)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_acf9cafdd35d45f5d44b13017cb432171}\label{hpsdr__ep2_8h_acf9cafdd35d45f5d44b13017cb432171}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_CWDELAY@{FR\_EP2\_CWDELAY}}
+\index{FR\_EP2\_CWDELAY@{FR\_EP2\_CWDELAY}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_CWDELAY}{FR\_EP2\_CWDELAY}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+CWDELAY(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~(frame\mbox{[}3\mbox{]})}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_aebfcece4c6035f8fd30a3f3d3a57a52a}\label{hpsdr__ep2_8h_aebfcece4c6035f8fd30a3f3d3a57a52a}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_CWHANG@{FR\_EP2\_CWHANG}}
+\index{FR\_EP2\_CWHANG@{FR\_EP2\_CWHANG}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_CWHANG}{FR\_EP2\_CWHANG}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+CWHANG(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}1\mbox{]} $<$$<$ 2) $\vert$ (fr\mbox{[}2\mbox{]} \& 3))}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_aabe78ec5a4661a33d89c84109baf36c0}\label{hpsdr__ep2_8h_aabe78ec5a4661a33d89c84109baf36c0}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_CWINT@{FR\_EP2\_CWINT}}
+\index{FR\_EP2\_CWINT@{FR\_EP2\_CWINT}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_CWINT}{FR\_EP2\_CWINT}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+CWINT(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~(fr\mbox{[}1\mbox{]} \& 1)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a1bcd5a12405014b7cb11e1687ce39d74}\label{hpsdr__ep2_8h_a1bcd5a12405014b7cb11e1687ce39d74}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_CWMODE@{FR\_EP2\_CWMODE}}
+\index{FR\_EP2\_CWMODE@{FR\_EP2\_CWMODE}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_CWMODE}{FR\_EP2\_CWMODE}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+CWMODE(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}3\mbox{]} $>$$>$ 6) \& 3)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a6051e3fdf95e91075d1253e6b02a3dbe}\label{hpsdr__ep2_8h_a6051e3fdf95e91075d1253e6b02a3dbe}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_CWREV@{FR\_EP2\_CWREV}}
+\index{FR\_EP2\_CWREV@{FR\_EP2\_CWREV}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_CWREV}{FR\_EP2\_CWREV}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+CWREV(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}2\mbox{]} $>$$>$ 6) \& 1)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a7423dc659a355b2088199671631cfa3c}\label{hpsdr__ep2_8h_a7423dc659a355b2088199671631cfa3c}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_CWSPACING@{FR\_EP2\_CWSPACING}}
+\index{FR\_EP2\_CWSPACING@{FR\_EP2\_CWSPACING}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_CWSPACING}{FR\_EP2\_CWSPACING}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+CWSPACING(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}4\mbox{]} $>$$>$ 7) \& 1)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_adde52b1d610231bbd608899ed12ba525}\label{hpsdr__ep2_8h_adde52b1d610231bbd608899ed12ba525}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_CWSPEED@{FR\_EP2\_CWSPEED}}
+\index{FR\_EP2\_CWSPEED@{FR\_EP2\_CWSPEED}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_CWSPEED}{FR\_EP2\_CWSPEED}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+CWSPEED(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~(fr\mbox{[}3\mbox{]} \& 63)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_afadce804880fa4751d9552c69549b3e1}\label{hpsdr__ep2_8h_afadce804880fa4751d9552c69549b3e1}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_CWWEIGHT@{FR\_EP2\_CWWEIGHT}}
+\index{FR\_EP2\_CWWEIGHT@{FR\_EP2\_CWWEIGHT}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_CWWEIGHT}{FR\_EP2\_CWWEIGHT}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+CWWEIGHT(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~(fr\mbox{[}4\mbox{]} \& 127)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_ab8608de76a8cab9fccf00c80bb1eb508}\label{hpsdr__ep2_8h_ab8608de76a8cab9fccf00c80bb1eb508}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_DUPLEX@{FR\_EP2\_DUPLEX}}
+\index{FR\_EP2\_DUPLEX@{FR\_EP2\_DUPLEX}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_DUPLEX}{FR\_EP2\_DUPLEX}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+DUPLEX(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}4\mbox{]} $>$$>$ 2) \& 1)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a005b506ffe1956652fc113002cbcf544}\label{hpsdr__ep2_8h_a005b506ffe1956652fc113002cbcf544}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_HERMESCONFIG@{FR\_EP2\_HERMESCONFIG}}
+\index{FR\_EP2\_HERMESCONFIG@{FR\_EP2\_HERMESCONFIG}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_HERMESCONFIG}{FR\_EP2\_HERMESCONFIG}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+HERMESCONFIG(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~(fr\mbox{[}2\mbox{]} \& 0x3F)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a6274e07f645bdc58c3bd0c1056292d5d}\label{hpsdr__ep2_8h_a6274e07f645bdc58c3bd0c1056292d5d}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_LINEGAIN@{FR\_EP2\_LINEGAIN}}
+\index{FR\_EP2\_LINEGAIN@{FR\_EP2\_LINEGAIN}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_LINEGAIN}{FR\_EP2\_LINEGAIN}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+LINEGAIN(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}2\mbox{]} \& 0x1F) $>$$>$ 0)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_ad8cb59b81daf3436e97b99bd1b5f52db}\label{hpsdr__ep2_8h_ad8cb59b81daf3436e97b99bd1b5f52db}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_LNA6M@{FR\_EP2\_LNA6M}}
+\index{FR\_EP2\_LNA6M@{FR\_EP2\_LNA6M}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_LNA6M}{FR\_EP2\_LNA6M}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+LNA6M(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}3\mbox{]} $>$$>$ 6) \& 0x01)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a36269a382cdb341f99e07a7f427347eb}\label{hpsdr__ep2_8h_a36269a382cdb341f99e07a7f427347eb}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_LTDITHER@{FR\_EP2\_LTDITHER}}
+\index{FR\_EP2\_LTDITHER@{FR\_EP2\_LTDITHER}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_LTDITHER}{FR\_EP2\_LTDITHER}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+LTDITHER(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}3\mbox{]} \& 0x08) $>$$>$ 3)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_ac7855b59aa4caf9eaf767b23fb049e69}\label{hpsdr__ep2_8h_ac7855b59aa4caf9eaf767b23fb049e69}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_LTRANDOM@{FR\_EP2\_LTRANDOM}}
+\index{FR\_EP2\_LTRANDOM@{FR\_EP2\_LTRANDOM}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_LTRANDOM}{FR\_EP2\_LTRANDOM}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+LTRANDOM(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}3\mbox{]} \& 0x10) $>$$>$ 4)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a4e1963bf384bef55b957e84c40d58b82}\label{hpsdr__ep2_8h_a4e1963bf384bef55b957e84c40d58b82}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_MERTXATT0@{FR\_EP2\_MERTXATT0}}
+\index{FR\_EP2\_MERTXATT0@{FR\_EP2\_MERTXATT0}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_MERTXATT0}{FR\_EP2\_MERTXATT0}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+MERTXATT0(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}2\mbox{]} \& 0x20) $>$$>$ 5)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_af48e503c8083f6c380bd104099184e58}\label{hpsdr__ep2_8h_af48e503c8083f6c380bd104099184e58}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_MERTXATT1@{FR\_EP2\_MERTXATT1}}
+\index{FR\_EP2\_MERTXATT1@{FR\_EP2\_MERTXATT1}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_MERTXATT1}{FR\_EP2\_MERTXATT1}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+MERTXATT1(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}3\mbox{]} \& 0x10) $>$$>$ 4)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_af550005a509f52340a8426262999dbdc}\label{hpsdr__ep2_8h_af550005a509f52340a8426262999dbdc}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_METISDB9@{FR\_EP2\_METISDB9}}
+\index{FR\_EP2\_METISDB9@{FR\_EP2\_METISDB9}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_METISDB9}{FR\_EP2\_METISDB9}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+METISDB9(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}3\mbox{]} \& 0x0F) $>$$>$ 0)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a1ac3fc23c9117fbdf835e4d622511e45}\label{hpsdr__ep2_8h_a1ac3fc23c9117fbdf835e4d622511e45}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_MICBIAS@{FR\_EP2\_MICBIAS}}
+\index{FR\_EP2\_MICBIAS@{FR\_EP2\_MICBIAS}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_MICBIAS}{FR\_EP2\_MICBIAS}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+MICBIAS(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}1\mbox{]} \& 0x20) $>$$>$ 5)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a38314c75fe8bd88bc6f4a3624e0c4efb}\label{hpsdr__ep2_8h_a38314c75fe8bd88bc6f4a3624e0c4efb}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_MICPTT@{FR\_EP2\_MICPTT}}
+\index{FR\_EP2\_MICPTT@{FR\_EP2\_MICPTT}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_MICPTT}{FR\_EP2\_MICPTT}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+MICPTT(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}1\mbox{]} \& 0x40) $>$$>$ 6)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a24ce501d61c0ed6ff47c95c1a5fc751b}\label{hpsdr__ep2_8h_a24ce501d61c0ed6ff47c95c1a5fc751b}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_MICSRC@{FR\_EP2\_MICSRC}}
+\index{FR\_EP2\_MICSRC@{FR\_EP2\_MICSRC}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_MICSRC}{FR\_EP2\_MICSRC}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+MICSRC(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}1\mbox{]} \& 0x80) $>$$>$ 7)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_accdac1685923015e3ea04ce098f9bf43}\label{hpsdr__ep2_8h_accdac1685923015e3ea04ce098f9bf43}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_MICTS@{FR\_EP2\_MICTS}}
+\index{FR\_EP2\_MICTS@{FR\_EP2\_MICTS}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_MICTS}{FR\_EP2\_MICTS}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+MICTS(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~(((fr\mbox{[}4\mbox{]} $>$$>$ 6) \& 1))}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a6727e39610e21dad9d0ed15c6ca78696}\label{hpsdr__ep2_8h_a6727e39610e21dad9d0ed15c6ca78696}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_OPENCOLLECTOROUTPUTS@{FR\_EP2\_OPENCOLLECTOROUTPUTS}}
+\index{FR\_EP2\_OPENCOLLECTOROUTPUTS@{FR\_EP2\_OPENCOLLECTOROUTPUTS}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_OPENCOLLECTOROUTPUTS}{FR\_EP2\_OPENCOLLECTOROUTPUTS}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+OPENCOLLECTOROUTPUTS(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}2\mbox{]} \& 0xfe) $>$$>$ 1)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a24447d532dbc508e442e224c9f90daa5}\label{hpsdr__ep2_8h_a24447d532dbc508e442e224c9f90daa5}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_PENESEL@{FR\_EP2\_PENESEL}}
+\index{FR\_EP2\_PENESEL@{FR\_EP2\_PENESEL}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_PENESEL}{FR\_EP2\_PENESEL}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+PENESEL(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}2\mbox{]} \& 0x80) $>$$>$ 7)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a1a4cc38190dd0f3acd9dc2ef586c9b93}\label{hpsdr__ep2_8h_a1a4cc38190dd0f3acd9dc2ef586c9b93}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_PMCONFIG@{FR\_EP2\_PMCONFIG}}
+\index{FR\_EP2\_PMCONFIG@{FR\_EP2\_PMCONFIG}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_PMCONFIG}{FR\_EP2\_PMCONFIG}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+PMCONFIG(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}1\mbox{]} \& 0x60) $>$$>$ 5)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a3375dc65a582bbe31754d5f04f8475f9}\label{hpsdr__ep2_8h_a3375dc65a582bbe31754d5f04f8475f9}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_PREAMP@{FR\_EP2\_PREAMP}}
+\index{FR\_EP2\_PREAMP@{FR\_EP2\_PREAMP}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_PREAMP}{FR\_EP2\_PREAMP}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+PREAMP(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}3\mbox{]} \& 0x04) $>$$>$ 2)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a55a4331b534ab541c74f747cef31865c}\label{hpsdr__ep2_8h_a55a4331b534ab541c74f747cef31865c}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_PTT@{FR\_EP2\_PTT}}
+\index{FR\_EP2\_PTT@{FR\_EP2\_PTT}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_PTT}{FR\_EP2\_PTT}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+PTT(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~(fr\mbox{[}0\mbox{]} \& 1)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_aa38bdad49ed26a28995f026bdf0ab757}\label{hpsdr__ep2_8h_aa38bdad49ed26a28995f026bdf0ab757}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_PURESIGNAL@{FR\_EP2\_PURESIGNAL}}
+\index{FR\_EP2\_PURESIGNAL@{FR\_EP2\_PURESIGNAL}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_PURESIGNAL}{FR\_EP2\_PURESIGNAL}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+PURESIGNAL(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}2\mbox{]} \& 0x40) $>$$>$ 6)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a7d3be4ffb4cab8857e16e06cb0382a99}\label{hpsdr__ep2_8h_a7d3be4ffb4cab8857e16e06cb0382a99}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_RATE@{FR\_EP2\_RATE}}
+\index{FR\_EP2\_RATE@{FR\_EP2\_RATE}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_RATE}{FR\_EP2\_RATE}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+RATE(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}1\mbox{]} \& 0x03) $>$$>$ 0)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a25314fb3b4d10e016866a30786fd56b9}\label{hpsdr__ep2_8h_a25314fb3b4d10e016866a30786fd56b9}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_RECEIVERS@{FR\_EP2\_RECEIVERS}}
+\index{FR\_EP2\_RECEIVERS@{FR\_EP2\_RECEIVERS}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_RECEIVERS}{FR\_EP2\_RECEIVERS}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+RECEIVERS(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~(((fr\mbox{[}4\mbox{]} $>$$>$ 3) \& 7) + 1)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a4ad868dea5408a6b39dce795a93040fe}\label{hpsdr__ep2_8h_a4ad868dea5408a6b39dce795a93040fe}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_REF10@{FR\_EP2\_REF10}}
+\index{FR\_EP2\_REF10@{FR\_EP2\_REF10}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_REF10}{FR\_EP2\_REF10}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+REF10(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}1\mbox{]} \& 0x0C) $>$$>$ 3)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a9f935b84893a1fbcbe63c8de913c9c70}\label{hpsdr__ep2_8h_a9f935b84893a1fbcbe63c8de913c9c70}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_RX1ADC@{FR\_EP2\_RX1ADC}}
+\index{FR\_EP2\_RX1ADC@{FR\_EP2\_RX1ADC}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_RX1ADC}{FR\_EP2\_RX1ADC}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+RX1\+ADC(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}1\mbox{]} \& 0x03) $>$$>$ 0)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a95735e6586abbac8a3e2cd8d746dfc8d}\label{hpsdr__ep2_8h_a95735e6586abbac8a3e2cd8d746dfc8d}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_RX1ATT@{FR\_EP2\_RX1ATT}}
+\index{FR\_EP2\_RX1ATT@{FR\_EP2\_RX1ATT}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_RX1ATT}{FR\_EP2\_RX1ATT}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+RX1\+ATT(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}4\mbox{]} \& 0x1F) $>$$>$ 0x0F)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_ac7ebde97fb50cf0cd0c7285431d9ffe2}\label{hpsdr__ep2_8h_ac7ebde97fb50cf0cd0c7285431d9ffe2}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_RX1ATTENABLE@{FR\_EP2\_RX1ATTENABLE}}
+\index{FR\_EP2\_RX1ATTENABLE@{FR\_EP2\_RX1ATTENABLE}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_RX1ATTENABLE}{FR\_EP2\_RX1ATTENABLE}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+RX1\+ATTENABLE(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}4\mbox{]} \& 0x20) $>$$>$ 5)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_ac14047e5f64ead3c1d1075197557d01d}\label{hpsdr__ep2_8h_ac14047e5f64ead3c1d1075197557d01d}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_RX1HLATTGAIN@{FR\_EP2\_RX1HLATTGAIN}}
+\index{FR\_EP2\_RX1HLATTGAIN@{FR\_EP2\_RX1HLATTGAIN}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_RX1HLATTGAIN}{FR\_EP2\_RX1HLATTGAIN}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+RX1\+HLATTGAIN(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~(37 -\/ (fr\mbox{[}4\mbox{]} \& 0x3F))}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_af5c8dd4c87354dfe69b57faddc8215f9}\label{hpsdr__ep2_8h_af5c8dd4c87354dfe69b57faddc8215f9}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_RX2ADC@{FR\_EP2\_RX2ADC}}
+\index{FR\_EP2\_RX2ADC@{FR\_EP2\_RX2ADC}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_RX2ADC}{FR\_EP2\_RX2ADC}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+RX2\+ADC(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}1\mbox{]} \& 0x0C) $>$$>$ 2)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_abcb797429fb1c1a421acddc65e60e06b}\label{hpsdr__ep2_8h_abcb797429fb1c1a421acddc65e60e06b}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_RX2ATT@{FR\_EP2\_RX2ATT}}
+\index{FR\_EP2\_RX2ATT@{FR\_EP2\_RX2ATT}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_RX2ATT}{FR\_EP2\_RX2ATT}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+RX2\+ATT(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~(fr\mbox{[}1\mbox{]} \& 0x1f)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a46edbdb6ffe531d01de22f8f703bcfbd}\label{hpsdr__ep2_8h_a46edbdb6ffe531d01de22f8f703bcfbd}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_RX3ADC@{FR\_EP2\_RX3ADC}}
+\index{FR\_EP2\_RX3ADC@{FR\_EP2\_RX3ADC}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_RX3ADC}{FR\_EP2\_RX3ADC}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+RX3\+ADC(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}1\mbox{]} \& 0x30) $>$$>$ 4)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_af2f0c768887db167b8fe7004261a6344}\label{hpsdr__ep2_8h_af2f0c768887db167b8fe7004261a6344}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_RX4ADC@{FR\_EP2\_RX4ADC}}
+\index{FR\_EP2\_RX4ADC@{FR\_EP2\_RX4ADC}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_RX4ADC}{FR\_EP2\_RX4ADC}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+RX4\+ADC(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}1\mbox{]} \& 0x\+C0) $>$$>$ 6)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_aaacb2bb39757a301cde6196bf1ac9dd7}\label{hpsdr__ep2_8h_aaacb2bb39757a301cde6196bf1ac9dd7}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_RX5ADC@{FR\_EP2\_RX5ADC}}
+\index{FR\_EP2\_RX5ADC@{FR\_EP2\_RX5ADC}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_RX5ADC}{FR\_EP2\_RX5ADC}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+RX5\+ADC(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}2\mbox{]} \& 0x03) $>$$>$ 0)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_afe3c50eee09c8cf8b366ab1c93154143}\label{hpsdr__ep2_8h_afe3c50eee09c8cf8b366ab1c93154143}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_RX6ADC@{FR\_EP2\_RX6ADC}}
+\index{FR\_EP2\_RX6ADC@{FR\_EP2\_RX6ADC}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_RX6ADC}{FR\_EP2\_RX6ADC}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+RX6\+ADC(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}2\mbox{]} \& 0x0C) $>$$>$ 2)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a86f7b2bba3e2a64bfeeefa5d98d89b4a}\label{hpsdr__ep2_8h_a86f7b2bba3e2a64bfeeefa5d98d89b4a}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_RX7ADC@{FR\_EP2\_RX7ADC}}
+\index{FR\_EP2\_RX7ADC@{FR\_EP2\_RX7ADC}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_RX7ADC}{FR\_EP2\_RX7ADC}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+RX7\+ADC(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}2\mbox{]} \& 0x30) $>$$>$ 4)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_aac8ca34fdfd1afc9d6f4affafbdabeb5}\label{hpsdr__ep2_8h_aac8ca34fdfd1afc9d6f4affafbdabeb5}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_RXFREQ@{FR\_EP2\_RXFREQ}}
+\index{FR\_EP2\_RXFREQ@{FR\_EP2\_RXFREQ}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_RXFREQ}{FR\_EP2\_RXFREQ}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+RXFREQ(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~(fr\mbox{[}4\mbox{]} $\vert$ (fr\mbox{[}3\mbox{]} $<$$<$ 8)  $\vert$ (fr\mbox{[}2\mbox{]} $<$$<$ 16) $\vert$ (fr\mbox{[}1\mbox{]} $<$$<$ 24))}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_ac811f9fb7f28dab0b0d05314c9e34c92}\label{hpsdr__ep2_8h_ac811f9fb7f28dab0b0d05314c9e34c92}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_SIDETONEFREQ@{FR\_EP2\_SIDETONEFREQ}}
+\index{FR\_EP2\_SIDETONEFREQ@{FR\_EP2\_SIDETONEFREQ}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_SIDETONEFREQ}{FR\_EP2\_SIDETONEFREQ}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+SIDETONEFREQ(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}3\mbox{]} $<$$<$ 4) $\vert$ (fr\mbox{[}4\mbox{]} \& 255))}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a8697ba969260b9a5d07daf1b49ff5f0f}\label{hpsdr__ep2_8h_a8697ba969260b9a5d07daf1b49ff5f0f}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_SIDETONEVOLUME@{FR\_EP2\_SIDETONEVOLUME}}
+\index{FR\_EP2\_SIDETONEVOLUME@{FR\_EP2\_SIDETONEVOLUME}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_SIDETONEVOLUME}{FR\_EP2\_SIDETONEVOLUME}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+SIDETONEVOLUME(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~(fr\mbox{[}2\mbox{]})}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_ae4f7d8da4ecd8766f0fc5d9c77392bb3}\label{hpsdr__ep2_8h_ae4f7d8da4ecd8766f0fc5d9c77392bb3}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_SRC122@{FR\_EP2\_SRC122}}
+\index{FR\_EP2\_SRC122@{FR\_EP2\_SRC122}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_SRC122}{FR\_EP2\_SRC122}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+SRC122(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}1\mbox{]} \& 0x10) $>$$>$ 4)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_aac6359d12bc8cc1c7f0393ca9c442081}\label{hpsdr__ep2_8h_aac6359d12bc8cc1c7f0393ca9c442081}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_TIPRING@{FR\_EP2\_TIPRING}}
+\index{FR\_EP2\_TIPRING@{FR\_EP2\_TIPRING}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_TIPRING}{FR\_EP2\_TIPRING}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+TIPRING(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}1\mbox{]} \& 0x10) $>$$>$ 4)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a206cb9cea0cf76adc9fc0169c800a4bb}\label{hpsdr__ep2_8h_a206cb9cea0cf76adc9fc0169c800a4bb}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_TXATT@{FR\_EP2\_TXATT}}
+\index{FR\_EP2\_TXATT@{FR\_EP2\_TXATT}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_TXATT}{FR\_EP2\_TXATT}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+TXATT(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}3\mbox{]} \& 0x1f))}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a7fd2e477954cf6c23f77fc8a0a4008eb}\label{hpsdr__ep2_8h_a7fd2e477954cf6c23f77fc8a0a4008eb}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_TXCLASSC@{FR\_EP2\_TXCLASSC}}
+\index{FR\_EP2\_TXCLASSC@{FR\_EP2\_TXCLASSC}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_TXCLASSC}{FR\_EP2\_TXCLASSC}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+TXCLASSC(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~(fr\mbox{[}2\mbox{]} \& 1)}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_a6ed970bb5d5e0345849ee09585b24754}\label{hpsdr__ep2_8h_a6ed970bb5d5e0345849ee09585b24754}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_TXDRIVE@{FR\_EP2\_TXDRIVE}}
+\index{FR\_EP2\_TXDRIVE@{FR\_EP2\_TXDRIVE}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_TXDRIVE}{FR\_EP2\_TXDRIVE}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+TXDRIVE(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~(fr\mbox{[}1\mbox{]})}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_ae3414734fd3ef4cd34e30dc8a04f1795}\label{hpsdr__ep2_8h_ae3414734fd3ef4cd34e30dc8a04f1795}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_TXFREQ@{FR\_EP2\_TXFREQ}}
+\index{FR\_EP2\_TXFREQ@{FR\_EP2\_TXFREQ}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_TXFREQ}{FR\_EP2\_TXFREQ}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+TXFREQ(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}4\mbox{]} $\vert$ (fr\mbox{[}3\mbox{]} $<$$<$ 8) $\vert$ (fr\mbox{[}2\mbox{]} $<$$<$ 16) $\vert$ (fr\mbox{[}1\mbox{]} $<$$<$ 24)))}
+
+\mbox{\Hypertarget{hpsdr__ep2_8h_abd4f061d83fee01d9b2ff06e4240fde2}\label{hpsdr__ep2_8h_abd4f061d83fee01d9b2ff06e4240fde2}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!FR\_EP2\_VNA@{FR\_EP2\_VNA}}
+\index{FR\_EP2\_VNA@{FR\_EP2\_VNA}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{FR\_EP2\_VNA}{FR\_EP2\_VNA}}
+{\footnotesize\ttfamily \#define FR\+\_\+\+EP2\+\_\+\+VNA(\begin{DoxyParamCaption}\item[{}]{fr }\end{DoxyParamCaption})~((fr\mbox{[}2\mbox{]} $>$$>$ 7) \& 0x01)}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{hpsdr__ep2_8h_a718176035673868460f2a21f950f8158}\label{hpsdr__ep2_8h_a718176035673868460f2a21f950f8158}} 
+\index{hpsdr\_ep2.h@{hpsdr\_ep2.h}!ep2\_handler@{ep2\_handler}}
+\index{ep2\_handler@{ep2\_handler}!hpsdr\_ep2.h@{hpsdr\_ep2.h}}
+\doxysubsubsection{\texorpdfstring{ep2\_handler()}{ep2\_handler()}}
+{\footnotesize\ttfamily void ep2\+\_\+handler (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{frame }\end{DoxyParamCaption})}
+
+
+
+EP2 handler. 
+
+EP2 handler.
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & The received frame. \\
+\hline
+\end{DoxyParams}

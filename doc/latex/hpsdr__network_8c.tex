@@ -1,0 +1,294 @@
+\hypertarget{hpsdr__network_8c}{}\doxysection{hpsdr\+\_\+network.\+c File Reference}
+\label{hpsdr__network_8c}\index{hpsdr\_network.c@{hpsdr\_network.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$sys/ioctl.\+h$>$}\newline
+{\ttfamily \#include $<$sys/socket.\+h$>$}\newline
+{\ttfamily \#include $<$netinet/in.\+h$>$}\newline
+{\ttfamily \#include $<$netinet/tcp.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}hpsdr\+\_\+internals.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hpsdr\+\_\+special\+\_\+functions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hpsdr\+\_\+debug.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hpsdr\+\_\+ep2.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hpsdr\+\_\+ep6.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hpsdr\+\_\+p1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hpsdr\+\_\+protocol.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hpsdr\+\_\+tx\+\_\+samples.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{hpsdr__network_8c_a735c16de053d1f2abccdccea3903ea2f}{hpsdr\+\_\+network\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em Network initialization. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hpsdr__network_8c_a3a10322272a79186e87de747a69ae82f}{hpsdr\+\_\+network\+\_\+deinit}} (void)
+\begin{DoxyCompactList}\small\item\em Network deinitialization. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{hpsdr__network_8c_a7270091a334a813d1113e39c3dda4161}{hpsdr\+\_\+network\+\_\+process}} (void)
+\begin{DoxyCompactList}\small\item\em Network process. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hpsdr__network_8c_a4544fd2089776972ae6d60b126f71f0b}{hpsdr\+\_\+network\+\_\+send}} (uint8\+\_\+t $\ast$\mbox{\hyperlink{hpsdr__network_8c_a3c01bacddd07cce01e46aaa727ff9d03}{buffer}}, size\+\_\+t len)
+\begin{DoxyCompactList}\small\item\em Network send. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+pthread\+\_\+t \mbox{\hyperlink{hpsdr__network_8c_a59284aec1e89efe11f46be95ee80f027}{op\+\_\+handler\+\_\+ep6\+\_\+id}}
+\item 
+int \mbox{\hyperlink{hpsdr__network_8c_a36dc067128e2b4f0ecb76350f97da779}{sock\+\_\+\+TCP\+\_\+\+Server}}
+\item 
+int \mbox{\hyperlink{hpsdr__network_8c_ab1b332946730c60cbb633ab3fc3328cf}{sock\+\_\+\+TCP\+\_\+\+Client}}
+\item 
+int \mbox{\hyperlink{hpsdr__network_8c_a5e376a465b645de2286272cd45aacd2f}{sock\+\_\+udp}}
+\item 
+struct sockaddr\+\_\+in \mbox{\hyperlink{hpsdr__network_8c_afdf3b1ca80400cc6bd5bfe2bb1cb7e65}{addr}}
+\item 
+struct sockaddr\+\_\+in \mbox{\hyperlink{hpsdr__network_8c_a958cd4f170bfa3dc108a942362005387}{addr\+\_\+udp}}
+\item 
+socklen\+\_\+t \mbox{\hyperlink{hpsdr__network_8c_a2992cae1c0b1cc6120db76404537db99}{lenaddr}}
+\item 
+struct sockaddr\+\_\+in \mbox{\hyperlink{hpsdr__network_8c_afc9fb96674ca5560c395c2a0e5d4e747}{addr\+\_\+from}}
+\item 
+struct timeval \mbox{\hyperlink{hpsdr__network_8c_a9cf96982557d56650f0f4cd3762f05a0}{tv}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{hpsdr__network_8c_a3c01bacddd07cce01e46aaa727ff9d03}{buffer}} \mbox{[}1032\mbox{]}
+\item 
+int \mbox{\hyperlink{hpsdr__network_8c_a7716c14cb5f92e9c141cdec3b980fa70}{yes}} = 1
+\item 
+int \mbox{\hyperlink{hpsdr__network_8c_a2e20cac612cf0dd1a1c260f95411d0ee}{bytes\+\_\+read}}
+\item 
+int \mbox{\hyperlink{hpsdr__network_8c_a84670bca2a6456b731d2b2e4dd2e162d}{bytes\+\_\+left}}
+\item 
+int \mbox{\hyperlink{hpsdr__network_8c_a439227feff9d7f55384e8780cfc2eb82}{size}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{hpsdr__network_8c_ab6d33d1d0af8851b64f8eb1aba0cd923}{last\+\_\+seqnum}} = 0xffffffff
+\item 
+uint32\+\_\+t \mbox{\hyperlink{hpsdr__network_8c_ad088047c391303bc8e77e28fdc8c1f77}{seqnum}}
+\item 
+int \mbox{\hyperlink{hpsdr__network_8c_af0e3b24628a046a663cee592a345a792}{udp\+\_\+retries}} = 0
+\item 
+uint32\+\_\+t \mbox{\hyperlink{hpsdr__network_8c_afe73fa7a655419b386e0a10c7beaace3}{code}}
+\item 
+uint32\+\_\+t $\ast$ \mbox{\hyperlink{hpsdr__network_8c_ab607755426577cffc11b18b83f557415}{code0}} = (uint32\+\_\+t$\ast$) \mbox{\hyperlink{hpsdr__network_8c_a3c01bacddd07cce01e46aaa727ff9d03}{buffer}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{hpsdr__network_8c_adc226dfc1bf6bc880c3ebe0f8022a5c2}{reply}} \mbox{[}11\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{hpsdr__network_8c_af055b4b148c703eaeda1bedfeda907ae}{id}} \mbox{[}4\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{hpsdr__network_8c_a3a10322272a79186e87de747a69ae82f}\label{hpsdr__network_8c_a3a10322272a79186e87de747a69ae82f}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!hpsdr\_network\_deinit@{hpsdr\_network\_deinit}}
+\index{hpsdr\_network\_deinit@{hpsdr\_network\_deinit}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{hpsdr\_network\_deinit()}{hpsdr\_network\_deinit()}}
+{\footnotesize\ttfamily void hpsdr\+\_\+network\+\_\+deinit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Network deinitialization. 
+
+Network deinitialization \mbox{\Hypertarget{hpsdr__network_8c_a735c16de053d1f2abccdccea3903ea2f}\label{hpsdr__network_8c_a735c16de053d1f2abccdccea3903ea2f}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!hpsdr\_network\_init@{hpsdr\_network\_init}}
+\index{hpsdr\_network\_init@{hpsdr\_network\_init}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{hpsdr\_network\_init()}{hpsdr\_network\_init()}}
+{\footnotesize\ttfamily int hpsdr\+\_\+network\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Network initialization. 
+
+Network initialization.
+
+\begin{DoxyReturn}{Returns}
+Status. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{hpsdr__network_8c_a7270091a334a813d1113e39c3dda4161}\label{hpsdr__network_8c_a7270091a334a813d1113e39c3dda4161}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!hpsdr\_network\_process@{hpsdr\_network\_process}}
+\index{hpsdr\_network\_process@{hpsdr\_network\_process}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{hpsdr\_network\_process()}{hpsdr\_network\_process()}}
+{\footnotesize\ttfamily int hpsdr\+\_\+network\+\_\+process (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Network process. 
+
+Network process.
+
+\begin{DoxyReturn}{Returns}
+Status. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{hpsdr__network_8c_a4544fd2089776972ae6d60b126f71f0b}\label{hpsdr__network_8c_a4544fd2089776972ae6d60b126f71f0b}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!hpsdr\_network\_send@{hpsdr\_network\_send}}
+\index{hpsdr\_network\_send@{hpsdr\_network\_send}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{hpsdr\_network\_send()}{hpsdr\_network\_send()}}
+{\footnotesize\ttfamily void hpsdr\+\_\+network\+\_\+send (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{buffer,  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
+
+
+
+Network send. 
+
+Network send.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Buffer to send. \\
+\hline
+{\em len} & Buffer Lenght. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{hpsdr__network_8c_afdf3b1ca80400cc6bd5bfe2bb1cb7e65}\label{hpsdr__network_8c_afdf3b1ca80400cc6bd5bfe2bb1cb7e65}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!addr@{addr}}
+\index{addr@{addr}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{addr}{addr}}
+{\footnotesize\ttfamily struct sockaddr\+\_\+in addr}
+
+\mbox{\Hypertarget{hpsdr__network_8c_afc9fb96674ca5560c395c2a0e5d4e747}\label{hpsdr__network_8c_afc9fb96674ca5560c395c2a0e5d4e747}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!addr\_from@{addr\_from}}
+\index{addr\_from@{addr\_from}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{addr\_from}{addr\_from}}
+{\footnotesize\ttfamily struct sockaddr\+\_\+in addr\+\_\+from}
+
+\mbox{\Hypertarget{hpsdr__network_8c_a958cd4f170bfa3dc108a942362005387}\label{hpsdr__network_8c_a958cd4f170bfa3dc108a942362005387}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!addr\_udp@{addr\_udp}}
+\index{addr\_udp@{addr\_udp}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{addr\_udp}{addr\_udp}}
+{\footnotesize\ttfamily struct sockaddr\+\_\+in addr\+\_\+udp}
+
+\mbox{\Hypertarget{hpsdr__network_8c_a3c01bacddd07cce01e46aaa727ff9d03}\label{hpsdr__network_8c_a3c01bacddd07cce01e46aaa727ff9d03}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!buffer@{buffer}}
+\index{buffer@{buffer}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{buffer}{buffer}}
+{\footnotesize\ttfamily uint8\+\_\+t buffer\mbox{[}1032\mbox{]}}
+
+\mbox{\Hypertarget{hpsdr__network_8c_a84670bca2a6456b731d2b2e4dd2e162d}\label{hpsdr__network_8c_a84670bca2a6456b731d2b2e4dd2e162d}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!bytes\_left@{bytes\_left}}
+\index{bytes\_left@{bytes\_left}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{bytes\_left}{bytes\_left}}
+{\footnotesize\ttfamily int bytes\+\_\+left}
+
+\mbox{\Hypertarget{hpsdr__network_8c_a2e20cac612cf0dd1a1c260f95411d0ee}\label{hpsdr__network_8c_a2e20cac612cf0dd1a1c260f95411d0ee}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!bytes\_read@{bytes\_read}}
+\index{bytes\_read@{bytes\_read}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{bytes\_read}{bytes\_read}}
+{\footnotesize\ttfamily int bytes\+\_\+read}
+
+\mbox{\Hypertarget{hpsdr__network_8c_afe73fa7a655419b386e0a10c7beaace3}\label{hpsdr__network_8c_afe73fa7a655419b386e0a10c7beaace3}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!code@{code}}
+\index{code@{code}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{code}{code}}
+{\footnotesize\ttfamily uint32\+\_\+t code}
+
+\mbox{\Hypertarget{hpsdr__network_8c_ab607755426577cffc11b18b83f557415}\label{hpsdr__network_8c_ab607755426577cffc11b18b83f557415}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!code0@{code0}}
+\index{code0@{code0}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{code0}{code0}}
+{\footnotesize\ttfamily uint32\+\_\+t$\ast$ code0 = (uint32\+\_\+t$\ast$) \mbox{\hyperlink{hpsdr__network_8c_a3c01bacddd07cce01e46aaa727ff9d03}{buffer}}}
+
+\mbox{\Hypertarget{hpsdr__network_8c_af055b4b148c703eaeda1bedfeda907ae}\label{hpsdr__network_8c_af055b4b148c703eaeda1bedfeda907ae}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!id@{id}}
+\index{id@{id}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily uint8\+\_\+t id\mbox{[}4\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        0xef, }
+\DoxyCodeLine{        0xfe, }
+\DoxyCodeLine{        1,    }
+\DoxyCodeLine{        6     }
+\DoxyCodeLine{        \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{hpsdr__network_8c_ab6d33d1d0af8851b64f8eb1aba0cd923}\label{hpsdr__network_8c_ab6d33d1d0af8851b64f8eb1aba0cd923}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!last\_seqnum@{last\_seqnum}}
+\index{last\_seqnum@{last\_seqnum}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{last\_seqnum}{last\_seqnum}}
+{\footnotesize\ttfamily uint32\+\_\+t last\+\_\+seqnum = 0xffffffff}
+
+\mbox{\Hypertarget{hpsdr__network_8c_a2992cae1c0b1cc6120db76404537db99}\label{hpsdr__network_8c_a2992cae1c0b1cc6120db76404537db99}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!lenaddr@{lenaddr}}
+\index{lenaddr@{lenaddr}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{lenaddr}{lenaddr}}
+{\footnotesize\ttfamily socklen\+\_\+t lenaddr}
+
+\mbox{\Hypertarget{hpsdr__network_8c_a59284aec1e89efe11f46be95ee80f027}\label{hpsdr__network_8c_a59284aec1e89efe11f46be95ee80f027}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!op\_handler\_ep6\_id@{op\_handler\_ep6\_id}}
+\index{op\_handler\_ep6\_id@{op\_handler\_ep6\_id}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{op\_handler\_ep6\_id}{op\_handler\_ep6\_id}}
+{\footnotesize\ttfamily pthread\+\_\+t op\+\_\+handler\+\_\+ep6\+\_\+id}
+
+\mbox{\Hypertarget{hpsdr__network_8c_adc226dfc1bf6bc880c3ebe0f8022a5c2}\label{hpsdr__network_8c_adc226dfc1bf6bc880c3ebe0f8022a5c2}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!reply@{reply}}
+\index{reply@{reply}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{reply}{reply}}
+{\footnotesize\ttfamily uint8\+\_\+t reply\mbox{[}11\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        0xef, }
+\DoxyCodeLine{        0xfe, }
+\DoxyCodeLine{        2,    }
+\DoxyCodeLine{        0xaa, }
+\DoxyCodeLine{        0xbb, }
+\DoxyCodeLine{        0xcc, }
+\DoxyCodeLine{        0xdd, }
+\DoxyCodeLine{        0xee, }
+\DoxyCodeLine{        0xff, }
+\DoxyCodeLine{        0,    }
+\DoxyCodeLine{        1     }
+\DoxyCodeLine{        \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{hpsdr__network_8c_ad088047c391303bc8e77e28fdc8c1f77}\label{hpsdr__network_8c_ad088047c391303bc8e77e28fdc8c1f77}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!seqnum@{seqnum}}
+\index{seqnum@{seqnum}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{seqnum}{seqnum}}
+{\footnotesize\ttfamily uint32\+\_\+t seqnum}
+
+\mbox{\Hypertarget{hpsdr__network_8c_a439227feff9d7f55384e8780cfc2eb82}\label{hpsdr__network_8c_a439227feff9d7f55384e8780cfc2eb82}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!size@{size}}
+\index{size@{size}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily int size}
+
+\mbox{\Hypertarget{hpsdr__network_8c_ab1b332946730c60cbb633ab3fc3328cf}\label{hpsdr__network_8c_ab1b332946730c60cbb633ab3fc3328cf}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!sock\_TCP\_Client@{sock\_TCP\_Client}}
+\index{sock\_TCP\_Client@{sock\_TCP\_Client}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{sock\_TCP\_Client}{sock\_TCP\_Client}}
+{\footnotesize\ttfamily int sock\+\_\+\+TCP\+\_\+\+Client}
+
+\mbox{\Hypertarget{hpsdr__network_8c_a36dc067128e2b4f0ecb76350f97da779}\label{hpsdr__network_8c_a36dc067128e2b4f0ecb76350f97da779}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!sock\_TCP\_Server@{sock\_TCP\_Server}}
+\index{sock\_TCP\_Server@{sock\_TCP\_Server}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{sock\_TCP\_Server}{sock\_TCP\_Server}}
+{\footnotesize\ttfamily int sock\+\_\+\+TCP\+\_\+\+Server}
+
+\mbox{\Hypertarget{hpsdr__network_8c_a5e376a465b645de2286272cd45aacd2f}\label{hpsdr__network_8c_a5e376a465b645de2286272cd45aacd2f}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!sock\_udp@{sock\_udp}}
+\index{sock\_udp@{sock\_udp}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{sock\_udp}{sock\_udp}}
+{\footnotesize\ttfamily int sock\+\_\+udp}
+
+\mbox{\Hypertarget{hpsdr__network_8c_a9cf96982557d56650f0f4cd3762f05a0}\label{hpsdr__network_8c_a9cf96982557d56650f0f4cd3762f05a0}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!tv@{tv}}
+\index{tv@{tv}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{tv}{tv}}
+{\footnotesize\ttfamily struct timeval tv}
+
+\mbox{\Hypertarget{hpsdr__network_8c_af0e3b24628a046a663cee592a345a792}\label{hpsdr__network_8c_af0e3b24628a046a663cee592a345a792}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!udp\_retries@{udp\_retries}}
+\index{udp\_retries@{udp\_retries}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{udp\_retries}{udp\_retries}}
+{\footnotesize\ttfamily int udp\+\_\+retries = 0}
+
+\mbox{\Hypertarget{hpsdr__network_8c_a7716c14cb5f92e9c141cdec3b980fa70}\label{hpsdr__network_8c_a7716c14cb5f92e9c141cdec3b980fa70}} 
+\index{hpsdr\_network.c@{hpsdr\_network.c}!yes@{yes}}
+\index{yes@{yes}!hpsdr\_network.c@{hpsdr\_network.c}}
+\doxysubsubsection{\texorpdfstring{yes}{yes}}
+{\footnotesize\ttfamily int yes = 1}
+
