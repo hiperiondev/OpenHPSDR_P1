@@ -35,14 +35,6 @@
 
 #include "hpsdr_definitions.h"
 
-/**
- * @brief Quantity of buffers
- *
- * Quantity of buffers
- */
-#define TXBUFFERS 3
-#define RXBUFFERS 3
-
 typedef uint8_t (*hw_init)(void);
 typedef uint8_t (*hw_deinit)(void);
 typedef uint8_t (*hw_set_freq)(uint64_t freq_hz);

@@ -34,12 +34,73 @@
 #include "cbuffer.h"
 
 hpsdr_config_t *cfg;
+int enable_thread;
+int active_thread;
+double c1, c2;
+
 pthread_t iqtransmitter_thread_id;
 pthread_t iqreceiver_thread_id;
 pthread_t network_thread_id;
 
 void hpsdr_init(hpsdr_config_t **cfg) {
     uint8_t res;
+
+    switch ((*cfg)->global.emulation) {
+
+        case DEVICE_METIS:
+            hpsdr_dbg_printf(1, "DEVICE is METIS\n");
+            c1 = 3.3;
+            c2 = 0.090;
+            break;
+
+        case DEVICE_HERMES:
+            hpsdr_dbg_printf(1, "DEVICE is HERMES\n");
+            c1 = 3.3;
+            c2 = 0.095;
+            break;
+
+        case DEVICE_GRIFFIN:
+            hpsdr_dbg_printf(1, "DEVICE is GRIFFIN\n");
+            c1 = 3.3;
+            c2 = 0.095;
+            break;
+
+        case DEVICE_ANGELIA:
+            hpsdr_dbg_printf(1, "DEVICE is ANGELIA\n");
+            c1 = 3.3;
+            c2 = 0.095;
+            break;
+
+        case DEVICE_HERMES_LITE:
+            hpsdr_dbg_printf(1, "DEVICE is HermesLite V1\n");
+            c1 = 3.3;
+            c2 = 0.095;
+            break;
+
+        case DEVICE_HERMES_LITE2:
+            hpsdr_dbg_printf(1, "DEVICE is HermesLite V2\n");
+            c1 = 3.3;
+            c2 = 0.095;
+            break;
+
+        case DEVICE_ORION:
+            hpsdr_dbg_printf(1, "DEVICE is ORION\n");
+            c1 = 5.0;
+            c2 = 0.108;
+            break;
+
+        case DEVICE_ORION2:
+            hpsdr_dbg_printf(1, "DEVICE is ORION MkII\n");
+            c1 = 5.0;
+            c2 = 0.108;
+            break;
+
+        case DEVICE_C25:
+            hpsdr_dbg_printf(1, "DEVICE is STEMlab/C25\n");
+            c1 = 3.3;
+            c2 = 0.090;
+            break;
+    }
 
     (*cfg)->txbuff = cbuf_new(BUFFLEN * sizeof(float _Complex));
     (*cfg)->rxbuff = cbuf_new(BUFFLEN * sizeof(float _Complex));
