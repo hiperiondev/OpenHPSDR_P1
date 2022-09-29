@@ -85,7 +85,7 @@ uint8_t iqtransmitter_deinit(void) {
     return 0;
 }
 
-uint8_t iqtransmitter_set_freq(uint64_t freq_hz) {
+uint8_t iqtransmitter_set_freq(uint8_t id, uint64_t freq_hz) {
     return 0;
 }
 
@@ -101,7 +101,7 @@ uint8_t iqreceiver_deinit(void) {
     return 0;
 }
 
-uint8_t iqreceiver_set_freq(uint64_t freq_hz) {
+uint8_t iqreceiver_set_freq(uint8_t id, uint64_t freq_hz) {
     return 0;
 }
 

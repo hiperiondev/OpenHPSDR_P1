@@ -88,13 +88,13 @@ void* ep6_handler(void *arg) {
         if (!enable_thread)
             break;
 
-        size = settings.receivers * 6 + 2;
+        size = cfg->settings.receivers * 6 + 2;
         n = 504 / size;  // number of samples per 512-byte-block
         // time (in nanosecs) to "collect" the samples sent in one sendmsg
-        if ((48 << settings.rate) == 0) {
+        if ((48 << cfg->settings.rate) == 0) {
             wait = (2 * n * 1000000L);
         } else {
-            wait = (2 * n * 1000000L) / (48 << settings.rate);
+            wait = (2 * n * 1000000L) / (48 << cfg->settings.rate);
 
         }
 
@@ -124,7 +124,7 @@ void* ep6_handler(void *arg) {
                 } else {
                     // ain5: exciter power
                     *(pointer + 4) = 0;  // about 500 mW
-                    *(pointer + 5) = settings.txdrive;
+                    *(pointer + 5) = cfg->settings.txdrive;
                 }
                 // ain1: forward power
                 j = (int) ((4095.0 / c1) * sqrt(100.0 * txlevel * c2));
@@ -161,10 +161,10 @@ void* ep6_handler(void *arg) {
                     csample = 0 + 0 * I;
 
                 // ADC1: RX, feedback sig. on TX (except STEMlab)
-                if (settings.ptt && (cfg->global.emulation != DEVICE_C25)) {
+                if (cfg->settings.ptt && (cfg->global.emulation != DEVICE_C25)) {
                     adc1isample = creal(csample);
                     adc1qsample = cimag(csample);
-                } else if (settings.diversity) {
+                } else if (cfg->settings.diversity) {
                     adc1isample = creal(csample);
                     adc1qsample = cimag(csample);
                 } else {
@@ -172,10 +172,10 @@ void* ep6_handler(void *arg) {
                     adc1qsample = cimag(csample);
                 }
                 // ADC2: feedback sig. on TX (only STEMlab)
-                if (settings.ptt && (cfg->global.emulation == DEVICE_C25)) {
+                if (cfg->settings.ptt && (cfg->global.emulation == DEVICE_C25)) {
                     adc2isample = creal(csample);
                     adc2qsample = cimag(csample);
-                } else if (settings.diversity) {
+                } else if (cfg->settings.diversity) {
                     adc2isample = creal(csample);
                     adc2qsample = cimag(csample);
                 } else {
@@ -183,10 +183,10 @@ void* ep6_handler(void *arg) {
                     adc2qsample = cimag(csample);
                 }
 
-                for (k = 0; k < settings.receivers; k++) {
+                for (k = 0; k < cfg->settings.receivers; k++) {
                     myisample = 0;
                     myqsample = 0;
-                    switch (settings.rx_adc[k]) {
+                    switch (cfg->settings.rx_adc[k]) {
                         case 0: // ADC1
                             myisample = adc1isample;
                             myqsample = adc1qsample;
@@ -200,19 +200,19 @@ void* ep6_handler(void *arg) {
                             myqsample = 0;
                             break;
                     }
-                    if ((cfg->global.emulation == DEVICE_METIS || cfg->global.emulation == DEVICE_HERMES_LITE) && settings.ptt && (k == 1)) {
+                    if ((cfg->global.emulation == DEVICE_METIS || cfg->global.emulation == DEVICE_HERMES_LITE) && cfg->settings.ptt && (k == 1)) {
                         // METIS: TX DAC signal goes to RX2 when TXing
                         myisample = dacisample;
                         myqsample = dacqsample;
                     }
                     if ((cfg->global.emulation == DEVICE_HERMES || cfg->global.emulation == DEVICE_GRIFFIN || cfg->global.emulation == DEVICE_C25
-                            || cfg->global.emulation == DEVICE_HERMES_LITE2) && settings.ptt && (k == 3)) {
+                            || cfg->global.emulation == DEVICE_HERMES_LITE2) && cfg->settings.ptt && (k == 3)) {
                         // HERMES: TX DAC signal goes to RX4 when TXing
                         myisample = dacisample;
                         myqsample = dacqsample;
                     }
                     if ((cfg->global.emulation == DEVICE_ANGELIA || cfg->global.emulation == DEVICE_ORION || cfg->global.emulation == DEVICE_ORION2)
-                            && settings.ptt && (k == 4)) {
+                            && cfg->settings.ptt && (k == 4)) {
                         // ANGELIA and beyond: TX DAC signal goes to RX5 when TXing
                         myisample = dacisample;
                         myqsample = dacqsample;

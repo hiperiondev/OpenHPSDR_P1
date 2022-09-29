@@ -34,10 +34,23 @@
 #include <complex.h>
 
 #include "hpsdr_definitions.h"
+#include "hpsdr_protocol.h"
 
+/**
+ * @brief Max buffers
+ *
+ * Max buffers
+ */
+#define RX_BUFFERS 8
+#define TX_BUFFERS 8
+/**
+ * @brief Callbacks prototypes
+ *
+ * Callbacks prototypes
+ */
 typedef uint8_t (*hw_init)(void);
 typedef uint8_t (*hw_deinit)(void);
-typedef uint8_t (*hw_set_freq)(uint64_t freq_hz);
+typedef uint8_t (*hw_set_freq)(uint8_t id, uint64_t freq_hz);
 typedef   void* (*hw_thread)(void *data);
 typedef    void (*ep2_callback)(int func, char* name);
 
@@ -57,7 +70,7 @@ typedef struct global {
  *
  * Struct of Internal Callbacks
  */
-typedef struct hpsdr_callbacks {
+typedef struct callbacks {
          hw_init tx_init;     // transmitter initialize callback
        hw_deinit tx_deinit;   // transmitter deinitialize callback
      hw_set_freq tx_set_freq; // transmitter set frequency callback
@@ -69,7 +82,7 @@ typedef struct hpsdr_callbacks {
        hw_thread rx_thread;   // receiver thread callback
 
     ep2_callback ep2;         // ep2 packet callback
-} hpsdr_callbacks_t;
+} callbacks_t;
 
 /**
  * @brief Struct of Internal configuration
@@ -77,10 +90,11 @@ typedef struct hpsdr_callbacks {
  * Struct of internal configuration.
  */
 typedef struct hpsdr_config {
-             global_t global;
-    hpsdr_callbacks_t cb;
-                 void *rxbuff;
-                 void *txbuff;
+       global_t global;
+    callbacks_t cb;
+     protocol_t settings;
+           void *rxbuff;
+           void *txbuff;
 } hpsdr_config_t;
 
 /**

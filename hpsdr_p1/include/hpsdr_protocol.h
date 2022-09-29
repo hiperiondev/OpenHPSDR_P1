@@ -34,7 +34,7 @@
  * These variables store the state of the protocol v1 SDR.
  * When every they are changed, this is reported.
  */
-struct protocol_t {
+typedef struct protocol {
      int AlexTXrel;               //
      int alexRXout;               //
      int alexRXant;               //
@@ -91,7 +91,8 @@ struct protocol_t {
      int CommonMercuryFreq;       //
      int freq;                    //
      int diversity;               //
-};
+} protocol_t;
+
 
 /**
  * @brief HPSDR settings

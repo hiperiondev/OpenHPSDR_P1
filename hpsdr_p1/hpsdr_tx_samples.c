@@ -62,7 +62,7 @@ void samples_rcv(uint8_t *buffer) {
         sampleq |= (int) ((signed char) *bp++ & 0xFF);
         dqsample = sampleq * 0.000030518509476;
 
-        switch (settings.rate) {
+        switch (cfg->settings.rate) {
             case 0:  // RX sample rate = TX sample rate = 48000
                 isample = disample;
                 qsample = dqsample;
