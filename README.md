@@ -9,15 +9,15 @@ It is only necessary to implement the hardware control functions.
 
 This functions have not requirements and are called at start and end of the system.
 
-> __uint8_t (*hw_init)(void)__.
+> uint8_t (*hw_init)(void)
 >
-> __uint8_t (*hw_deinit)(void)__.
+> uint8_t (*hw_deinit)(void)
 
 ### Function for manage changes in internal setting.
 
 Every time an ep2 packet change an internal state this function is called
 
-> __void (*ep2_callback)(int func, char* name)__
+> void (*ep2_callback)(int func, char* name)
 
 ### Main thread for receive/transmit
 
@@ -25,7 +25,7 @@ This process push/poll data from IQ buffer and comunicate with hardware.
 
 Data receive hpsdr_config_t *cfg
 
-> __void* (*hw_thread)(void *data)__
+> void* (*hw_thread)(void *data)
 
 ## Buffers
 
@@ -33,15 +33,15 @@ RX/TX buffers are circular queues. All data write/read on an overflow/underflow 
 
 ### write functions
 
-> __int hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq, const int size)__
+> int hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq, const int size)
 > 
-> __int hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq, const int size)__
+> int hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq, const int size)
 
 ### read functions
 
-> __float _Complex* hpsdr_txbuffer_read(hpsdr_config_t **cfg, const int size)__
-> 
-> __float _Complex* hpsdr_rxbuffer_read(hpsdr_config_t **cfg, const int size)__
+> float _Complex* hpsdr_txbuffer_read(hpsdr_config_t **cfg, const int size)
+>
+> float _Complex* hpsdr_rxbuffer_read(hpsdr_config_t **cfg, const int size)
 
 ## TODO
 * [x] Add documentation
