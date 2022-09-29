@@ -122,4 +122,25 @@ void hpsdr_init(hpsdr_config_t **cfg);
  */
 void hpsdr_deinit(hpsdr_config_t **cfg);
 
+/**
+ * @brief HPSDR Start
+ *
+ * HPSDR Start
+ */
+void hpsdr_start(hpsdr_config_t **cfg);
+
+/**
+ * @brief HPSDR Start
+ *
+ * HPSDR Start
+ */
+void hpsdr_stop(void);
+
+/**
+ * @brief Clear/Initialize configuration
+ *
+ * Clear/Initialize configuration
+ */
+void hpsdr_clear_config(hpsdr_config_t **cfg);
+
 #endif /* HPSDR_P1_H_ */

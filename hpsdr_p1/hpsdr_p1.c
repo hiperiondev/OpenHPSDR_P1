@@ -26,8 +26,10 @@
  */
 
 #include <pthread.h>
+#include <stdio.h>
 
 #include "hpsdr_debug.h"
+#include "hpsdr_protocol.h"
 #include "hpsdr_internals.h"
 #include "hpsdr_network.h"
 #include "hpsdr_p1.h"
@@ -42,9 +44,7 @@ pthread_t iqtransmitter_thread_id;
 pthread_t iqreceiver_thread_id;
 pthread_t network_thread_id;
 
-void hpsdr_init(hpsdr_config_t **cfg) {
-    uint8_t res;
-
+void hpsdr_clear_config(hpsdr_config_t **cfg) {
     (*cfg)->settings.AlexTXrel = -1;
     (*cfg)->settings.alexRXout = -1;
     (*cfg)->settings.alexRXant = -1;
@@ -117,6 +117,12 @@ void hpsdr_init(hpsdr_config_t **cfg) {
     (*cfg)->settings.CommonMercuryFreq = -1;
     (*cfg)->settings.freq = -1;
     (*cfg)->settings.diversity = 0;
+}
+
+void hpsdr_init(hpsdr_config_t **cfg) {
+    hpsdr_dbg_printf(1, "hpsdr_init\n");
+
+    uint8_t res;
 
     switch ((*cfg)->global.emulation) {
 
@@ -174,19 +180,37 @@ void hpsdr_init(hpsdr_config_t **cfg) {
             c2 = 0.090;
             break;
     }
-
+;
     (*cfg)->txbuff = cbuf_new(BUFFLEN * sizeof(float _Complex));
     (*cfg)->rxbuff = cbuf_new(BUFFLEN * sizeof(float _Complex));
 
     res = (*cfg)->cb.tx_init();
-    if (res == -1)
-        hpsdr_dbg_printf(1, "WARNING: tx_init failed");
+    if (res == -1) hpsdr_dbg_printf(1, "WARNING: tx_init failed");
+
+    res = (*cfg)->cb.rx_init();
+    if (res == -1) hpsdr_dbg_printf(1, "WARNING: rx_init failed");
+}
+
+void hpsdr_deinit(hpsdr_config_t **cfg) {
+    hpsdr_dbg_printf(1, "hpsdr_init\n");
+    uint8_t res;
+
+    res = (*cfg)->cb.rx_deinit();
+    if (res == -1) hpsdr_dbg_printf(1, "WARNING: rx_deinit failed");
+
+    res = (*cfg)->cb.tx_deinit();
+    if (res == -1) hpsdr_dbg_printf(1, "WARNING: tx_deinit failed");
+
+    free((*cfg)->txbuff);
+    free((*cfg)->rxbuff);
+}
+
+void hpsdr_start(hpsdr_config_t **cfg) {
+    hpsdr_dbg_printf(1, "hpsdr_start\n");
+
     pthread_create(&iqtransmitter_thread_id, NULL, (*cfg)->cb.tx_thread, NULL);
     pthread_detach(iqtransmitter_thread_id);
 
-    res = (*cfg)->cb.rx_init();
-    if (res == -1)
-        hpsdr_dbg_printf(1, "WARNING: rx_init failed");
     pthread_create(&iqreceiver_thread_id, NULL, (*cfg)->cb.rx_thread, NULL);
     pthread_detach(iqreceiver_thread_id);
 
@@ -194,21 +218,11 @@ void hpsdr_init(hpsdr_config_t **cfg) {
     pthread_detach(network_thread_id);
 }
 
-void hpsdr_deinit(hpsdr_config_t **cfg) {
-    uint8_t res;
+void hpsdr_stop(void) {
+    hpsdr_dbg_printf(1, "hpsdr_stop\n");
 
     pthread_cancel(network_thread_id);
-
     pthread_cancel(iqreceiver_thread_id);
-    res = (*cfg)->cb.rx_deinit();
-    if (res == -1)
-        hpsdr_dbg_printf(1, "WARNING: rx_deinit failed");
-
     pthread_cancel(iqtransmitter_thread_id);
-    res = (*cfg)->cb.tx_deinit();
-    if (res == -1)
-        hpsdr_dbg_printf(1, "WARNING: tx_deinit failed");
-
-    free((*cfg)->txbuff);
-    free((*cfg)->rxbuff);
 }
+

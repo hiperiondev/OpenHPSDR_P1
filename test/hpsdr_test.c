@@ -197,6 +197,7 @@ int main(int argc, char *argv[]) {
     printf("OpenHPSDR_p1 version: %d.%d.%d\n", HPSDR_VERSION_MAJOR, HPSDR_VERSION_MINOR, HPSDR_VERSION_PATCH);
 
     cfg = malloc(sizeof(hpsdr_config_t));
+    hpsdr_clear_config(&cfg);
 
     for (int i = 0; i < 64; i++) {
         struct sigaction sa;
@@ -224,9 +225,9 @@ int main(int argc, char *argv[]) {
             cfg->cb.ep2 = ep2_cbk;
 
     hpsdr_init(&cfg);
-
+    hpsdr_start(&cfg);
     while (1);
-
+    hpsdr_stop();
     hpsdr_deinit(&cfg);
 
     return EXIT_SUCCESS;
