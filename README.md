@@ -29,7 +29,7 @@ Data receive hpsdr_config_t *cfg
 
 ## Buffers
 
-RX/TX buffers are circular queues. All data write/read on an overflow/underflow conditions are discarded
+RX/TX buffers are circular queues of float _Complex. All data write/read on an overflow/underflow conditions are discarded
 
 ### write functions
 
