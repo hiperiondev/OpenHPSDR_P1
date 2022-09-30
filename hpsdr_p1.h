@@ -35,7 +35,7 @@
 
 #include "hpsdr_definitions.h"
 #include "hpsdr_protocol.h"
-#include "ring_buf.h"
+#include "hpsdr_ring_buf.h"
 
 /**
  * @brief Max buffers

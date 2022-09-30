@@ -23,7 +23,7 @@
 #include <stdbool.h>
 #include <math.h>
 
-#include "ring_buf.h"
+#include "hpsdr_ring_buf.h"
 
 /*..........................................................................*/
 void RingBuf_ctor(RingBuf *const me, float _Complex sto[], RingBufCtr sto_len) {

@@ -34,7 +34,7 @@
 #include "hpsdr_debug.h"
 #include "hpsdr_protocol.h"
 #include "hpsdr_p1.h"
-#include "ring_buf.h"
+#include "hpsdr_ring_buf.h"
 
 static uint8_t *bp;
 static int j;

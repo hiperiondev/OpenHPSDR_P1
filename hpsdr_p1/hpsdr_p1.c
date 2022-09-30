@@ -34,7 +34,7 @@
 #include "hpsdr_internals.h"
 #include "hpsdr_network.h"
 #include "hpsdr_p1.h"
-#include "ring_buf.h"
+#include "hpsdr_ring_buf.h"
 
 #define ARRAY_LEN(a_) (sizeof(a_)/sizeof(a_[0]))
 
