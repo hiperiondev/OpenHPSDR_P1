@@ -33,15 +33,15 @@ RX/TX buffers are circular queues of float _Complex. All data write/read on an o
 
 ### write functions
 
-> int hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq, const int size)
-> 
-> int hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq, const int size)
+> void hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
+>
+> void hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
 
 ### read functions
 
-> float _Complex* hpsdr_txbuffer_read(hpsdr_config_t **cfg, const int size)
+> void hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *data);
 >
-> float _Complex* hpsdr_rxbuffer_read(hpsdr_config_t **cfg, const int size)
+> void hpsdr_rxbuffer_read(hpsdr_config_t **cfg, float _Complex *data);
 
 ## TODO
 * [x] Add documentation
