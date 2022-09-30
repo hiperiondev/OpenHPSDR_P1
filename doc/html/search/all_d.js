@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['parse_5fargs_327',['parse_args',['../hpsdr__test_8c.html#a8ab77940e9f8f362c1242eb44f366bb7',1,'hpsdr_test.c']]],
-  ['penesel_328',['PeneSel',['../structprotocol__t.html#a58e34d90ff1f04e0bb4add176310052d',1,'protocol_t']]],
-  ['pmconfig_329',['PMconfig',['../structprotocol__t.html#a2d1d7b554fea816a898156f7581966a3',1,'protocol_t']]],
-  ['preamp_330',['preamp',['../structprotocol__t.html#a49580a5a6f92131e84df98c2d574a842',1,'protocol_t']]],
-  ['protocol_5ft_331',['protocol_t',['../structprotocol__t.html',1,'']]],
-  ['ptt_332',['ptt',['../structprotocol__t.html#abd17d94d0e03515377fdd29cf794090c',1,'protocol_t']]],
-  ['puresignal_333',['PureSignal',['../structprotocol__t.html#af76609fb463df1e4e117b523fe3b2efe',1,'protocol_t']]]
+  ['parse_5fargs_326',['parse_args',['../hpsdr__test_8c.html#a3b96996bfdba0be2e261fcd9b7c4200f',1,'hpsdr_test.c']]],
+  ['penesel_327',['PeneSel',['../structprotocol.html#a7b3263275911741365572e55592dd1e4',1,'protocol']]],
+  ['pmconfig_328',['PMconfig',['../structprotocol.html#abd566612215f5930eeddecbd02eccc99',1,'protocol']]],
+  ['preamp_329',['preamp',['../structprotocol.html#ace3d0c995486ce8d5d30413ef97e6457',1,'protocol']]],
+  ['protocol_330',['protocol',['../structprotocol.html',1,'']]],
+  ['protocol_5ft_331',['protocol_t',['../hpsdr__protocol_8h.html#af4123b90daf4a353344b4a9deb7c21b9',1,'hpsdr_protocol.h']]],
+  ['ptt_332',['ptt',['../structprotocol.html#a951673e1f1f522a16e85f0cf1f32acc2',1,'protocol']]],
+  ['puresignal_333',['PureSignal',['../structprotocol.html#a7da08ddd16ee5300b974bc25903691c0',1,'protocol']]]
 ];

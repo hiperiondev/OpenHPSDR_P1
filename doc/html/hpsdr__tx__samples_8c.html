@@ -81,17 +81,17 @@ $(function() {
 <code>#include &quot;<a class="el" href="hpsdr__debug_8h_source.html">hpsdr_debug.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hpsdr__protocol_8h_source.html">hpsdr_protocol.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hpsdr__p1_8h_source.html">hpsdr_p1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="cbuffer_8h_source.html">cbuffer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hpsdr__ring__buf_8h_source.html">hpsdr_ring_buf.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae24dd2add450cef4792c01e813d7b4a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__tx__samples_8c.html#ae24dd2add450cef4792c01e813d7b4a8">samples_rcv</a> (uint8_t *<a class="el" href="hpsdr__network_8c.html#a3c01bacddd07cce01e46aaa727ff9d03">buffer</a>)</td></tr>
-<tr class="memdesc:ae24dd2add450cef4792c01e813d7b4a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receiver.  <a href="hpsdr__tx__samples_8c.html#ae24dd2add450cef4792c01e813d7b4a8">More...</a><br /></td></tr>
-<tr class="separator:ae24dd2add450cef4792c01e813d7b4a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10ae27720825b5fc3c017beec58755ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__tx__samples_8c.html#a10ae27720825b5fc3c017beec58755ea">samples_rcv</a> (<a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> *cfg, uint8_t *<a class="el" href="hpsdr__network_8c.html#a3c01bacddd07cce01e46aaa727ff9d03">buffer</a>)</td></tr>
+<tr class="memdesc:a10ae27720825b5fc3c017beec58755ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receiver.  <a href="hpsdr__tx__samples_8c.html#a10ae27720825b5fc3c017beec58755ea">More...</a><br /></td></tr>
+<tr class="separator:a10ae27720825b5fc3c017beec58755ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ae24dd2add450cef4792c01e813d7b4a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae24dd2add450cef4792c01e813d7b4a8">&#9670;&nbsp;</a></span>samples_rcv()</h2>
+<a id="a10ae27720825b5fc3c017beec58755ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10ae27720825b5fc3c017beec58755ea">&#9670;&nbsp;</a></span>samples_rcv()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -99,9 +99,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void samples_rcv </td>
           <td>(</td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> *&#160;</td>
+          <td class="paramname"><em>cfg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>buffer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

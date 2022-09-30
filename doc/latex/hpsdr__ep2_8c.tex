@@ -15,7 +15,7 @@
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{hpsdr__ep2_8c_a718176035673868460f2a21f950f8158}{ep2\+\_\+handler}} (uint8\+\_\+t $\ast$frame)
+void \mbox{\hyperlink{hpsdr__ep2_8c_af5322836de0a1f40e1904cd4a32ffd4f}{ep2\+\_\+handler}} (\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$cfg, uint8\+\_\+t $\ast$frame)
 \begin{DoxyCompactList}\small\item\em EP2 handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -25,9 +25,7 @@ double \mbox{\hyperlink{hpsdr__ep2_8c_aa7caedcd2592b57fb123cea8118e895f}{txatt\+
 double \mbox{\hyperlink{hpsdr__ep2_8c_aea58939090dafee0eba8e9cc32a4ed68}{rxatt\+\_\+dbl}} \mbox{[}4\mbox{]} = \{ 1.\+0, 1.\+0, 1.\+0, 1.\+0 \}
 \item 
 double \mbox{\hyperlink{hpsdr__ep2_8c_a2ee20bc6d647b82d7134c51273ad967d}{txdrv\+\_\+dbl}} = 0.\+99
-\item 
-struct \mbox{\hyperlink{structprotocol__t}{protocol\+\_\+t}} \mbox{\hyperlink{hpsdr__ep2_8c_a9ab57a4946f45039189776cba848230c}{settings}}
-\begin{DoxyCompactList}\small\item\em HPSDR settings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Macro Definition Documentation}
@@ -48,11 +46,11 @@ struct \mbox{\hyperlink{structprotocol__t}{protocol\+\_\+t}} \mbox{\hyperlink{hp
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{hpsdr__ep2_8c_a718176035673868460f2a21f950f8158}\label{hpsdr__ep2_8c_a718176035673868460f2a21f950f8158}} 
+\mbox{\Hypertarget{hpsdr__ep2_8c_af5322836de0a1f40e1904cd4a32ffd4f}\label{hpsdr__ep2_8c_af5322836de0a1f40e1904cd4a32ffd4f}} 
 \index{hpsdr\_ep2.c@{hpsdr\_ep2.c}!ep2\_handler@{ep2\_handler}}
 \index{ep2\_handler@{ep2\_handler}!hpsdr\_ep2.c@{hpsdr\_ep2.c}}
 \doxysubsubsection{\texorpdfstring{ep2\_handler()}{ep2\_handler()}}
-{\footnotesize\ttfamily void ep2\+\_\+handler (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{frame }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void ep2\+\_\+handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$}]{cfg,  }\item[{uint8\+\_\+t $\ast$}]{frame }\end{DoxyParamCaption})}
 
 
 
@@ -74,17 +72,7 @@ EP2 handler.
 \doxysubsubsection{\texorpdfstring{rxatt\_dbl}{rxatt\_dbl}}
 {\footnotesize\ttfamily double rxatt\+\_\+dbl\mbox{[}4\mbox{]} = \{ 1.\+0, 1.\+0, 1.\+0, 1.\+0 \}}
 
-\mbox{\Hypertarget{hpsdr__ep2_8c_a9ab57a4946f45039189776cba848230c}\label{hpsdr__ep2_8c_a9ab57a4946f45039189776cba848230c}} 
-\index{hpsdr\_ep2.c@{hpsdr\_ep2.c}!settings@{settings}}
-\index{settings@{settings}!hpsdr\_ep2.c@{hpsdr\_ep2.c}}
-\doxysubsubsection{\texorpdfstring{settings}{settings}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{structprotocol__t}{protocol\+\_\+t}} settings}
-
-
-
-HPSDR settings. 
-
-This contain all internal settings \mbox{\Hypertarget{hpsdr__ep2_8c_aa7caedcd2592b57fb123cea8118e895f}\label{hpsdr__ep2_8c_aa7caedcd2592b57fb123cea8118e895f}} 
+\mbox{\Hypertarget{hpsdr__ep2_8c_aa7caedcd2592b57fb123cea8118e895f}\label{hpsdr__ep2_8c_aa7caedcd2592b57fb123cea8118e895f}} 
 \index{hpsdr\_ep2.c@{hpsdr\_ep2.c}!txatt\_dbl@{txatt\_dbl}}
 \index{txatt\_dbl@{txatt\_dbl}!hpsdr\_ep2.c@{hpsdr\_ep2.c}}
 \doxysubsubsection{\texorpdfstring{txatt\_dbl}{txatt\_dbl}}

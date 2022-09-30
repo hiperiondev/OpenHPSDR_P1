@@ -77,6 +77,9 @@ $(function() {
 <div class="textblock"><code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;signal.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &lt;complex.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="hpsdr__debug_8h_source.html">hpsdr_debug.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hpsdr__definitions_8h_source.html">hpsdr_definitions.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hpsdr__version_8h_source.html">hpsdr_version.h</a>&quot;</code><br />
@@ -91,20 +94,16 @@ Functions</h2></td></tr>
 <tr class="separator:a12decfaaef7e456a56637c1f6aa80c57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2dfec92a17fa2cab9f41a4a28a9e9f13"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__test_8c.html#a2dfec92a17fa2cab9f41a4a28a9e9f13">iqtransmitter_deinit</a> (void)</td></tr>
 <tr class="separator:a2dfec92a17fa2cab9f41a4a28a9e9f13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92e5d1e7c80b90cac401f114c949d805"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__test_8c.html#a92e5d1e7c80b90cac401f114c949d805">iqtransmitter_set_freq</a> (uint64_t freq_hz)</td></tr>
-<tr class="separator:a92e5d1e7c80b90cac401f114c949d805"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac54186db1f8a1f6eb9cb10355fc88411"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__test_8c.html#ac54186db1f8a1f6eb9cb10355fc88411">iqtransmitter_thread</a> (void *data)</td></tr>
 <tr class="separator:ac54186db1f8a1f6eb9cb10355fc88411"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a743d1c86fdee34d84fc68f587ef414d5"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__test_8c.html#a743d1c86fdee34d84fc68f587ef414d5">iqreceiver_init</a> (void)</td></tr>
 <tr class="separator:a743d1c86fdee34d84fc68f587ef414d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95339207e3d8625062a7da40b954b9b9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__test_8c.html#a95339207e3d8625062a7da40b954b9b9">iqreceiver_deinit</a> (void)</td></tr>
 <tr class="separator:a95339207e3d8625062a7da40b954b9b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4a224f20a71040793f3db887f02053e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__test_8c.html#ab4a224f20a71040793f3db887f02053e">iqreceiver_set_freq</a> (uint64_t freq_hz)</td></tr>
-<tr class="separator:ab4a224f20a71040793f3db887f02053e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85d13b75f77264c09d14080355d0eb21"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__test_8c.html#a85d13b75f77264c09d14080355d0eb21">iqreceiver_thread</a> (void *data)</td></tr>
 <tr class="separator:a85d13b75f77264c09d14080355d0eb21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ab77940e9f8f362c1242eb44f366bb7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__test_8c.html#a8ab77940e9f8f362c1242eb44f366bb7">parse_args</a> (int argc, char *argv[])</td></tr>
-<tr class="separator:a8ab77940e9f8f362c1242eb44f366bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b96996bfdba0be2e261fcd9b7c4200f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__test_8c.html#a3b96996bfdba0be2e261fcd9b7c4200f">parse_args</a> (<a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> *cfg, int argc, char *argv[])</td></tr>
+<tr class="separator:a3b96996bfdba0be2e261fcd9b7c4200f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__test_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
 <tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -178,24 +177,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ab4a224f20a71040793f3db887f02053e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab4a224f20a71040793f3db887f02053e">&#9670;&nbsp;</a></span>iqreceiver_set_freq()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t iqreceiver_set_freq </td>
-          <td>(</td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>freq_hz</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a85d13b75f77264c09d14080355d0eb21"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a85d13b75f77264c09d14080355d0eb21">&#9670;&nbsp;</a></span>iqreceiver_thread()</h2>
 
@@ -250,24 +231,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a92e5d1e7c80b90cac401f114c949d805"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92e5d1e7c80b90cac401f114c949d805">&#9670;&nbsp;</a></span>iqtransmitter_set_freq()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t iqtransmitter_set_freq </td>
-          <td>(</td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>freq_hz</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ac54186db1f8a1f6eb9cb10355fc88411"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac54186db1f8a1f6eb9cb10355fc88411">&#9670;&nbsp;</a></span>iqtransmitter_thread()</h2>
 
@@ -314,8 +277,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a8ab77940e9f8f362c1242eb44f366bb7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ab77940e9f8f362c1242eb44f366bb7">&#9670;&nbsp;</a></span>parse_args()</h2>
+<a id="a3b96996bfdba0be2e261fcd9b7c4200f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b96996bfdba0be2e261fcd9b7c4200f">&#9670;&nbsp;</a></span>parse_args()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -323,6 +286,12 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void parse_args </td>
           <td>(</td>
+          <td class="paramtype"><a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> *&#160;</td>
+          <td class="paramname"><em>cfg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>argc</em>, </td>
         </tr>

@@ -75,6 +75,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="hpsdr__p1_8h_source.html">hpsdr_p1.h</a>&quot;</code><br />
 </div>
 <p><a href="hpsdr__ep2_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -215,9 +216,9 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a718176035673868460f2a21f950f8158"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__ep2_8h.html#a718176035673868460f2a21f950f8158">ep2_handler</a> (uint8_t *frame)</td></tr>
-<tr class="memdesc:a718176035673868460f2a21f950f8158"><td class="mdescLeft">&#160;</td><td class="mdescRight">EP2 handler.  <a href="hpsdr__ep2_8h.html#a718176035673868460f2a21f950f8158">More...</a><br /></td></tr>
-<tr class="separator:a718176035673868460f2a21f950f8158"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5322836de0a1f40e1904cd4a32ffd4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__ep2_8h.html#af5322836de0a1f40e1904cd4a32ffd4f">ep2_handler</a> (<a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> *cfg, uint8_t *frame)</td></tr>
+<tr class="memdesc:af5322836de0a1f40e1904cd4a32ffd4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">EP2 handler.  <a href="hpsdr__ep2_8h.html#af5322836de0a1f40e1904cd4a32ffd4f">More...</a><br /></td></tr>
+<tr class="separator:af5322836de0a1f40e1904cd4a32ffd4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a314396bb6d01e66cec18a0b9caaac171"></a>
@@ -1409,8 +1410,8 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a718176035673868460f2a21f950f8158"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a718176035673868460f2a21f950f8158">&#9670;&nbsp;</a></span>ep2_handler()</h2>
+<a id="af5322836de0a1f40e1904cd4a32ffd4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5322836de0a1f40e1904cd4a32ffd4f">&#9670;&nbsp;</a></span>ep2_handler()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1418,9 +1419,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void ep2_handler </td>
           <td>(</td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>frame</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> *&#160;</td>
+          <td class="paramname"><em>cfg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>frame</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

@@ -1,7 +1,40 @@
-Complete implementation of Open\+HPSDR protocol v1\hypertarget{md_README_autotoc_md1}{}\doxysection{TODO}\label{md_README_autotoc_md1}
+The objective of this project is to create a complete infrastructure that supports the Open HPSDR version 1 protocol to implement the control of any generic software-\/defined radio hardware.
+
+It is only necessary to implement the hardware control functions.\hypertarget{md_README_autotoc_md1}{}\doxysection{Callbacks}\label{md_README_autotoc_md1}
+\hypertarget{md_README_autotoc_md2}{}\doxysubsection{Functions for create and destroy hardware infrastructure.}\label{md_README_autotoc_md2}
+This functions have not requirements and are called at start and end of the system.
+
+\begin{quote}
+uint8\+\_\+t ($\ast$hw\+\_\+init)(void)
+
+uint8\+\_\+t ($\ast$hw\+\_\+deinit)(void) \end{quote}
+\hypertarget{md_README_autotoc_md3}{}\doxysubsection{Function for manage changes in internal setting.}\label{md_README_autotoc_md3}
+Every time an ep2 packet change an internal state this function is called
+
+\begin{quote}
+void ({\itshape ep2\+\_\+callback)(int func, char} name) \end{quote}
+\hypertarget{md_README_autotoc_md4}{}\doxysubsection{Main thread for receive/transmit}\label{md_README_autotoc_md4}
+This process push/poll data from IQ buffer and comunicate with hardware.
+
+Data receive hpsdr\+\_\+config\+\_\+t $\ast$cfg
+
+\begin{quote}
+void$\ast$ ($\ast$hw\+\_\+thread)(void $\ast$data) \end{quote}
+\hypertarget{md_README_autotoc_md5}{}\doxysection{Buffers}\label{md_README_autotoc_md5}
+RX/\+TX buffers are circular queues of float \+\_\+\+Complex. All data write/read on an overflow/underflow conditions are discarded\hypertarget{md_README_autotoc_md6}{}\doxysubsection{write functions}\label{md_README_autotoc_md6}
+\begin{quote}
+void \mbox{\hyperlink{hpsdr__p1_8h_a744e289dd7282a667563077d4361f53f}{hpsdr\+\_\+txbuffer\+\_\+write(hpsdr\+\_\+config\+\_\+t $\ast$$\ast$cfg, float \+\_\+\+Complex $\ast$iq)}};
+
+void \mbox{\hyperlink{hpsdr__p1_8h_a3d1030e7c1673854f1e6061b37191b2d}{hpsdr\+\_\+rxbuffer\+\_\+write(hpsdr\+\_\+config\+\_\+t $\ast$$\ast$cfg, float \+\_\+\+Complex $\ast$iq)}}; \end{quote}
+\hypertarget{md_README_autotoc_md7}{}\doxysubsection{read functions}\label{md_README_autotoc_md7}
+\begin{quote}
+void \mbox{\hyperlink{hpsdr__p1_8h_addaf8de4d5ee3e2fb89cf134eb75df72}{hpsdr\+\_\+txbuffer\+\_\+read(hpsdr\+\_\+config\+\_\+t $\ast$$\ast$cfg, float \+\_\+\+Complex $\ast$data)}};
+
+void \mbox{\hyperlink{hpsdr__p1_8h_a72c1946b6afbbdac6800455a8ba3c3ff}{hpsdr\+\_\+rxbuffer\+\_\+read(hpsdr\+\_\+config\+\_\+t $\ast$$\ast$cfg, float \+\_\+\+Complex $\ast$data)}}; \end{quote}
+\hypertarget{md_README_autotoc_md8}{}\doxysection{TODO}\label{md_README_autotoc_md8}
 
 \begin{DoxyItemize}
-\item \mbox{[} \mbox{]} Add documentation
+\item \mbox{[}x\mbox{]} Add documentation
 \item \mbox{[}x\mbox{]} Add Doxygen structure
 \item \mbox{[} \mbox{]} Complete protocol
 \begin{DoxyItemize}

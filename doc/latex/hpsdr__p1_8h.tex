@@ -5,23 +5,30 @@
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
 {\ttfamily \#include $<$complex.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}hpsdr\+\_\+definitions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hpsdr\+\_\+protocol.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hpsdr\+\_\+ring\+\_\+buf.\+h\char`\"{}}\newline
 \doxysubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structglobal}{global}}
 \begin{DoxyCompactList}\small\item\em Struct of Global configuration. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structhpsdr__callbacks}{hpsdr\+\_\+callbacks}}
+struct \mbox{\hyperlink{structcallbacks}{callbacks}}
 \begin{DoxyCompactList}\small\item\em Struct of Callbacks. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structhpsdr__config}{hpsdr\+\_\+config}}
 \begin{DoxyCompactList}\small\item\em Struct of Internal configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{hpsdr__p1_8h_afaf230edd4cf680f3ce19e2612d2e9eb}{RX\+\_\+\+BUFFERS}}~8
+\begin{DoxyCompactList}\small\item\em Max buffers. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{hpsdr__p1_8h_a9c35fe6b2f08bed8277a09eb32593f9e}{TX\+\_\+\+BUFFERS}}~8
+\end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
 typedef uint8\+\_\+t($\ast$ \mbox{\hyperlink{hpsdr__p1_8h_a5bcc126b552873a227c0ed4eae2fde37}{hw\+\_\+init}}) (void)
-\item 
+\begin{DoxyCompactList}\small\item\em Callbacks prototypes. \end{DoxyCompactList}\item 
 typedef uint8\+\_\+t($\ast$ \mbox{\hyperlink{hpsdr__p1_8h_a8d40f6eee5a26b9abf2b54597a9cbe45}{hw\+\_\+deinit}}) (void)
-\item 
-typedef uint8\+\_\+t($\ast$ \mbox{\hyperlink{hpsdr__p1_8h_a8587de889b658cf91fe05cbc05d42691}{hw\+\_\+set\+\_\+freq}}) (uint64\+\_\+t freq\+\_\+hz)
 \item 
 typedef void $\ast$($\ast$ \mbox{\hyperlink{hpsdr__p1_8h_adb1142e1f0d518cc8fc579eab09be6aa}{hw\+\_\+thread}}) (void $\ast$data)
 \item 
@@ -29,26 +36,64 @@ typedef void($\ast$ \mbox{\hyperlink{hpsdr__p1_8h_afe3fc6aad786b73d059b5ab129b8d
 \item 
 typedef struct \mbox{\hyperlink{structglobal}{global}} \mbox{\hyperlink{hpsdr__p1_8h_a3c07efeda5ec189f0222d0a3aaacf842}{global\+\_\+t}}
 \begin{DoxyCompactList}\small\item\em Struct of Global configuration. \end{DoxyCompactList}\item 
-typedef struct \mbox{\hyperlink{structhpsdr__callbacks}{hpsdr\+\_\+callbacks}} \mbox{\hyperlink{hpsdr__p1_8h_a537e7823263d89f4ac359c1418333226}{hpsdr\+\_\+callbacks\+\_\+t}}
+typedef struct \mbox{\hyperlink{structcallbacks}{callbacks}} \mbox{\hyperlink{hpsdr__p1_8h_a102732ac126805d766bfb5533896ac55}{callbacks\+\_\+t}}
 \begin{DoxyCompactList}\small\item\em Struct of Callbacks. \end{DoxyCompactList}\item 
 typedef struct \mbox{\hyperlink{structhpsdr__config}{hpsdr\+\_\+config}} \mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}}
 \begin{DoxyCompactList}\small\item\em Struct of Internal configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{hpsdr__p1_8h_af47de94f51163ee5efdea8595296a49e}{hpsdr\+\_\+init}} (\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$$\ast$\mbox{\hyperlink{hpsdr__p1_8h_a70adbe620197c29f05a5372e4fb0b1e3}{cfg}})
+void \mbox{\hyperlink{hpsdr__p1_8h_af47de94f51163ee5efdea8595296a49e}{hpsdr\+\_\+init}} (\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$$\ast$cfg)
 \begin{DoxyCompactList}\small\item\em HPSDR Initialization. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{hpsdr__p1_8h_ab94d2ae983cda325eda4d4afbe41106d}{hpsdr\+\_\+deinit}} (\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$$\ast$\mbox{\hyperlink{hpsdr__p1_8h_a70adbe620197c29f05a5372e4fb0b1e3}{cfg}})
-\begin{DoxyCompactList}\small\item\em HPSDR Deinitialization. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Variables}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$ \mbox{\hyperlink{hpsdr__p1_8h_a70adbe620197c29f05a5372e4fb0b1e3}{cfg}}
-\begin{DoxyCompactList}\small\item\em Configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{hpsdr__p1_8h_ab94d2ae983cda325eda4d4afbe41106d}{hpsdr\+\_\+deinit}} (\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$$\ast$cfg)
+\begin{DoxyCompactList}\small\item\em HPSDR Deinitialization. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hpsdr__p1_8h_a188468044a113efbfe1ab85ff1581c20}{hpsdr\+\_\+start}} (\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$$\ast$cfg)
+\begin{DoxyCompactList}\small\item\em HPSDR Start. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hpsdr__p1_8h_a29465dd2163bef0cc50a325178f2638e}{hpsdr\+\_\+stop}} (void)
+\begin{DoxyCompactList}\small\item\em HPSDR Start. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hpsdr__p1_8h_ad51e5fb271c7b6f969862d260fd8f2e3}{hpsdr\+\_\+clear\+\_\+config}} (\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$$\ast$cfg)
+\begin{DoxyCompactList}\small\item\em Clear/\+Initialize configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hpsdr__p1_8h_a744e289dd7282a667563077d4361f53f}{hpsdr\+\_\+txbuffer\+\_\+write}} (\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$$\ast$cfg, float \+\_\+\+Complex $\ast$iq)
+\begin{DoxyCompactList}\small\item\em Write to tx buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hpsdr__p1_8h_a3d1030e7c1673854f1e6061b37191b2d}{hpsdr\+\_\+rxbuffer\+\_\+write}} (\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$$\ast$cfg, float \+\_\+\+Complex $\ast$iq)
+\begin{DoxyCompactList}\small\item\em Write to rx buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hpsdr__p1_8h_addaf8de4d5ee3e2fb89cf134eb75df72}{hpsdr\+\_\+txbuffer\+\_\+read}} (\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$$\ast$cfg, float \+\_\+\+Complex $\ast$data)
+\begin{DoxyCompactList}\small\item\em Read from tx buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hpsdr__p1_8h_a72c1946b6afbbdac6800455a8ba3c3ff}{hpsdr\+\_\+rxbuffer\+\_\+read}} (\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$$\ast$cfg, float \+\_\+\+Complex $\ast$data)
+\begin{DoxyCompactList}\small\item\em Read from rx buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{hpsdr__p1_8h_afaf230edd4cf680f3ce19e2612d2e9eb}\label{hpsdr__p1_8h_afaf230edd4cf680f3ce19e2612d2e9eb}} 
+\index{hpsdr\_p1.h@{hpsdr\_p1.h}!RX\_BUFFERS@{RX\_BUFFERS}}
+\index{RX\_BUFFERS@{RX\_BUFFERS}!hpsdr\_p1.h@{hpsdr\_p1.h}}
+\doxysubsubsection{\texorpdfstring{RX\_BUFFERS}{RX\_BUFFERS}}
+{\footnotesize\ttfamily \#define RX\+\_\+\+BUFFERS~8}
+
+
+
+Max buffers. 
+
+Max buffers \mbox{\Hypertarget{hpsdr__p1_8h_a9c35fe6b2f08bed8277a09eb32593f9e}\label{hpsdr__p1_8h_a9c35fe6b2f08bed8277a09eb32593f9e}} 
+\index{hpsdr\_p1.h@{hpsdr\_p1.h}!TX\_BUFFERS@{TX\_BUFFERS}}
+\index{TX\_BUFFERS@{TX\_BUFFERS}!hpsdr\_p1.h@{hpsdr\_p1.h}}
+\doxysubsubsection{\texorpdfstring{TX\_BUFFERS}{TX\_BUFFERS}}
+{\footnotesize\ttfamily \#define TX\+\_\+\+BUFFERS~8}
+
 
 
 \doxysubsection{Typedef Documentation}
-\mbox{\Hypertarget{hpsdr__p1_8h_afe3fc6aad786b73d059b5ab129b8dc73}\label{hpsdr__p1_8h_afe3fc6aad786b73d059b5ab129b8dc73}} 
+\mbox{\Hypertarget{hpsdr__p1_8h_a102732ac126805d766bfb5533896ac55}\label{hpsdr__p1_8h_a102732ac126805d766bfb5533896ac55}} 
+\index{hpsdr\_p1.h@{hpsdr\_p1.h}!callbacks\_t@{callbacks\_t}}
+\index{callbacks\_t@{callbacks\_t}!hpsdr\_p1.h@{hpsdr\_p1.h}}
+\doxysubsubsection{\texorpdfstring{callbacks\_t}{callbacks\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structcallbacks}{callbacks}} \mbox{\hyperlink{hpsdr__p1_8h_a102732ac126805d766bfb5533896ac55}{callbacks\+\_\+t}}}
+
+
+
+Struct of Callbacks. 
+
+Struct of Internal Callbacks \mbox{\Hypertarget{hpsdr__p1_8h_afe3fc6aad786b73d059b5ab129b8dc73}\label{hpsdr__p1_8h_afe3fc6aad786b73d059b5ab129b8dc73}} 
 \index{hpsdr\_p1.h@{hpsdr\_p1.h}!ep2\_callback@{ep2\_callback}}
 \index{ep2\_callback@{ep2\_callback}!hpsdr\_p1.h@{hpsdr\_p1.h}}
 \doxysubsubsection{\texorpdfstring{ep2\_callback}{ep2\_callback}}
@@ -64,17 +109,7 @@ void \mbox{\hyperlink{hpsdr__p1_8h_ab94d2ae983cda325eda4d4afbe41106d}{hpsdr\+\_\
 
 Struct of Global configuration. 
 
-Struct of Global configurations \mbox{\Hypertarget{hpsdr__p1_8h_a537e7823263d89f4ac359c1418333226}\label{hpsdr__p1_8h_a537e7823263d89f4ac359c1418333226}} 
-\index{hpsdr\_p1.h@{hpsdr\_p1.h}!hpsdr\_callbacks\_t@{hpsdr\_callbacks\_t}}
-\index{hpsdr\_callbacks\_t@{hpsdr\_callbacks\_t}!hpsdr\_p1.h@{hpsdr\_p1.h}}
-\doxysubsubsection{\texorpdfstring{hpsdr\_callbacks\_t}{hpsdr\_callbacks\_t}}
-{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structhpsdr__callbacks}{hpsdr\+\_\+callbacks}} \mbox{\hyperlink{hpsdr__p1_8h_a537e7823263d89f4ac359c1418333226}{hpsdr\+\_\+callbacks\+\_\+t}}}
-
-
-
-Struct of Callbacks. 
-
-Struct of Internal Callbacks \mbox{\Hypertarget{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}\label{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}} 
+Struct of Global configurations \mbox{\Hypertarget{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}\label{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}} 
 \index{hpsdr\_p1.h@{hpsdr\_p1.h}!hpsdr\_config\_t@{hpsdr\_config\_t}}
 \index{hpsdr\_config\_t@{hpsdr\_config\_t}!hpsdr\_p1.h@{hpsdr\_p1.h}}
 \doxysubsubsection{\texorpdfstring{hpsdr\_config\_t}{hpsdr\_config\_t}}
@@ -96,13 +131,11 @@ Struct of internal configuration. \mbox{\Hypertarget{hpsdr__p1_8h_a8d40f6eee5a26
 \doxysubsubsection{\texorpdfstring{hw\_init}{hw\_init}}
 {\footnotesize\ttfamily typedef uint8\+\_\+t($\ast$ hw\+\_\+init) (void)}
 
-\mbox{\Hypertarget{hpsdr__p1_8h_a8587de889b658cf91fe05cbc05d42691}\label{hpsdr__p1_8h_a8587de889b658cf91fe05cbc05d42691}} 
-\index{hpsdr\_p1.h@{hpsdr\_p1.h}!hw\_set\_freq@{hw\_set\_freq}}
-\index{hw\_set\_freq@{hw\_set\_freq}!hpsdr\_p1.h@{hpsdr\_p1.h}}
-\doxysubsubsection{\texorpdfstring{hw\_set\_freq}{hw\_set\_freq}}
-{\footnotesize\ttfamily typedef uint8\+\_\+t($\ast$ hw\+\_\+set\+\_\+freq) (uint64\+\_\+t freq\+\_\+hz)}
 
-\mbox{\Hypertarget{hpsdr__p1_8h_adb1142e1f0d518cc8fc579eab09be6aa}\label{hpsdr__p1_8h_adb1142e1f0d518cc8fc579eab09be6aa}} 
+
+Callbacks prototypes. 
+
+Callbacks prototypes \mbox{\Hypertarget{hpsdr__p1_8h_adb1142e1f0d518cc8fc579eab09be6aa}\label{hpsdr__p1_8h_adb1142e1f0d518cc8fc579eab09be6aa}} 
 \index{hpsdr\_p1.h@{hpsdr\_p1.h}!hw\_thread@{hw\_thread}}
 \index{hw\_thread@{hw\_thread}!hpsdr\_p1.h@{hpsdr\_p1.h}}
 \doxysubsubsection{\texorpdfstring{hw\_thread}{hw\_thread}}
@@ -111,7 +144,17 @@ Struct of internal configuration. \mbox{\Hypertarget{hpsdr__p1_8h_a8d40f6eee5a26
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{hpsdr__p1_8h_ab94d2ae983cda325eda4d4afbe41106d}\label{hpsdr__p1_8h_ab94d2ae983cda325eda4d4afbe41106d}} 
+\mbox{\Hypertarget{hpsdr__p1_8h_ad51e5fb271c7b6f969862d260fd8f2e3}\label{hpsdr__p1_8h_ad51e5fb271c7b6f969862d260fd8f2e3}} 
+\index{hpsdr\_p1.h@{hpsdr\_p1.h}!hpsdr\_clear\_config@{hpsdr\_clear\_config}}
+\index{hpsdr\_clear\_config@{hpsdr\_clear\_config}!hpsdr\_p1.h@{hpsdr\_p1.h}}
+\doxysubsubsection{\texorpdfstring{hpsdr\_clear\_config()}{hpsdr\_clear\_config()}}
+{\footnotesize\ttfamily void hpsdr\+\_\+clear\+\_\+config (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$$\ast$}]{cfg }\end{DoxyParamCaption})}
+
+
+
+Clear/\+Initialize configuration. 
+
+Clear/\+Initialize configuration \mbox{\Hypertarget{hpsdr__p1_8h_ab94d2ae983cda325eda4d4afbe41106d}\label{hpsdr__p1_8h_ab94d2ae983cda325eda4d4afbe41106d}} 
 \index{hpsdr\_p1.h@{hpsdr\_p1.h}!hpsdr\_deinit@{hpsdr\_deinit}}
 \index{hpsdr\_deinit@{hpsdr\_deinit}!hpsdr\_p1.h@{hpsdr\_p1.h}}
 \doxysubsubsection{\texorpdfstring{hpsdr\_deinit()}{hpsdr\_deinit()}}
@@ -145,17 +188,105 @@ HPSDR Initialization
 {\em cfg} & HPSDR configuration \\
 \hline
 \end{DoxyParams}
-
-
-\doxysubsection{Variable Documentation}
-\mbox{\Hypertarget{hpsdr__p1_8h_a70adbe620197c29f05a5372e4fb0b1e3}\label{hpsdr__p1_8h_a70adbe620197c29f05a5372e4fb0b1e3}} 
-\index{hpsdr\_p1.h@{hpsdr\_p1.h}!cfg@{cfg}}
-\index{cfg@{cfg}!hpsdr\_p1.h@{hpsdr\_p1.h}}
-\doxysubsubsection{\texorpdfstring{cfg}{cfg}}
-{\footnotesize\ttfamily \mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}}$\ast$ cfg\hspace{0.3cm}{\ttfamily [extern]}}
+\mbox{\Hypertarget{hpsdr__p1_8h_a72c1946b6afbbdac6800455a8ba3c3ff}\label{hpsdr__p1_8h_a72c1946b6afbbdac6800455a8ba3c3ff}} 
+\index{hpsdr\_p1.h@{hpsdr\_p1.h}!hpsdr\_rxbuffer\_read@{hpsdr\_rxbuffer\_read}}
+\index{hpsdr\_rxbuffer\_read@{hpsdr\_rxbuffer\_read}!hpsdr\_p1.h@{hpsdr\_p1.h}}
+\doxysubsubsection{\texorpdfstring{hpsdr\_rxbuffer\_read()}{hpsdr\_rxbuffer\_read()}}
+{\footnotesize\ttfamily void hpsdr\+\_\+rxbuffer\+\_\+read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$$\ast$}]{cfg,  }\item[{float \+\_\+\+Complex $\ast$}]{data }\end{DoxyParamCaption})}
 
 
 
-Configuration. 
+Read from rx buffer. 
 
-All HPSDR configurations 
+Push to rx buffer
+
+
+\begin{DoxyParams}{Parameters}
+{\em cfg} & configuration \\
+\hline
+{\em data} & buffer data \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{hpsdr__p1_8h_a3d1030e7c1673854f1e6061b37191b2d}\label{hpsdr__p1_8h_a3d1030e7c1673854f1e6061b37191b2d}} 
+\index{hpsdr\_p1.h@{hpsdr\_p1.h}!hpsdr\_rxbuffer\_write@{hpsdr\_rxbuffer\_write}}
+\index{hpsdr\_rxbuffer\_write@{hpsdr\_rxbuffer\_write}!hpsdr\_p1.h@{hpsdr\_p1.h}}
+\doxysubsubsection{\texorpdfstring{hpsdr\_rxbuffer\_write()}{hpsdr\_rxbuffer\_write()}}
+{\footnotesize\ttfamily void hpsdr\+\_\+rxbuffer\+\_\+write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$$\ast$}]{cfg,  }\item[{float \+\_\+\+Complex $\ast$}]{iq }\end{DoxyParamCaption})}
+
+
+
+Write to rx buffer. 
+
+Push to rx buffer
+
+
+\begin{DoxyParams}{Parameters}
+{\em cfg} & configuration \\
+\hline
+{\em iq} & sample \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of bytes wrote 
+\end{DoxyReturn}
+\mbox{\Hypertarget{hpsdr__p1_8h_a188468044a113efbfe1ab85ff1581c20}\label{hpsdr__p1_8h_a188468044a113efbfe1ab85ff1581c20}} 
+\index{hpsdr\_p1.h@{hpsdr\_p1.h}!hpsdr\_start@{hpsdr\_start}}
+\index{hpsdr\_start@{hpsdr\_start}!hpsdr\_p1.h@{hpsdr\_p1.h}}
+\doxysubsubsection{\texorpdfstring{hpsdr\_start()}{hpsdr\_start()}}
+{\footnotesize\ttfamily void hpsdr\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$$\ast$}]{cfg }\end{DoxyParamCaption})}
+
+
+
+HPSDR Start. 
+
+HPSDR Start \mbox{\Hypertarget{hpsdr__p1_8h_a29465dd2163bef0cc50a325178f2638e}\label{hpsdr__p1_8h_a29465dd2163bef0cc50a325178f2638e}} 
+\index{hpsdr\_p1.h@{hpsdr\_p1.h}!hpsdr\_stop@{hpsdr\_stop}}
+\index{hpsdr\_stop@{hpsdr\_stop}!hpsdr\_p1.h@{hpsdr\_p1.h}}
+\doxysubsubsection{\texorpdfstring{hpsdr\_stop()}{hpsdr\_stop()}}
+{\footnotesize\ttfamily void hpsdr\+\_\+stop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+HPSDR Start. 
+
+HPSDR Start \mbox{\Hypertarget{hpsdr__p1_8h_addaf8de4d5ee3e2fb89cf134eb75df72}\label{hpsdr__p1_8h_addaf8de4d5ee3e2fb89cf134eb75df72}} 
+\index{hpsdr\_p1.h@{hpsdr\_p1.h}!hpsdr\_txbuffer\_read@{hpsdr\_txbuffer\_read}}
+\index{hpsdr\_txbuffer\_read@{hpsdr\_txbuffer\_read}!hpsdr\_p1.h@{hpsdr\_p1.h}}
+\doxysubsubsection{\texorpdfstring{hpsdr\_txbuffer\_read()}{hpsdr\_txbuffer\_read()}}
+{\footnotesize\ttfamily void hpsdr\+\_\+txbuffer\+\_\+read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$$\ast$}]{cfg,  }\item[{float \+\_\+\+Complex $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Read from tx buffer. 
+
+Push to tx buffer
+
+
+\begin{DoxyParams}{Parameters}
+{\em cfg} & configuration \\
+\hline
+{\em data} & buffer data \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{hpsdr__p1_8h_a744e289dd7282a667563077d4361f53f}\label{hpsdr__p1_8h_a744e289dd7282a667563077d4361f53f}} 
+\index{hpsdr\_p1.h@{hpsdr\_p1.h}!hpsdr\_txbuffer\_write@{hpsdr\_txbuffer\_write}}
+\index{hpsdr\_txbuffer\_write@{hpsdr\_txbuffer\_write}!hpsdr\_p1.h@{hpsdr\_p1.h}}
+\doxysubsubsection{\texorpdfstring{hpsdr\_txbuffer\_write()}{hpsdr\_txbuffer\_write()}}
+{\footnotesize\ttfamily void hpsdr\+\_\+txbuffer\+\_\+write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$$\ast$}]{cfg,  }\item[{float \+\_\+\+Complex $\ast$}]{iq }\end{DoxyParamCaption})}
+
+
+
+Write to tx buffer. 
+
+Push to tx buffer
+
+
+\begin{DoxyParams}{Parameters}
+{\em cfg} & configuration \\
+\hline
+{\em iq} & sample \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of bytes wrote 
+\end{DoxyReturn}

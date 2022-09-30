@@ -1,0 +1,56 @@
+\hypertarget{structRingBuf}{}\doxysection{Ring\+Buf Struct Reference}
+\label{structRingBuf}\index{RingBuf@{RingBuf}}
+
+
+{\ttfamily \#include $<$hpsdr\+\_\+ring\+\_\+buf.\+h$>$}
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+float \+\_\+\+Complex $\ast$ \mbox{\hyperlink{structRingBuf_a0e5e04918b6eb113e560477608bafe05}{buf}}
+\item 
+\mbox{\hyperlink{hpsdr__ring__buf_8h_acfc2963653417d2e231586b3568cb23b}{Ring\+Buf\+Ctr}} \mbox{\hyperlink{structRingBuf_a11cd41c12019e43f9d27060f2a64f1bc}{end}}
+\item 
+\mbox{\hyperlink{hpsdr__ring__buf_8h_acfc2963653417d2e231586b3568cb23b}{Ring\+Buf\+Ctr}} volatile \mbox{\hyperlink{structRingBuf_a1c6016ef037e0d6f346674791b0a6128}{head}}
+\item 
+\mbox{\hyperlink{hpsdr__ring__buf_8h_acfc2963653417d2e231586b3568cb23b}{Ring\+Buf\+Ctr}} volatile \mbox{\hyperlink{structRingBuf_af3b7981664b1ce4f9c343a4bd582d6a4}{tail}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Ring buffer element type
+
+The type of the ring buffer elements is not critical for the lock-\/free operation and does not need to be \char`\"{}atomic\char`\"{}. For example, it can be an integer type (uint16\+\_\+t, uint32\+\_\+t, uint64\+\_\+t), a pointer type, or even a struct type. However, the bigger the type the more RAM is needed for the ring buffer and more CPU cycles are needed to copy it into and out of the buffer memory.
+
+Ring buffer struct 
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{structRingBuf_a0e5e04918b6eb113e560477608bafe05}\label{structRingBuf_a0e5e04918b6eb113e560477608bafe05}} 
+\index{RingBuf@{RingBuf}!buf@{buf}}
+\index{buf@{buf}!RingBuf@{RingBuf}}
+\doxysubsubsection{\texorpdfstring{buf}{buf}}
+{\footnotesize\ttfamily float \+\_\+\+Complex$\ast$ Ring\+Buf\+::buf}
+
+pointer to the start of the ring buffer \mbox{\Hypertarget{structRingBuf_a11cd41c12019e43f9d27060f2a64f1bc}\label{structRingBuf_a11cd41c12019e43f9d27060f2a64f1bc}} 
+\index{RingBuf@{RingBuf}!end@{end}}
+\index{end@{end}!RingBuf@{RingBuf}}
+\doxysubsubsection{\texorpdfstring{end}{end}}
+{\footnotesize\ttfamily \mbox{\hyperlink{hpsdr__ring__buf_8h_acfc2963653417d2e231586b3568cb23b}{Ring\+Buf\+Ctr}} Ring\+Buf\+::end}
+
+offset of the end of the ring buffer \mbox{\Hypertarget{structRingBuf_a1c6016ef037e0d6f346674791b0a6128}\label{structRingBuf_a1c6016ef037e0d6f346674791b0a6128}} 
+\index{RingBuf@{RingBuf}!head@{head}}
+\index{head@{head}!RingBuf@{RingBuf}}
+\doxysubsubsection{\texorpdfstring{head}{head}}
+{\footnotesize\ttfamily \mbox{\hyperlink{hpsdr__ring__buf_8h_acfc2963653417d2e231586b3568cb23b}{Ring\+Buf\+Ctr}} volatile Ring\+Buf\+::head}
+
+offset to where next el. will be inserted \mbox{\Hypertarget{structRingBuf_af3b7981664b1ce4f9c343a4bd582d6a4}\label{structRingBuf_af3b7981664b1ce4f9c343a4bd582d6a4}} 
+\index{RingBuf@{RingBuf}!tail@{tail}}
+\index{tail@{tail}!RingBuf@{RingBuf}}
+\doxysubsubsection{\texorpdfstring{tail}{tail}}
+{\footnotesize\ttfamily \mbox{\hyperlink{hpsdr__ring__buf_8h_acfc2963653417d2e231586b3568cb23b}{Ring\+Buf\+Ctr}} volatile Ring\+Buf\+::tail}
+
+offset of where next el. will be removed 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{hpsdr__ring__buf_8h}{hpsdr\+\_\+ring\+\_\+buf.\+h}}\end{DoxyCompactItemize}

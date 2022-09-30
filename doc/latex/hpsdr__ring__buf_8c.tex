@@ -1,0 +1,65 @@
+\hypertarget{hpsdr__ring__buf_8c}{}\doxysection{hpsdr\+\_\+ring\+\_\+buf.\+c File Reference}
+\label{hpsdr__ring__buf_8c}\index{hpsdr\_ring\_buf.c@{hpsdr\_ring\_buf.c}}
+
+
+Lock-\/free ring buffer.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}hpsdr\+\_\+ring\+\_\+buf.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{hpsdr__ring__buf_8c_a4f4486e73ca28b674b28ef3a76010747}{Ring\+Buf\+\_\+ctor}} (\mbox{\hyperlink{structRingBuf}{Ring\+Buf}} $\ast$const me, float \+\_\+\+Complex sto\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{hpsdr__ring__buf_8h_acfc2963653417d2e231586b3568cb23b}{Ring\+Buf\+Ctr}} sto\+\_\+len)
+\item 
+bool \mbox{\hyperlink{hpsdr__ring__buf_8c_a4bfbe52c17450482a8809be209d18ab5}{Ring\+Buf\+\_\+put}} (\mbox{\hyperlink{structRingBuf}{Ring\+Buf}} $\ast$const me, float \+\_\+\+Complex const el)
+\item 
+bool \mbox{\hyperlink{hpsdr__ring__buf_8c_ac0d8d50a807c93f234f424a79b08b9c3}{Ring\+Buf\+\_\+get}} (\mbox{\hyperlink{structRingBuf}{Ring\+Buf}} $\ast$const me, float \+\_\+\+Complex $\ast$pel)
+\item 
+\mbox{\hyperlink{hpsdr__ring__buf_8h_acfc2963653417d2e231586b3568cb23b}{Ring\+Buf\+Ctr}} \mbox{\hyperlink{hpsdr__ring__buf_8c_a820fd7691c7d4e1a8315d6c7a5d1d41d}{Ring\+Buf\+\_\+num\+\_\+free}} (\mbox{\hyperlink{structRingBuf}{Ring\+Buf}} $\ast$const me)
+\item 
+void \mbox{\hyperlink{hpsdr__ring__buf_8c_a97b6daa633d7d667409d08dd4cda21eb}{Ring\+Buf\+\_\+process\+\_\+all}} (\mbox{\hyperlink{structRingBuf}{Ring\+Buf}} $\ast$const me, \mbox{\hyperlink{hpsdr__ring__buf_8h_a7ee7aa265b51a69faf41a3f79ac2bc8d}{Ring\+Buf\+Handler}} handler)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Lock-\/free ring buffer. 
+
+\begin{DoxyDate}{Date}
+Last updated on\+: 2022-\/06-\/09 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{hpsdr__ring__buf_8c_a4f4486e73ca28b674b28ef3a76010747}\label{hpsdr__ring__buf_8c_a4f4486e73ca28b674b28ef3a76010747}} 
+\index{hpsdr\_ring\_buf.c@{hpsdr\_ring\_buf.c}!RingBuf\_ctor@{RingBuf\_ctor}}
+\index{RingBuf\_ctor@{RingBuf\_ctor}!hpsdr\_ring\_buf.c@{hpsdr\_ring\_buf.c}}
+\doxysubsubsection{\texorpdfstring{RingBuf\_ctor()}{RingBuf\_ctor()}}
+{\footnotesize\ttfamily void Ring\+Buf\+\_\+ctor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRingBuf}{Ring\+Buf}} $\ast$const}]{me,  }\item[{float \+\_\+\+Complex}]{sto\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{hpsdr__ring__buf_8h_acfc2963653417d2e231586b3568cb23b}{Ring\+Buf\+Ctr}}}]{sto\+\_\+len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{hpsdr__ring__buf_8c_ac0d8d50a807c93f234f424a79b08b9c3}\label{hpsdr__ring__buf_8c_ac0d8d50a807c93f234f424a79b08b9c3}} 
+\index{hpsdr\_ring\_buf.c@{hpsdr\_ring\_buf.c}!RingBuf\_get@{RingBuf\_get}}
+\index{RingBuf\_get@{RingBuf\_get}!hpsdr\_ring\_buf.c@{hpsdr\_ring\_buf.c}}
+\doxysubsubsection{\texorpdfstring{RingBuf\_get()}{RingBuf\_get()}}
+{\footnotesize\ttfamily bool Ring\+Buf\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRingBuf}{Ring\+Buf}} $\ast$const}]{me,  }\item[{float \+\_\+\+Complex $\ast$}]{pel }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{hpsdr__ring__buf_8c_a820fd7691c7d4e1a8315d6c7a5d1d41d}\label{hpsdr__ring__buf_8c_a820fd7691c7d4e1a8315d6c7a5d1d41d}} 
+\index{hpsdr\_ring\_buf.c@{hpsdr\_ring\_buf.c}!RingBuf\_num\_free@{RingBuf\_num\_free}}
+\index{RingBuf\_num\_free@{RingBuf\_num\_free}!hpsdr\_ring\_buf.c@{hpsdr\_ring\_buf.c}}
+\doxysubsubsection{\texorpdfstring{RingBuf\_num\_free()}{RingBuf\_num\_free()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{hpsdr__ring__buf_8h_acfc2963653417d2e231586b3568cb23b}{Ring\+Buf\+Ctr}} Ring\+Buf\+\_\+num\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRingBuf}{Ring\+Buf}} $\ast$const}]{me }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{hpsdr__ring__buf_8c_a97b6daa633d7d667409d08dd4cda21eb}\label{hpsdr__ring__buf_8c_a97b6daa633d7d667409d08dd4cda21eb}} 
+\index{hpsdr\_ring\_buf.c@{hpsdr\_ring\_buf.c}!RingBuf\_process\_all@{RingBuf\_process\_all}}
+\index{RingBuf\_process\_all@{RingBuf\_process\_all}!hpsdr\_ring\_buf.c@{hpsdr\_ring\_buf.c}}
+\doxysubsubsection{\texorpdfstring{RingBuf\_process\_all()}{RingBuf\_process\_all()}}
+{\footnotesize\ttfamily void Ring\+Buf\+\_\+process\+\_\+all (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRingBuf}{Ring\+Buf}} $\ast$const}]{me,  }\item[{\mbox{\hyperlink{hpsdr__ring__buf_8h_a7ee7aa265b51a69faf41a3f79ac2bc8d}{Ring\+Buf\+Handler}}}]{handler }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{hpsdr__ring__buf_8c_a4bfbe52c17450482a8809be209d18ab5}\label{hpsdr__ring__buf_8c_a4bfbe52c17450482a8809be209d18ab5}} 
+\index{hpsdr\_ring\_buf.c@{hpsdr\_ring\_buf.c}!RingBuf\_put@{RingBuf\_put}}
+\index{RingBuf\_put@{RingBuf\_put}!hpsdr\_ring\_buf.c@{hpsdr\_ring\_buf.c}}
+\doxysubsubsection{\texorpdfstring{RingBuf\_put()}{RingBuf\_put()}}
+{\footnotesize\ttfamily bool Ring\+Buf\+\_\+put (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRingBuf}{Ring\+Buf}} $\ast$const}]{me,  }\item[{float \+\_\+\+Complex const}]{el }\end{DoxyParamCaption})}
+

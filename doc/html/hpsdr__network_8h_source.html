@@ -101,23 +101,27 @@ $(function() {
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#ifndef HPSDR_NETWORK_H_</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define HPSDR_NETWORK_H_</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">int</span> <a class="code" href="hpsdr__network_8h.html#a735c16de053d1f2abccdccea3903ea2f">hpsdr_network_init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">void</span> <a class="code" href="hpsdr__network_8h.html#a3a10322272a79186e87de747a69ae82f">hpsdr_network_deinit</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">int</span> <a class="code" href="hpsdr__network_8h.html#a7270091a334a813d1113e39c3dda4161">hpsdr_network_process</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="hpsdr__network_8h.html#a4544fd2089776972ae6d60b126f71f0b">hpsdr_network_send</a>(uint8_t *<a class="code" href="hpsdr__network_8c.html#a3c01bacddd07cce01e46aaa727ff9d03">buffer</a>, <span class="keywordtype">size_t</span> len);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">void</span>*<a class="code" href="hpsdr__network_8h.html#a7ca7cb03e00e988d9096ce091a524263">hpsdr_network_handler</a>(<span class="keywordtype">void</span> *arg);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* HPSDR_NETWORK_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="hpsdr__p1_8h.html">hpsdr_p1.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">int</span> <a class="code" href="hpsdr__network_8h.html#a735c16de053d1f2abccdccea3903ea2f">hpsdr_network_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">void</span> <a class="code" href="hpsdr__network_8h.html#a3a10322272a79186e87de747a69ae82f">hpsdr_network_deinit</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">int</span> <a class="code" href="hpsdr__network_8h.html#ae9afe93b755feb522d65f5da39cfd205">hpsdr_network_process</a>(<a class="code" href="structhpsdr__config.html">hpsdr_config_t</a> *cfg);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">void</span> <a class="code" href="hpsdr__network_8h.html#a4544fd2089776972ae6d60b126f71f0b">hpsdr_network_send</a>(uint8_t *<a class="code" href="hpsdr__network_8c.html#a3c01bacddd07cce01e46aaa727ff9d03">buffer</a>, <span class="keywordtype">size_t</span> len);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">void</span>*<a class="code" href="hpsdr__network_8h.html#a7ca7cb03e00e988d9096ce091a524263">hpsdr_network_handler</a>(<span class="keywordtype">void</span> *arg);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* HPSDR_NETWORK_H_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="ahpsdr__network_8c_html_a3c01bacddd07cce01e46aaa727ff9d03"><div class="ttname"><a href="hpsdr__network_8c.html#a3c01bacddd07cce01e46aaa727ff9d03">buffer</a></div><div class="ttdeci">uint8_t buffer[1032]</div><div class="ttdef"><b>Definition:</b> hpsdr_network.c:57</div></div>
 <div class="ttc" id="ahpsdr__network_8h_html_a3a10322272a79186e87de747a69ae82f"><div class="ttname"><a href="hpsdr__network_8h.html#a3a10322272a79186e87de747a69ae82f">hpsdr_network_deinit</a></div><div class="ttdeci">void hpsdr_network_deinit(void)</div><div class="ttdoc">Network deinitialization.</div><div class="ttdef"><b>Definition:</b> hpsdr_network.c:145</div></div>
 <div class="ttc" id="ahpsdr__network_8h_html_a4544fd2089776972ae6d60b126f71f0b"><div class="ttname"><a href="hpsdr__network_8h.html#a4544fd2089776972ae6d60b126f71f0b">hpsdr_network_send</a></div><div class="ttdeci">void hpsdr_network_send(uint8_t *buffer, size_t len)</div><div class="ttdoc">Network send.</div><div class="ttdef"><b>Definition:</b> hpsdr_network.c:395</div></div>
-<div class="ttc" id="ahpsdr__network_8h_html_a7270091a334a813d1113e39c3dda4161"><div class="ttname"><a href="hpsdr__network_8h.html#a7270091a334a813d1113e39c3dda4161">hpsdr_network_process</a></div><div class="ttdeci">int hpsdr_network_process(void)</div><div class="ttdoc">Network process.</div><div class="ttdef"><b>Definition:</b> hpsdr_network.c:157</div></div>
 <div class="ttc" id="ahpsdr__network_8h_html_a735c16de053d1f2abccdccea3903ea2f"><div class="ttname"><a href="hpsdr__network_8h.html#a735c16de053d1f2abccdccea3903ea2f">hpsdr_network_init</a></div><div class="ttdeci">int hpsdr_network_init(void)</div><div class="ttdoc">Network initialization.</div><div class="ttdef"><b>Definition:</b> hpsdr_network.c:87</div></div>
 <div class="ttc" id="ahpsdr__network_8h_html_a7ca7cb03e00e988d9096ce091a524263"><div class="ttname"><a href="hpsdr__network_8h.html#a7ca7cb03e00e988d9096ce091a524263">hpsdr_network_handler</a></div><div class="ttdeci">void * hpsdr_network_handler(void *arg)</div><div class="ttdoc">Network handler (task)</div><div class="ttdef"><b>Definition:</b> hpsdr_network.c:407</div></div>
+<div class="ttc" id="ahpsdr__network_8h_html_ae9afe93b755feb522d65f5da39cfd205"><div class="ttname"><a href="hpsdr__network_8h.html#ae9afe93b755feb522d65f5da39cfd205">hpsdr_network_process</a></div><div class="ttdeci">int hpsdr_network_process(hpsdr_config_t *cfg)</div><div class="ttdoc">Network process.</div><div class="ttdef"><b>Definition:</b> hpsdr_network.c:157</div></div>
+<div class="ttc" id="ahpsdr__p1_8h_html"><div class="ttname"><a href="hpsdr__p1_8h.html">hpsdr_p1.h</a></div></div>
+<div class="ttc" id="astructhpsdr__config_html"><div class="ttname"><a href="structhpsdr__config.html">hpsdr_config</a></div><div class="ttdoc">Struct of Internal configuration.</div><div class="ttdef"><b>Definition:</b> hpsdr_p1.h:90</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

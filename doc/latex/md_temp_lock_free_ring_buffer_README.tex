@@ -1,0 +1,42 @@
+\href{https://www.state-machine.com}{\texttt{ }}
+
+\DoxyHorRuler{0}
+ \hypertarget{md_temp_lock_free_ring_buffer_README_autotoc_md11}{}\doxysection{What is it?}\label{md_temp_lock_free_ring_buffer_README_autotoc_md11}
+\char`\"{}\+Lock-\/\+Free Ring Buffer\char`\"{} (LFRB) is a minimal, customizable implementation of a ring buffer (a.\+k.\+a. circular buffer) in C, specifically suitable for embedded systems.\hypertarget{md_temp_lock_free_ring_buffer_README_autotoc_md12}{}\doxysection{Lock-\/\+Free Restrictions}\label{md_temp_lock_free_ring_buffer_README_autotoc_md12}
+The ring buffer does not require any \char`\"{}locking\char`\"{} (mutual exclusion mechanism) as long as the following restrictions are met\+:
+
+
+\begin{DoxyEnumerate}
+\item Only one thread/interrupt can produce data into the ring buffer
+\item Only one thread/interrupt can consume data from the ring buffer
+\end{DoxyEnumerate}
+
+In other words, a given LFRB can be used only by one pair of producer/ consumer threads/interrupts. Fortunately, this is the most frequently encountered scenario.
+
+There are also some additional assumptions about the \char`\"{}atomicity\char`\"{} of the LFRB counters, which are spelled out in the \href{src/ring_buf.h}{\texttt{ ring\+\_\+buf.\+h}} header file.\hypertarget{md_temp_lock_free_ring_buffer_README_autotoc_md13}{}\doxysection{Code Structure}\label{md_temp_lock_free_ring_buffer_README_autotoc_md13}
+The ring buffer implementation consists of two files located in the src directory\+:
+
+
+\begin{DoxyItemize}
+\item \href{src/ring_buf.h}{\texttt{ ring\+\_\+buf.\+h}} -\/ contains the interface
+\item \href{src/ring_buf.c}{\texttt{ ring\+\_\+buf.\+c}} -\/ contains the implementation
+\end{DoxyItemize}
+
+The ring buffer holds elements of they type Ring\+Buf\+Element, which can be customized (typically {\ttfamily uint8\+\_\+t}, {\ttfamily uint16\+\_\+t}, {\ttfamily uint32\+\_\+t}, {\ttfamily float}, {\ttfamily void$\ast$} (pointers), etc.)\hypertarget{md_temp_lock_free_ring_buffer_README_autotoc_md14}{}\doxysection{Test/\+Example of Use}\label{md_temp_lock_free_ring_buffer_README_autotoc_md14}
+The directory {\ttfamily test} contains a very \char`\"{}\+Simple Unit Testing (\+SUTEST)\char`\"{} framework for unit testing, consisting of the files\+:
+
+
+\begin{DoxyItemize}
+\item \href{test/sutest.h}{\texttt{ sutest.\+h}} -\/ SUTEST interface
+\item \href{test/sutest.c}{\texttt{ sutest.\+c}} -\/ SUTEST implementation
+\end{DoxyItemize}
+
+The SUTEST framework is used to test the LFRB. Specifically, the tests and examples of use of LFRB are located in the file\+:
+
+
+\begin{DoxyItemize}
+\item \href{test/test_ring_buf.c}{\texttt{ test\+\_\+ring\+\_\+buf.\+c}} -\/ example of use and tests the LFRB.
+\end{DoxyItemize}\hypertarget{md_temp_lock_free_ring_buffer_README_autotoc_md15}{}\doxysection{Licensing}\label{md_temp_lock_free_ring_buffer_README_autotoc_md15}
+The LFRB is \mbox{[}licensed\mbox{]}(LICENSE) under the MIT open source license.\hypertarget{md_temp_lock_free_ring_buffer_README_autotoc_md16}{}\doxysection{Comments/\+Discussion}\label{md_temp_lock_free_ring_buffer_README_autotoc_md16}
+If you\textquotesingle{}d like to discuss LFRB or related subjects, plese use the \href{https://github.com/QuantumLeaps/lock-free-ring-buffer/issues}{\texttt{ \char`\"{}\+Issues\char`\"{} tab}}.\hypertarget{md_temp_lock_free_ring_buffer_README_autotoc_md17}{}\doxysection{Contact Information}\label{md_temp_lock_free_ring_buffer_README_autotoc_md17}
+\href{https://www.state-machine.com}{\texttt{ state-\/machine.\+com}} 

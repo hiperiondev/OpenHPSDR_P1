@@ -3,6 +3,9 @@
 {\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
 {\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$complex.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}hpsdr\+\_\+debug.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}hpsdr\+\_\+definitions.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}hpsdr\+\_\+version.\+h\char`\"{}}\newline
@@ -17,19 +20,15 @@ uint8\+\_\+t \mbox{\hyperlink{hpsdr__test_8c_a12decfaaef7e456a56637c1f6aa80c57}{
 \item 
 uint8\+\_\+t \mbox{\hyperlink{hpsdr__test_8c_a2dfec92a17fa2cab9f41a4a28a9e9f13}{iqtransmitter\+\_\+deinit}} (void)
 \item 
-uint8\+\_\+t \mbox{\hyperlink{hpsdr__test_8c_a92e5d1e7c80b90cac401f114c949d805}{iqtransmitter\+\_\+set\+\_\+freq}} (uint64\+\_\+t freq\+\_\+hz)
-\item 
 void $\ast$ \mbox{\hyperlink{hpsdr__test_8c_ac54186db1f8a1f6eb9cb10355fc88411}{iqtransmitter\+\_\+thread}} (void $\ast$data)
 \item 
 uint8\+\_\+t \mbox{\hyperlink{hpsdr__test_8c_a743d1c86fdee34d84fc68f587ef414d5}{iqreceiver\+\_\+init}} (void)
 \item 
 uint8\+\_\+t \mbox{\hyperlink{hpsdr__test_8c_a95339207e3d8625062a7da40b954b9b9}{iqreceiver\+\_\+deinit}} (void)
 \item 
-uint8\+\_\+t \mbox{\hyperlink{hpsdr__test_8c_ab4a224f20a71040793f3db887f02053e}{iqreceiver\+\_\+set\+\_\+freq}} (uint64\+\_\+t freq\+\_\+hz)
-\item 
 void $\ast$ \mbox{\hyperlink{hpsdr__test_8c_a85d13b75f77264c09d14080355d0eb21}{iqreceiver\+\_\+thread}} (void $\ast$data)
 \item 
-void \mbox{\hyperlink{hpsdr__test_8c_a8ab77940e9f8f362c1242eb44f366bb7}{parse\+\_\+args}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+void \mbox{\hyperlink{hpsdr__test_8c_a3b96996bfdba0be2e261fcd9b7c4200f}{parse\+\_\+args}} (\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$cfg, int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
 \item 
 int \mbox{\hyperlink{hpsdr__test_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
 \end{DoxyCompactItemize}
@@ -59,12 +58,6 @@ char \mbox{\hyperlink{hpsdr__test_8c_aed56968465a4b18dacd08f77fef94029}{exit\+\_
 \doxysubsubsection{\texorpdfstring{iqreceiver\_init()}{iqreceiver\_init()}}
 {\footnotesize\ttfamily uint8\+\_\+t iqreceiver\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{hpsdr__test_8c_ab4a224f20a71040793f3db887f02053e}\label{hpsdr__test_8c_ab4a224f20a71040793f3db887f02053e}} 
-\index{hpsdr\_test.c@{hpsdr\_test.c}!iqreceiver\_set\_freq@{iqreceiver\_set\_freq}}
-\index{iqreceiver\_set\_freq@{iqreceiver\_set\_freq}!hpsdr\_test.c@{hpsdr\_test.c}}
-\doxysubsubsection{\texorpdfstring{iqreceiver\_set\_freq()}{iqreceiver\_set\_freq()}}
-{\footnotesize\ttfamily uint8\+\_\+t iqreceiver\+\_\+set\+\_\+freq (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{freq\+\_\+hz }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{hpsdr__test_8c_a85d13b75f77264c09d14080355d0eb21}\label{hpsdr__test_8c_a85d13b75f77264c09d14080355d0eb21}} 
 \index{hpsdr\_test.c@{hpsdr\_test.c}!iqreceiver\_thread@{iqreceiver\_thread}}
 \index{iqreceiver\_thread@{iqreceiver\_thread}!hpsdr\_test.c@{hpsdr\_test.c}}
@@ -83,12 +76,6 @@ char \mbox{\hyperlink{hpsdr__test_8c_aed56968465a4b18dacd08f77fef94029}{exit\+\_
 \doxysubsubsection{\texorpdfstring{iqtransmitter\_init()}{iqtransmitter\_init()}}
 {\footnotesize\ttfamily uint8\+\_\+t iqtransmitter\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{hpsdr__test_8c_a92e5d1e7c80b90cac401f114c949d805}\label{hpsdr__test_8c_a92e5d1e7c80b90cac401f114c949d805}} 
-\index{hpsdr\_test.c@{hpsdr\_test.c}!iqtransmitter\_set\_freq@{iqtransmitter\_set\_freq}}
-\index{iqtransmitter\_set\_freq@{iqtransmitter\_set\_freq}!hpsdr\_test.c@{hpsdr\_test.c}}
-\doxysubsubsection{\texorpdfstring{iqtransmitter\_set\_freq()}{iqtransmitter\_set\_freq()}}
-{\footnotesize\ttfamily uint8\+\_\+t iqtransmitter\+\_\+set\+\_\+freq (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{freq\+\_\+hz }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{hpsdr__test_8c_ac54186db1f8a1f6eb9cb10355fc88411}\label{hpsdr__test_8c_ac54186db1f8a1f6eb9cb10355fc88411}} 
 \index{hpsdr\_test.c@{hpsdr\_test.c}!iqtransmitter\_thread@{iqtransmitter\_thread}}
 \index{iqtransmitter\_thread@{iqtransmitter\_thread}!hpsdr\_test.c@{hpsdr\_test.c}}
@@ -101,11 +88,11 @@ char \mbox{\hyperlink{hpsdr__test_8c_aed56968465a4b18dacd08f77fef94029}{exit\+\_
 \doxysubsubsection{\texorpdfstring{main()}{main()}}
 {\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{hpsdr__test_8c_a8ab77940e9f8f362c1242eb44f366bb7}\label{hpsdr__test_8c_a8ab77940e9f8f362c1242eb44f366bb7}} 
+\mbox{\Hypertarget{hpsdr__test_8c_a3b96996bfdba0be2e261fcd9b7c4200f}\label{hpsdr__test_8c_a3b96996bfdba0be2e261fcd9b7c4200f}} 
 \index{hpsdr\_test.c@{hpsdr\_test.c}!parse\_args@{parse\_args}}
 \index{parse\_args@{parse\_args}!hpsdr\_test.c@{hpsdr\_test.c}}
 \doxysubsubsection{\texorpdfstring{parse\_args()}{parse\_args()}}
-{\footnotesize\ttfamily void parse\+\_\+args (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void parse\+\_\+args (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$}]{cfg,  }\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
 
 

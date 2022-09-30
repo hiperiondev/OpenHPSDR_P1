@@ -68,6 +68,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -75,26 +76,52 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;pthread.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="hpsdr__debug_8h_source.html">hpsdr_debug.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hpsdr__protocol_8h_source.html">hpsdr_protocol.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hpsdr__internals_8h_source.html">hpsdr_internals.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hpsdr__network_8h_source.html">hpsdr_network.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hpsdr__p1_8h_source.html">hpsdr_p1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="cbuffer_8h_source.html">cbuffer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hpsdr__ring__buf_8h_source.html">hpsdr_ring_buf.h</a>&quot;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a4b75e32ef7587e1ec703b276481ef877"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__p1_8c.html#a4b75e32ef7587e1ec703b276481ef877">ARRAY_LEN</a>(a_)&#160;&#160;&#160;(sizeof(a_)/sizeof(a_[0]))</td></tr>
+<tr class="separator:a4b75e32ef7587e1ec703b276481ef877"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af47de94f51163ee5efdea8595296a49e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__p1_8c.html#af47de94f51163ee5efdea8595296a49e">hpsdr_init</a> (<a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> **<a class="el" href="hpsdr__p1_8h.html#a70adbe620197c29f05a5372e4fb0b1e3">cfg</a>)</td></tr>
+<tr class="memitem:ad51e5fb271c7b6f969862d260fd8f2e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__p1_8c.html#ad51e5fb271c7b6f969862d260fd8f2e3">hpsdr_clear_config</a> (<a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> **cfg)</td></tr>
+<tr class="memdesc:ad51e5fb271c7b6f969862d260fd8f2e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear/Initialize configuration.  <a href="hpsdr__p1_8c.html#ad51e5fb271c7b6f969862d260fd8f2e3">More...</a><br /></td></tr>
+<tr class="separator:ad51e5fb271c7b6f969862d260fd8f2e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af47de94f51163ee5efdea8595296a49e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__p1_8c.html#af47de94f51163ee5efdea8595296a49e">hpsdr_init</a> (<a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> **cfg)</td></tr>
 <tr class="memdesc:af47de94f51163ee5efdea8595296a49e"><td class="mdescLeft">&#160;</td><td class="mdescRight">HPSDR Initialization.  <a href="hpsdr__p1_8c.html#af47de94f51163ee5efdea8595296a49e">More...</a><br /></td></tr>
 <tr class="separator:af47de94f51163ee5efdea8595296a49e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab94d2ae983cda325eda4d4afbe41106d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__p1_8c.html#ab94d2ae983cda325eda4d4afbe41106d">hpsdr_deinit</a> (<a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> **<a class="el" href="hpsdr__p1_8h.html#a70adbe620197c29f05a5372e4fb0b1e3">cfg</a>)</td></tr>
+<tr class="memitem:ab94d2ae983cda325eda4d4afbe41106d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__p1_8c.html#ab94d2ae983cda325eda4d4afbe41106d">hpsdr_deinit</a> (<a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> **cfg)</td></tr>
 <tr class="memdesc:ab94d2ae983cda325eda4d4afbe41106d"><td class="mdescLeft">&#160;</td><td class="mdescRight">HPSDR Deinitialization.  <a href="hpsdr__p1_8c.html#ab94d2ae983cda325eda4d4afbe41106d">More...</a><br /></td></tr>
 <tr class="separator:ab94d2ae983cda325eda4d4afbe41106d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a188468044a113efbfe1ab85ff1581c20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__p1_8c.html#a188468044a113efbfe1ab85ff1581c20">hpsdr_start</a> (<a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> **cfg)</td></tr>
+<tr class="memdesc:a188468044a113efbfe1ab85ff1581c20"><td class="mdescLeft">&#160;</td><td class="mdescRight">HPSDR Start.  <a href="hpsdr__p1_8c.html#a188468044a113efbfe1ab85ff1581c20">More...</a><br /></td></tr>
+<tr class="separator:a188468044a113efbfe1ab85ff1581c20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29465dd2163bef0cc50a325178f2638e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__p1_8c.html#a29465dd2163bef0cc50a325178f2638e">hpsdr_stop</a> (void)</td></tr>
+<tr class="memdesc:a29465dd2163bef0cc50a325178f2638e"><td class="mdescLeft">&#160;</td><td class="mdescRight">HPSDR Start.  <a href="hpsdr__p1_8c.html#a29465dd2163bef0cc50a325178f2638e">More...</a><br /></td></tr>
+<tr class="separator:a29465dd2163bef0cc50a325178f2638e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a744e289dd7282a667563077d4361f53f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__p1_8c.html#a744e289dd7282a667563077d4361f53f">hpsdr_txbuffer_write</a> (<a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> **cfg, float _Complex *iq)</td></tr>
+<tr class="memdesc:a744e289dd7282a667563077d4361f53f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write to tx buffer.  <a href="hpsdr__p1_8c.html#a744e289dd7282a667563077d4361f53f">More...</a><br /></td></tr>
+<tr class="separator:a744e289dd7282a667563077d4361f53f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d1030e7c1673854f1e6061b37191b2d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__p1_8c.html#a3d1030e7c1673854f1e6061b37191b2d">hpsdr_rxbuffer_write</a> (<a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> **cfg, float _Complex *iq)</td></tr>
+<tr class="memdesc:a3d1030e7c1673854f1e6061b37191b2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write to rx buffer.  <a href="hpsdr__p1_8c.html#a3d1030e7c1673854f1e6061b37191b2d">More...</a><br /></td></tr>
+<tr class="separator:a3d1030e7c1673854f1e6061b37191b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addaf8de4d5ee3e2fb89cf134eb75df72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__p1_8c.html#addaf8de4d5ee3e2fb89cf134eb75df72">hpsdr_txbuffer_read</a> (<a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> **cfg, float _Complex *data)</td></tr>
+<tr class="memdesc:addaf8de4d5ee3e2fb89cf134eb75df72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read from tx buffer.  <a href="hpsdr__p1_8c.html#addaf8de4d5ee3e2fb89cf134eb75df72">More...</a><br /></td></tr>
+<tr class="separator:addaf8de4d5ee3e2fb89cf134eb75df72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72c1946b6afbbdac6800455a8ba3c3ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__p1_8c.html#a72c1946b6afbbdac6800455a8ba3c3ff">hpsdr_rxbuffer_read</a> (<a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> **cfg, float _Complex *data)</td></tr>
+<tr class="memdesc:a72c1946b6afbbdac6800455a8ba3c3ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read from rx buffer.  <a href="hpsdr__p1_8c.html#a72c1946b6afbbdac6800455a8ba3c3ff">More...</a><br /></td></tr>
+<tr class="separator:a72c1946b6afbbdac6800455a8ba3c3ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a70adbe620197c29f05a5372e4fb0b1e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__p1_8c.html#a70adbe620197c29f05a5372e4fb0b1e3">cfg</a></td></tr>
-<tr class="memdesc:a70adbe620197c29f05a5372e4fb0b1e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration.  <a href="hpsdr__p1_8c.html#a70adbe620197c29f05a5372e4fb0b1e3">More...</a><br /></td></tr>
-<tr class="separator:a70adbe620197c29f05a5372e4fb0b1e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3ae2d053aa28a995bb04fd3be89113e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__p1_8c.html#ae3ae2d053aa28a995bb04fd3be89113e">enable_thread</a></td></tr>
 <tr class="separator:ae3ae2d053aa28a995bb04fd3be89113e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8da8e0b3b354d376e435618bcc715265"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__p1_8c.html#a8da8e0b3b354d376e435618bcc715265">active_thread</a></td></tr>
@@ -109,8 +136,52 @@ Variables</h2></td></tr>
 <tr class="separator:a81b2ddabc08ca74adb49b45a0e1eeb5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfbf1bda6cadec0d1707906905e1db69"><td class="memItemLeft" align="right" valign="top">pthread_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__p1_8c.html#adfbf1bda6cadec0d1707906905e1db69">network_thread_id</a></td></tr>
 <tr class="separator:adfbf1bda6cadec0d1707906905e1db69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dd0456b5f3b553eb2814ee6b0bde437"><td class="memItemLeft" align="right" valign="top">float _Complex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__p1_8c.html#a4dd0456b5f3b553eb2814ee6b0bde437">rxbuf</a> [<a class="el" href="hpsdr__internals_8h.html#a65314ede9be8799048771161a9589f2b">BUFFLEN</a>]</td></tr>
+<tr class="separator:a4dd0456b5f3b553eb2814ee6b0bde437"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e5158ade466410eae14575ed5f74ece"><td class="memItemLeft" align="right" valign="top">float _Complex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hpsdr__p1_8c.html#a7e5158ade466410eae14575ed5f74ece">txbuf</a> [<a class="el" href="hpsdr__internals_8h.html#a65314ede9be8799048771161a9589f2b">BUFFLEN</a>]</td></tr>
+<tr class="separator:a7e5158ade466410eae14575ed5f74ece"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a4b75e32ef7587e1ec703b276481ef877"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b75e32ef7587e1ec703b276481ef877">&#9670;&nbsp;</a></span>ARRAY_LEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARRAY_LEN</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a_</td><td>)</td>
+          <td>&#160;&#160;&#160;(sizeof(a_)/sizeof(a_[0]))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ad51e5fb271c7b6f969862d260fd8f2e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad51e5fb271c7b6f969862d260fd8f2e3">&#9670;&nbsp;</a></span>hpsdr_clear_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hpsdr_clear_config </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> **&#160;</td>
+          <td class="paramname"><em>cfg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clear/Initialize configuration. </p>
+<p>Clear/Initialize configuration </p>
+
+</div>
+</div>
 <a id="ab94d2ae983cda325eda4d4afbe41106d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab94d2ae983cda325eda4d4afbe41106d">&#9670;&nbsp;</a></span>hpsdr_deinit()</h2>
 
@@ -165,6 +236,202 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a72c1946b6afbbdac6800455a8ba3c3ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72c1946b6afbbdac6800455a8ba3c3ff">&#9670;&nbsp;</a></span>hpsdr_rxbuffer_read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hpsdr_rxbuffer_read </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> **&#160;</td>
+          <td class="paramname"><em>cfg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float _Complex *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read from rx buffer. </p>
+<p>Push to rx buffer</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cfg</td><td>configuration </td></tr>
+    <tr><td class="paramname">data</td><td>buffer data </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3d1030e7c1673854f1e6061b37191b2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d1030e7c1673854f1e6061b37191b2d">&#9670;&nbsp;</a></span>hpsdr_rxbuffer_write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hpsdr_rxbuffer_write </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> **&#160;</td>
+          <td class="paramname"><em>cfg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float _Complex *&#160;</td>
+          <td class="paramname"><em>iq</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write to rx buffer. </p>
+<p>Push to rx buffer</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cfg</td><td>configuration </td></tr>
+    <tr><td class="paramname">iq</td><td>sample </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>number of bytes wrote </dd></dl>
+
+</div>
+</div>
+<a id="a188468044a113efbfe1ab85ff1581c20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a188468044a113efbfe1ab85ff1581c20">&#9670;&nbsp;</a></span>hpsdr_start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hpsdr_start </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> **&#160;</td>
+          <td class="paramname"><em>cfg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>HPSDR Start. </p>
+<p>HPSDR Start </p>
+
+</div>
+</div>
+<a id="a29465dd2163bef0cc50a325178f2638e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29465dd2163bef0cc50a325178f2638e">&#9670;&nbsp;</a></span>hpsdr_stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hpsdr_stop </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>HPSDR Start. </p>
+<p>HPSDR Start </p>
+
+</div>
+</div>
+<a id="addaf8de4d5ee3e2fb89cf134eb75df72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addaf8de4d5ee3e2fb89cf134eb75df72">&#9670;&nbsp;</a></span>hpsdr_txbuffer_read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hpsdr_txbuffer_read </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> **&#160;</td>
+          <td class="paramname"><em>cfg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float _Complex *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read from tx buffer. </p>
+<p>Push to tx buffer</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cfg</td><td>configuration </td></tr>
+    <tr><td class="paramname">data</td><td>buffer data </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a744e289dd7282a667563077d4361f53f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a744e289dd7282a667563077d4361f53f">&#9670;&nbsp;</a></span>hpsdr_txbuffer_write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hpsdr_txbuffer_write </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a> **&#160;</td>
+          <td class="paramname"><em>cfg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float _Complex *&#160;</td>
+          <td class="paramname"><em>iq</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write to tx buffer. </p>
+<p>Push to tx buffer</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cfg</td><td>configuration </td></tr>
+    <tr><td class="paramname">iq</td><td>sample </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>number of bytes wrote </dd></dl>
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="a8da8e0b3b354d376e435618bcc715265"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8da8e0b3b354d376e435618bcc715265">&#9670;&nbsp;</a></span>active_thread</h2>
@@ -205,23 +472,6 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="a70adbe620197c29f05a5372e4fb0b1e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a70adbe620197c29f05a5372e4fb0b1e3">&#9670;&nbsp;</a></span>cfg</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="hpsdr__p1_8h.html#aa141720fea7d4178398cd2ab09bf229e">hpsdr_config_t</a>* cfg</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Configuration. </p>
-<p>All HPSDR configurations </p>
 
 </div>
 </div>
@@ -275,6 +525,34 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">pthread_t network_thread_id</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4dd0456b5f3b553eb2814ee6b0bde437"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dd0456b5f3b553eb2814ee6b0bde437">&#9670;&nbsp;</a></span>rxbuf</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float _Complex rxbuf[<a class="el" href="hpsdr__internals_8h.html#a65314ede9be8799048771161a9589f2b">BUFFLEN</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7e5158ade466410eae14575ed5f74ece"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e5158ade466410eae14575ed5f74ece">&#9670;&nbsp;</a></span>txbuf</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float _Complex txbuf[<a class="el" href="hpsdr__internals_8h.html#a65314ede9be8799048771161a9589f2b">BUFFLEN</a>]</td>
         </tr>
       </table>
 </div><div class="memdoc">
