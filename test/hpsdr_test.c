@@ -28,6 +28,9 @@
 #include <string.h>
 #include <stdint.h>
 #include <signal.h>
+#include <time.h>
+#include <complex.h>
+#include <stdlib.h>
 
 #include "hpsdr_debug.h"
 #include "hpsdr_definitions.h"
@@ -87,6 +90,8 @@ uint8_t iqtransmitter_deinit(void) {
 
 
 void* iqtransmitter_thread(void *data) {
+    //hpsdr_config_t *cfg = (hpsdr_config_t*) data;
+
     while(1);
     return NULL;
 }
@@ -100,7 +105,16 @@ uint8_t iqreceiver_deinit(void) {
 }
 
 void* iqreceiver_thread(void *data) {
-    while(1);
+    hpsdr_config_t *cfg = (hpsdr_config_t*) data;
+    float _Complex csample;
+    time_t t;
+
+    srand((unsigned) time(&t));
+    while(1) {
+        csample = (rand() % 50) + (rand() % 50) * I; //make some noise
+        hpsdr_rxbuffer_write(&cfg, &csample);
+    }
+
     return NULL;
 }
 

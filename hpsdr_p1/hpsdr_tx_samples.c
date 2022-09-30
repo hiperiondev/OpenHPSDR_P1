@@ -34,7 +34,7 @@
 #include "hpsdr_debug.h"
 #include "hpsdr_protocol.h"
 #include "hpsdr_p1.h"
-#include "cbuffer.h"
+#include "ring_buf.h"
 
 static uint8_t *bp;
 static int j;
@@ -67,7 +67,7 @@ void samples_rcv(hpsdr_config_t *cfg, uint8_t *buffer) {
                 isample = disample;
                 qsample = dqsample;
                 csample = isample + qsample * I;
-                cbuf_offer(cfg->txbuff, (void*) &csample, 1);
+                RingBuf_put(&(cfg->txbuff), csample);
 
                 break;
             case 1:  // RX sample rate = 96000; TX sample rate = 48000
@@ -76,12 +76,12 @@ void samples_rcv(hpsdr_config_t *cfg, uint8_t *buffer) {
                 isample = last_i_sample + idelta;
                 qsample = last_q_sample + qdelta;
                 csample = isample + qsample * I;
-                cbuf_offer(cfg->txbuff, (void*) &csample, 1);
+                RingBuf_put(&(cfg->txbuff), csample);
 
                 isample = disample;
                 qsample = dqsample;
                 csample = isample + qsample * I;
-                cbuf_offer(cfg->txbuff, (void*) &csample, 1);
+                RingBuf_put(&(cfg->txbuff), csample);
 
                 break;
             case 2:  // RX sample rate = 192000; TX sample rate = 48000
@@ -90,22 +90,22 @@ void samples_rcv(hpsdr_config_t *cfg, uint8_t *buffer) {
                 isample = last_i_sample + idelta;
                 qsample = last_q_sample + qdelta;
                 csample = isample + qsample * I;
-                cbuf_offer(cfg->txbuff, (void*) &csample, 1);
+                RingBuf_put(&(cfg->txbuff), csample);
 
                 isample = last_i_sample + 2.0 * idelta;
                 qsample = last_q_sample + 2.0 * qdelta;
                 csample = isample + qsample * I;
-                cbuf_offer(cfg->txbuff, (void*) &csample, 1);
+                RingBuf_put(&(cfg->txbuff), csample);
 
                 isample = last_i_sample + 3.0 * idelta;
                 qsample = last_q_sample + 3.0 * qdelta;
                 csample = isample + qsample * I;
-                cbuf_offer(cfg->txbuff, (void*) &csample, 1);
+                RingBuf_put(&(cfg->txbuff), csample);
 
                 isample = disample;
                 qsample = dqsample;
                 csample = isample + qsample * I;
-                cbuf_offer(cfg->txbuff, (void*) &csample, 1);
+                RingBuf_put(&(cfg->txbuff), csample);
 
                 break;
             case 3:  // RX sample rate = 384000; TX sample rate = 48000
@@ -114,42 +114,42 @@ void samples_rcv(hpsdr_config_t *cfg, uint8_t *buffer) {
                 isample = last_i_sample + idelta;
                 qsample = last_q_sample + qdelta;
                 csample = isample + qsample * I;
-                cbuf_offer(cfg->txbuff, (void*) &csample, 1);
+                RingBuf_put(&(cfg->txbuff), csample);
 
                 isample = last_i_sample + 2.0 * idelta;
                 qsample = last_q_sample + 2.0 * qdelta;
                 csample = isample + qsample * I;
-                cbuf_offer(cfg->txbuff, (void*) &csample, 1);
+                RingBuf_put(&(cfg->txbuff), csample);
 
                 isample = last_i_sample + 3.0 * idelta;
                 qsample = last_q_sample + 3.0 * qdelta;
                 csample = isample + qsample * I;
-                cbuf_offer(cfg->txbuff, (void*) &csample, 1);
+                RingBuf_put(&(cfg->txbuff), csample);
 
                 isample = last_i_sample + 4.0 * idelta;
                 qsample = last_q_sample + 4.0 * qdelta;
                 csample = isample + qsample * I;
-                cbuf_offer(cfg->txbuff, (void*) &csample, 1);
+                RingBuf_put(&(cfg->txbuff), csample);
 
                 isample = last_i_sample + 5.0 * idelta;
                 qsample = last_q_sample + 5.0 * qdelta;
                 csample = isample + qsample * I;
-                cbuf_offer(cfg->txbuff, (void*) &csample, 1);
+                RingBuf_put(&(cfg->txbuff), csample);
 
                 isample = last_i_sample + 6.0 * idelta;
                 qsample = last_q_sample + 6.0 * qdelta;
                 csample = isample + qsample * I;
-                cbuf_offer(cfg->txbuff, (void*) &csample, 1);
+                RingBuf_put(&(cfg->txbuff), csample);
 
                 isample = last_i_sample + 7.0 * idelta;
                 qsample = last_q_sample + 7.0 * qdelta;
                 csample = isample + qsample * I;
-                cbuf_offer(cfg->txbuff, (void*) &csample, 1);
+                RingBuf_put(&(cfg->txbuff), csample);
 
                 isample = disample;
                 qsample = dqsample;
                 csample = isample + qsample * I;
-                cbuf_offer(cfg->txbuff, (void*) &csample, 1);
+                RingBuf_put(&(cfg->txbuff), csample);
 
                 break;
         }

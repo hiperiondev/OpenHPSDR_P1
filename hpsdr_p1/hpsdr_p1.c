@@ -27,13 +27,16 @@
 
 #include <pthread.h>
 #include <stdio.h>
+#include <math.h>
 
 #include "hpsdr_debug.h"
 #include "hpsdr_protocol.h"
 #include "hpsdr_internals.h"
 #include "hpsdr_network.h"
 #include "hpsdr_p1.h"
-#include "cbuffer.h"
+#include "ring_buf.h"
+
+#define ARRAY_LEN(a_) (sizeof(a_)/sizeof(a_[0]))
 
 int enable_thread;
 int active_thread;
@@ -42,6 +45,9 @@ double c1, c2;
 pthread_t iqtransmitter_thread_id;
 pthread_t iqreceiver_thread_id;
 pthread_t network_thread_id;
+
+float _Complex rxbuf[BUFFLEN];
+float _Complex txbuf[BUFFLEN];
 
 void hpsdr_clear_config(hpsdr_config_t **cfg) {
     (*cfg)->settings.AlexTXrel = -1;
@@ -188,8 +194,8 @@ void hpsdr_init(hpsdr_config_t **cfg) {
             break;
     }
 
-    (*cfg)->txbuff = cbuf_new(BUFFLEN * sizeof(float _Complex));
-    (*cfg)->rxbuff = cbuf_new(BUFFLEN * sizeof(float _Complex));
+    RingBuf_ctor(&((*cfg)->txbuff), txbuf, ARRAY_LEN(txbuf));
+    RingBuf_ctor(&((*cfg)->rxbuff), rxbuf, ARRAY_LEN(txbuf));
 
     if ((*cfg)->cb.tx_init == NULL)
         hpsdr_dbg_printf(0, "WARNING: tx_init not defined\n");
@@ -224,9 +230,6 @@ void hpsdr_deinit(hpsdr_config_t **cfg) {
         if (res == -1)
             hpsdr_dbg_printf(0, "WARNING: tx_deinit failed\n");
     }
-
-    free((*cfg)->txbuff);
-    free((*cfg)->rxbuff);
 }
 
 void hpsdr_start(hpsdr_config_t **cfg) {
@@ -258,18 +261,20 @@ void hpsdr_stop(void) {
     pthread_cancel(iqtransmitter_thread_id);
 }
 
-int hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq, const int size) {
-    return cbuf_offer((*cfg)->txbuff, (void*) iq, size);
+void hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq) {
+    RingBuf_put(&((*cfg)->txbuff), *iq);
 }
 
-int hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq, const int size) {
-    return cbuf_offer((*cfg)->rxbuff, (void*) iq, size);
+void hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq) {
+    RingBuf_put(&((*cfg)->rxbuff), *iq);
 }
 
-float _Complex* hpsdr_txbuffer_read(hpsdr_config_t **cfg, const int size) {
-    return (float _Complex*) cbuf_poll((*cfg)->txbuff, size);
+void hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *data) {
+    if (!RingBuf_get(&((*cfg)->txbuff), data))
+        *data = 0 + 0 * I;
 }
 
-float _Complex* hpsdr_rxbuffer_read(hpsdr_config_t **cfg, const int size) {
-    return (float _Complex*) cbuf_poll((*cfg)->rxbuff, size);
+void hpsdr_rxbuffer_read(hpsdr_config_t **cfg, float _Complex *data) {
+    if (!RingBuf_get(&((*cfg)->rxbuff), data))
+        *data = 0 + 0 * I;
 }

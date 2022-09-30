@@ -38,7 +38,7 @@ extern int active_thread; // ep6 thread
 // and two METIS packets per TCP/UDP packet,
 // and two/four/eight-fold up-sampling if the TX sample
 // rate is 96000/192000/384000
-#define BUFFLEN 20 // TODO: check
+#define BUFFLEN 63 // TODO: check
 
 extern uint32_t last_seqnum; // sequence number of received packet
 extern uint32_t seqnum;      // sequence number of received packet

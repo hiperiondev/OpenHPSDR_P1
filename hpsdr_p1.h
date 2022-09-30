@@ -35,6 +35,7 @@
 
 #include "hpsdr_definitions.h"
 #include "hpsdr_protocol.h"
+#include "ring_buf.h"
 
 /**
  * @brief Max buffers
@@ -90,17 +91,10 @@ typedef struct hpsdr_config {
        global_t global;
     callbacks_t cb;
      protocol_t settings;
-           void *rxbuff;
-           void *txbuff;
+        RingBuf rxbuff;
+        RingBuf txbuff;
            void *user;
 } hpsdr_config_t;
-
-/**
- * @brief Configuration
- *
- * All HPSDR configurations
- */
-extern hpsdr_config_t *cfg;
 
 /**
  * @brief HPSDR Initialization
@@ -148,10 +142,9 @@ void hpsdr_clear_config(hpsdr_config_t **cfg);
  *
  * @param cfg configuration
  * @param iq sample
- * @param size sample size
  * @return number of bytes wrote
  */
-int hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq, const int size);
+void hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
 
 /**
  * @brief Write to rx buffer
@@ -160,10 +153,9 @@ int hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq, const int siz
  *
  * @param cfg configuration
  * @param iq sample
- * @param size sample size
  * @return number of bytes wrote
  */
-int hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq, const int size);
+void hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
 
 /**
  * @brief Read from tx buffer
@@ -171,10 +163,9 @@ int hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq, const int siz
  * Push to tx buffer
  *
  * @param cfg configuration
- * @param size size to read
- * @return data read
+ * @param data buffer data
  */
-float _Complex* hpsdr_txbuffer_read(hpsdr_config_t **cfg, const int size);
+void hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *data);
 
 /**
  * @brief Read from rx buffer
@@ -182,9 +173,8 @@ float _Complex* hpsdr_txbuffer_read(hpsdr_config_t **cfg, const int size);
  * Push to rx buffer
  *
  * @param cfg configuration
- * @param size size to read
- * @return data read
+ * @param data buffer data
  */
-float _Complex* hpsdr_rxbuffer_read(hpsdr_config_t **cfg, const int size);
+void hpsdr_rxbuffer_read(hpsdr_config_t **cfg, float _Complex *data);
 
 #endif /* HPSDR_P1_H_ */

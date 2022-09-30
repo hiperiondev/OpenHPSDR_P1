@@ -28,25 +28,22 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <complex.h>
+#include <stdio.h>
 
 #include "hpsdr_p1.h"
 #include "hpsdr_debug.h"
 #include "hpsdr_definitions.h"
-#include "cbuffer.h"
+#include "ring_buf.h"
 
 void hpsdr_get_rx_samples(hpsdr_config_t *cfg, int n, uint8_t *pointer) {
     int j, k;
     float _Complex csample;
-
     int32_t dacisample = 0, dacqsample = 0;
     int32_t myisample, myqsample;
 
     // TODO: complete
     for (j = 0; j < n; j++) {
-        void *cs = cbuf_poll(cfg->rxbuff, 1);
-        if (cs != NULL)
-            csample = *((_Complex float*) cs);
-        else
+        if (!RingBuf_get(&(cfg->rxbuff), &csample))
             csample = 0 + 0 * I;
 
         for (k = 0; k < cfg->settings.receivers; k++) {
