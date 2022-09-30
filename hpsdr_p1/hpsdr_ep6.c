@@ -38,7 +38,7 @@
 #include "hpsdr_p1.h"
 #include "hpsdr_network.h"
 #include "hpsdr_protocol.h"
-#include "cbuffer.h"
+#include "hpsdr_rx_samples.h"
 
 void* ep6_handler(void *arg) {
     hpsdr_dbg_printf(1, "Start handler ep6\n");
@@ -47,7 +47,7 @@ void* ep6_handler(void *arg) {
 
     static double txlevel;
     int i, j;
-    int k, n;
+    int n;
     int size;
     int header_offset;
     uint32_t counter;
@@ -55,12 +55,6 @@ void* ep6_handler(void *arg) {
     uint8_t *pointer;
     struct timespec delay;
     long wait;
-    float _Complex csample;
-
-    int32_t adc1isample, adc1qsample;
-    int32_t adc2isample, adc2qsample;
-    int32_t dacisample = 0, dacqsample = 0;
-    int32_t myisample, myqsample;
 
     uint8_t id[4] = { //
             0xef,
@@ -70,15 +64,15 @@ void* ep6_handler(void *arg) {
     };
 
     uint8_t header[40] = { //
-         // C0   C1   C2   C3   C4
-            127, 127, 127, 0,   0,
-            33,  17,  21,  127, 127,
-            127, 8,   0,   0,   0,
-            0,   127, 127, 127, 16,
-            0,   0,   0,   0,   127,
-            127, 127, 24,  0,   0,
-            0,   0,   127, 127, 127,
-            32,  66,  66,  66,  66
+                    //  C0   C1   C2   C3   C4
+                       127, 127, 127,   0,   0,
+                        33,  17,  21, 127, 127,
+                       127,   8,   0,   0,   0,
+                         0, 127, 127, 127,  16,
+                         0,   0,   0,   0, 127,
+                       127, 127,  24,   0,   0,
+                         0,   0, 127, 127, 127,
+                        32,  66,  66,  66,   66
     };
 
     memcpy(buffer, id, 4);
@@ -87,8 +81,7 @@ void* ep6_handler(void *arg) {
 
     clock_gettime(CLOCK_MONOTONIC, &delay);
     while (1) {
-        if (!enable_thread)
-            break;
+        if (!enable_thread) break;
 
         size = cfg->settings.receivers * 6 + 2;
         n = 504 / size;  // number of samples per 512-byte-block
@@ -109,127 +102,53 @@ void* ep6_handler(void *arg) {
             memcpy(pointer, header + header_offset, 8);
 
             switch (header_offset) {
-            case 0: //
-                // do not set ptt and cw in c0
-                // do not set adc overflow in c1
-                if (cfg->global.emulation == DEVICE_HERMES_LITE2) {
-                    *(pointer + 5) = (0 >> 8) & 0x7F;
-                    *(pointer + 6) = 0 & 0xFF;
-                }
-                header_offset = 8;
-                break;
-            case 8: //
-                if (cfg->global.emulation == DEVICE_HERMES_LITE2) {
-                    // hl2: temperature
-                    *(pointer + 4) = 0;
-                    *(pointer + 5) = 0 & 0x7F;  // pseudo random number
-                } else {
-                    // ain5: exciter power
-                    *(pointer + 4) = 0;  // about 500 mW
-                    *(pointer + 5) = cfg->settings.txdrive;
-                }
-                // ain1: forward power
-                j = (int) ((4095.0 / c1) * sqrt(100.0 * txlevel * c2));
-                *(pointer + 6) = (j >> 8) & 0xFF;
-                *(pointer + 7) = (j) & 0xFF;
-                header_offset = 16;
-                break;
-            case 16: //
-                // ain2: reverse power
-                // ain3:
-                header_offset = 24;
-                break;
-            case 24: //
-                // ain4:
-                // ain5: supply voltage
-                *(pointer + 6) = 0;
-                *(pointer + 7) = 63;
-                header_offset = 32;
-                break;
-            case 32: //
-                header_offset = 0;
-                break;
+                case 0: //
+                    // do not set ptt and cw in c0
+                    // do not set adc overflow in c1
+                    if (cfg->global.emulation == DEVICE_HERMES_LITE2) {
+                        *(pointer + 5) = (0 >> 8) & 0x7F;
+                        *(pointer + 6) = 0 & 0xFF;
+                    }
+                    header_offset = 8;
+                    break;
+                case 8: //
+                    if (cfg->global.emulation == DEVICE_HERMES_LITE2) {
+                        // hl2: temperature
+                        *(pointer + 4) = 0;
+                        *(pointer + 5) = 0 & 0x7F;  // pseudo random number
+                    } else {
+                        // ain5: exciter power
+                        *(pointer + 4) = 0;  // about 500 mW
+                        *(pointer + 5) = cfg->settings.txdrive;
+                    }
+                    // ain1: forward power
+                    j = (int) ((4095.0 / c1) * sqrt(100.0 * txlevel * c2));
+                    *(pointer + 6) = (j >> 8) & 0xFF;
+                    *(pointer + 7) = (j) & 0xFF;
+                    header_offset = 16;
+                    break;
+                case 16: //
+                    // ain2: reverse power
+                    // ain3:
+                    header_offset = 24;
+                    break;
+                case 24: //
+                    // ain4:
+                    // ain5: supply voltage
+                    *(pointer + 6) = 0;
+                    *(pointer + 7) = 63;
+                    header_offset = 32;
+                    break;
+                case 32: //
+                    header_offset = 0;
+                    break;
             }
 
             pointer += 8;
             memset(pointer, 0, 504);
 
-            // TODO: implement receivers
-            for (j = 0; j < n; j++) {
-                void *cs = cbuf_poll(cfg->rxbuff, 1);
-                if (cs != NULL)
-                    csample = *((_Complex float*) cs);
-                else
-                    csample = 0 + 0 * I;
+            hpsdr_get_rx_samples(cfg, n, pointer);
 
-                // ADC1: RX, feedback sig. on TX (except STEMlab)
-                if (cfg->settings.ptt && (cfg->global.emulation != DEVICE_C25)) {
-                    adc1isample = creal(csample);
-                    adc1qsample = cimag(csample);
-                } else if (cfg->settings.diversity) {
-                    adc1isample = creal(csample);
-                    adc1qsample = cimag(csample);
-                } else {
-                    adc1isample = creal(csample);
-                    adc1qsample = cimag(csample);
-                }
-                // ADC2: feedback sig. on TX (only STEMlab)
-                if (cfg->settings.ptt && (cfg->global.emulation == DEVICE_C25)) {
-                    adc2isample = creal(csample);
-                    adc2qsample = cimag(csample);
-                } else if (cfg->settings.diversity) {
-                    adc2isample = creal(csample);
-                    adc2qsample = cimag(csample);
-                } else {
-                    adc2isample = creal(csample);
-                    adc2qsample = cimag(csample);
-                }
-
-                for (k = 0; k < cfg->settings.receivers; k++) {
-                    myisample = 0;
-                    myqsample = 0;
-                    switch (cfg->settings.rx_adc[k]) {
-                        case 0: // ADC1
-                            myisample = adc1isample;
-                            myqsample = adc1qsample;
-                            break;
-                        case 1: // ADC2
-                            myisample = adc2isample;
-                            myqsample = adc2qsample;
-                            break;
-                        default:
-                            myisample = 0;
-                            myqsample = 0;
-                            break;
-                    }
-                    if ((cfg->global.emulation == DEVICE_METIS || cfg->global.emulation == DEVICE_HERMES_LITE) && cfg->settings.ptt && (k == 1)) {
-                        // METIS: TX DAC signal goes to RX2 when TXing
-                        myisample = dacisample;
-                        myqsample = dacqsample;
-                    }
-                    if ((cfg->global.emulation == DEVICE_HERMES || cfg->global.emulation == DEVICE_GRIFFIN || cfg->global.emulation == DEVICE_C25
-                            || cfg->global.emulation == DEVICE_HERMES_LITE2) && cfg->settings.ptt && (k == 3)) {
-                        // HERMES: TX DAC signal goes to RX4 when TXing
-                        myisample = dacisample;
-                        myqsample = dacqsample;
-                    }
-                    if ((cfg->global.emulation == DEVICE_ANGELIA || cfg->global.emulation == DEVICE_ORION || cfg->global.emulation == DEVICE_ORION2)
-                            && cfg->settings.ptt && (k == 4)) {
-                        // ANGELIA and beyond: TX DAC signal goes to RX5 when TXing
-                        myisample = dacisample;
-                        myqsample = dacqsample;
-                    }
-
-                    *pointer++ = (myisample >> 16) & 0xFF;
-                    *pointer++ = (myisample >> 8) & 0xFF;
-                    *pointer++ = (myisample >> 0) & 0xFF;
-                    *pointer++ = (myqsample >> 16) & 0xFF;
-                    *pointer++ = (myqsample >> 8) & 0xFF;
-                    *pointer++ = (myqsample >> 0) & 0xFF;
-                }
-                // TODO: implement microphone
-                pointer += 2;
-            }
         }
 
         // wait until the time has passed for all these samples

@@ -106,22 +106,22 @@ void* iqreceiver_thread(void *data) {
 
 static struct cag_option options[] = {
         {
-                .identifier = 'd',
+                    .identifier = 'd',
                 .access_letters = "d",
-                .access_name = NULL,
-                .value_name = NULL,
-                .description = "Debug"
+                   .access_name = NULL,
+                    .value_name = NULL,
+                   .description = "Debug"
         }, {
-                .identifier = 'e',
+                    .identifier = 'e',
                 .access_letters = "e",
-                .access_name = "emulation_type",
-                .value_name = "VALUE",
-                .description = "Emulation Type (metis, hermes, griffin, angelia, orion, hermes, hermes_lite, orion2, c25)"
+                   .access_name = "emulation_type",
+                    .value_name = "VALUE",
+                   .description = "Emulation Type (metis, hermes, griffin, angelia, orion, hermes, hermes_lite, orion2, c25)"
         }, {
-                .identifier = 'h',
+                    .identifier = 'h',
                 .access_letters = "h",
-                .access_name = "help",
-                .description = "Shows the command help"
+                   .access_name = "help",
+                   .description = "Shows the command help"
         }
 };
 
@@ -218,7 +218,9 @@ int main(int argc, char *argv[]) {
 
     hpsdr_init(&cfg);
     hpsdr_start(&cfg);
-    while (1);
+
+    while (1); // this time... do nothing
+
     hpsdr_stop();
     hpsdr_deinit(&cfg);
 
