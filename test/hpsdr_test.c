@@ -111,7 +111,7 @@ void* iqreceiver_thread(void *data) {
 
     srand((unsigned) time(&t));
     while(1) {
-        csample = (rand() % 50) + (rand() % 50) * I; //make some noise
+        csample = (rand() % 100) + (rand() % 100) * I; //make some noise
         hpsdr_rxbuffer_write(&cfg, &csample);
     }
 
