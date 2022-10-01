@@ -1,5 +1,5 @@
 # OpenHPSDR_P1
-The objective of this project is to create a complete infrastructure that supports the Open HPSDR version 1 protocol to implement the control of any generic software-defined radio hardware.
+The objective of this project is to create a complete framework that supports the Open HPSDR version 1 protocol to implement the control of any generic software-defined radio hardware.
 
 It is only necessary to implement the hardware control functions.
 
@@ -31,7 +31,7 @@ void* (*hw_thread)(void *data)
 
 ## Buffers
 
-RX/TX buffers are circular queues of float _Complex. All data write/read on an overflow/underflow conditions are discarded
+RX/TX buffers are circular queues of float _Complex.
 
 ### write functions
 ```c
