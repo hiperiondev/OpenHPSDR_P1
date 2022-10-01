@@ -39,6 +39,8 @@
 
 #include "cargs.h"
 
+bool file = false;
+char filename[254];
 char exit_signal[33][17] = {
         "NOSIGNAL",
         "SIGHUP",
@@ -107,12 +109,36 @@ uint8_t iqreceiver_deinit(void) {
 void* iqreceiver_thread(void *data) {
     hpsdr_config_t *cfg = (hpsdr_config_t*) data;
     float _Complex csample;
-    time_t t;
+    float is;
+    float qs;
+    FILE *fp = NULL;
 
-    srand((unsigned) time(&t));
-    while(1) {
-        csample = (rand() % 100) + (rand() % 100) * I; //make some noise
-        hpsdr_rxbuffer_write(&cfg, &csample);
+    if (file) {
+        fp = fopen(filename, "r");
+        if (NULL == fp) {
+            printf("WARNING: file \"%s\" can't be opened\n", filename);
+        }
+    } else {
+        time_t t;
+        srand((unsigned) time(&t));
+    }
+
+    while (1) {
+        if (file) {
+            if(feof(fp))
+                rewind(fp);
+            fread(&is, sizeof(float), 1, fp);
+            fread(&qs, sizeof(float), 1, fp);
+        } else {
+            // make some noise
+            is = (rand() % 10000);
+            qs = (rand() % 10000) * I;
+        }
+
+        csample = is + qs * I;
+
+
+        while(!hpsdr_rxbuffer_write(&cfg, &csample));
     }
 
     return NULL;
@@ -131,6 +157,12 @@ static struct cag_option options[] = {
                    .access_name = "emulation_type",
                     .value_name = "VALUE",
                    .description = "Emulation Type (metis, hermes, griffin, angelia, orion, hermes, hermes_lite, orion2, c25)"
+        }, {
+                    .identifier = 'f',
+                .access_letters = "f",
+                   .access_name = "filename",
+                    .value_name = "VALUE",
+                   .description = "Read I/Q samples from file and return as receiver)"
         }, {
                     .identifier = 'h',
                 .access_letters = "h",
@@ -191,6 +223,13 @@ void parse_args(hpsdr_config_t *cfg, int argc, char *argv[]) {
                     printf("ERROR: Unknown emulation type\n");
                     exit(EXIT_SUCCESS);
                 }
+                break;
+
+            case 'f':
+                file = true;
+                value = cag_option_get_value(&context);
+                strcpy(filename, value);
+                printf("< file iq: %s >\n", filename);
                 break;
 
             case 'h':

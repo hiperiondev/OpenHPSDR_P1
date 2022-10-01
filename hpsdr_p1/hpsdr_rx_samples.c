@@ -38,8 +38,9 @@
 void hpsdr_get_rx_samples(hpsdr_config_t *cfg, int n, uint8_t *pointer) {
     int j, k;
     float _Complex csample;
-    int32_t dacisample = 0, dacqsample = 0;
-    int32_t myisample, myqsample;
+    //int32_t dacisample = 0, dacqsample = 0;
+    //int32_t myisample, myqsample;
+    short IQdata;
 
     // TODO: complete
     for (j = 0; j < n; j++) {
@@ -47,6 +48,17 @@ void hpsdr_get_rx_samples(hpsdr_config_t *cfg, int n, uint8_t *pointer) {
             csample = 0 + 0 * I;
 
         for (k = 0; k < cfg->settings.receivers; k++) {
+            IQdata = (short) creal(csample);
+            *pointer++ = IQdata >> 8;
+            *pointer++ = IQdata & 0xff;
+            *pointer++ = 0;
+            IQdata = (short) cimag(csample);
+            *pointer++ = IQdata >> 8;
+            *pointer++ = IQdata & 0xff;
+            *pointer++ = 0;
+
+
+            /*
             myisample = 0;
             myqsample = 0;
             switch (cfg->settings.rx_adc[k]) {
@@ -87,6 +99,7 @@ void hpsdr_get_rx_samples(hpsdr_config_t *cfg, int n, uint8_t *pointer) {
             *pointer++ = (myqsample >> 16) & 0xFF;
             *pointer++ = (myqsample >> 8) & 0xFF;
             *pointer++ = (myqsample >> 0) & 0xFF;
+            */
         }
         // TODO: implement microphone
         pointer += 2;

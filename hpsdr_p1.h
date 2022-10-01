@@ -144,7 +144,7 @@ void hpsdr_clear_config(hpsdr_config_t **cfg);
  * @param iq sample
  * @return number of bytes wrote
  */
-void hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
+bool hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
 
 /**
  * @brief Write to rx buffer
@@ -155,7 +155,7 @@ void hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
  * @param iq sample
  * @return number of bytes wrote
  */
-void hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
+bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
 
 /**
  * @brief Read from tx buffer

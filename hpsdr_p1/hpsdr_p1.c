@@ -261,12 +261,12 @@ void hpsdr_stop(void) {
     pthread_cancel(iqtransmitter_thread_id);
 }
 
-void hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq) {
-    RingBuf_put(&((*cfg)->txbuff), *iq);
+bool hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq) {
+    return RingBuf_put(&((*cfg)->txbuff), *iq);
 }
 
-void hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq) {
-    RingBuf_put(&((*cfg)->rxbuff), *iq);
+bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq) {
+    return RingBuf_put(&((*cfg)->rxbuff), *iq);
 }
 
 void hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *data) {
