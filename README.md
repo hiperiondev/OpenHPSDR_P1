@@ -45,7 +45,7 @@ void hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *data);
 void hpsdr_rxbuffer_read(hpsdr_config_t **cfg, float _Complex *data);
 ```
 
-## BUILD TEST
+## Build test
 ```bash
 $ git clone https://github.com/hiperiondev/OpenHPSDR_P1.git
 $ cd OpenHPSDR_P1
