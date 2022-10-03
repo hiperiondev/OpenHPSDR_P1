@@ -41,8 +41,8 @@ bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
 
 ### read functions
 ```c
-bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *data);
-bool hpsdr_rxbuffer_read(hpsdr_config_t **cfg, float _Complex *data);
+bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *iq);
+bool hpsdr_rxbuffer_read(hpsdr_config_t **cfg, float _Complex *iq);
 ```
 
 ## Build test
