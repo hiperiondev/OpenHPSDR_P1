@@ -42,7 +42,7 @@ double txdrv_dbl = 0.99;
 #define chk_data(a,b,c,fun) \
 		    if ((a) != b) { \
 		        b = a; \
-		        cfg->cb.ep2(fun, c); \
+		        cfg->ep2(fun, c); \
 		    }
 
 void ep2_handler(hpsdr_config_t *cfg, uint8_t *frame) {
@@ -70,26 +70,26 @@ void ep2_handler(hpsdr_config_t *cfg, uint8_t *frame) {
         if (rc != cfg->settings.AlexAtt) {
             mod = 1;
             cfg->settings.AlexAtt = rc;
-            cfg->cb.ep2(EP2_ALEXATT, "AlexAtt");
+            cfg->ep2(EP2_ALEXATT, "AlexAtt");
         }
         rc = FR_EP2_PREAMP(frame);
         if (rc != cfg->settings.preamp) {
             mod = 1;
             cfg->settings.preamp = rc;
-            cfg->cb.ep2(EP2_PREAMP, "Preamp");
+            cfg->ep2(EP2_PREAMP, "Preamp");
         }
         rc = FR_EP2_LTDITHER(frame);
         if (rc != cfg->settings.LTdither) {
             mod = 1;
             cfg->settings.LTdither = rc;
-            cfg->cb.ep2(EP2_LTDITHER, "LTdither");
+            cfg->ep2(EP2_LTDITHER, "LTdither");
         }
 
         rc = FR_EP2_LTRANDOM(frame);
         if (rc != cfg->settings.LTrandom) {
             mod = 1;
             cfg->settings.LTrandom = rc;
-            cfg->cb.ep2(EP2_LTRANDOM, "LTrandom");
+            cfg->ep2(EP2_LTRANDOM, "LTrandom");
         }
         if (mod)
             hpsdr_dbg_printf(1, "AlexAtt=%d Preamp=%d Dither=%d Random=%d\n", cfg->settings.AlexAtt, cfg->settings.preamp, cfg->settings.LTdither, cfg->settings.LTrandom);
@@ -99,25 +99,25 @@ void ep2_handler(hpsdr_config_t *cfg, uint8_t *frame) {
         if (rc != cfg->settings.alexRXant) {
             mod = 1;
             cfg->settings.alexRXant = rc;
-            cfg->cb.ep2(EP2_ALEXRXANT, "AlexRXant");
+            cfg->ep2(EP2_ALEXRXANT, "AlexRXant");
         }
         rc = FR_EP2_ALEXXRXOUT(frame);
         if (rc != cfg->settings.alexRXout) {
             mod = 1;
             cfg->settings.alexRXout = rc;
-            cfg->cb.ep2(EP2_ALEXXRXOUT, "AlexRXout");
+            cfg->ep2(EP2_ALEXXRXOUT, "AlexRXout");
         }
         rc = FR_EP2_ALETXREL(frame);
         if (rc != cfg->settings.AlexTXrel) {
             mod = 1;
             cfg->settings.AlexTXrel = rc;
-            cfg->cb.ep2(EP2_ALETXREL, "AlexTXrel");
+            cfg->ep2(EP2_ALETXREL, "AlexTXrel");
         }
         rc = FR_EP2_DUPLEX(frame);
         if (rc != cfg->settings.duplex) {
             mod = 1;
             cfg->settings.duplex = rc;
-            cfg->cb.ep2(EP2_DUPLEX, "Duplex");
+            cfg->ep2(EP2_DUPLEX, "Duplex");
         }
         if (mod)
             hpsdr_dbg_printf(1, "RXout=%d RXant=%d TXrel=%d Duplex=%d\n", cfg->settings.alexRXout, cfg->settings.alexRXant, cfg->settings.AlexTXrel, cfg->settings.duplex);

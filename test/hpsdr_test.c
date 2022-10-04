@@ -28,19 +28,22 @@
 #include <string.h>
 #include <stdint.h>
 #include <signal.h>
-#include <time.h>
 #include <complex.h>
 #include <stdlib.h>
+#include <pthread.h>
 
 #include "hpsdr_debug.h"
 #include "hpsdr_definitions.h"
 #include "hpsdr_version.h"
 #include "hpsdr_p1.h"
+#include "hpsdr_hardware_fake.h"
 
 #include "cargs.h"
 
-bool file = false;
-char filename[254];
+
+pthread_t iqtransmitter_thread_id;
+pthread_t iqreceiver_thread_id;
+
 char exit_signal[33][17] = {
         "NOSIGNAL",
         "SIGHUP",
@@ -82,68 +85,6 @@ void ep2_cbk (int func, char* name) {
 
 }
 
-uint8_t iqtransmitter_init(void) {
-    return 0;
-}
-
-uint8_t iqtransmitter_deinit(void) {
-    return 0;
-}
-
-
-void* iqtransmitter_thread(void *data) {
-    //hpsdr_config_t *cfg = (hpsdr_config_t*) data;
-
-    while(1);
-    return NULL;
-}
-
-uint8_t iqreceiver_init(void) {
-    return 0;
-}
-
-uint8_t iqreceiver_deinit(void) {
-    return 0;
-}
-
-void* iqreceiver_thread(void *data) {
-    hpsdr_config_t *cfg = (hpsdr_config_t*) data;
-    float _Complex csample;
-    float is;
-    float qs;
-    FILE *fp = NULL;
-
-    if (file) {
-        fp = fopen(filename, "r");
-        if (NULL == fp) {
-            printf("WARNING: file \"%s\" can't be opened\n", filename);
-        }
-    } else {
-        time_t t;
-        srand((unsigned) time(&t));
-    }
-
-    while (1) {
-        if (file) {
-            if(feof(fp))
-                rewind(fp);
-            fread(&is, sizeof(float), 1, fp);
-            fread(&qs, sizeof(float), 1, fp);
-        } else {
-            // make some noise
-            is = (rand() % 10000);
-            qs = (rand() % 10000) * I;
-        }
-
-        csample = is + qs * I;
-
-
-        while(!hpsdr_rxbuffer_write(&cfg, &csample));
-    }
-
-    return NULL;
-}
-
 static struct cag_option options[] = {
         {
                     .identifier = 'd',
@@ -160,9 +101,15 @@ static struct cag_option options[] = {
         }, {
                     .identifier = 'f',
                 .access_letters = "f",
-                   .access_name = "filename",
+                   .access_name = "ifilename",
                     .value_name = "VALUE",
-                   .description = "Read I/Q samples from file and return as receiver)"
+                   .description = "Read I/Q samples from file and return as receiver"
+        }, {
+                    .identifier = 'o',
+                .access_letters = "o",
+                   .access_name = "ifilename",
+                    .value_name = "VALUE",
+                   .description = "Write I/Q samples to ifile"
         }, {
                     .identifier = 'h',
                 .access_letters = "h",
@@ -226,10 +173,17 @@ void parse_args(hpsdr_config_t *cfg, int argc, char *argv[]) {
                 break;
 
             case 'f':
-                file = true;
+                ifile = true;
                 value = cag_option_get_value(&context);
-                strcpy(filename, value);
-                printf("< file iq: %s >\n", filename);
+                strcpy(ifilename, value);
+                printf("< input file iq: %s >\n", ifilename);
+                break;
+
+            case 'o':
+                ofile = true;
+                value = cag_option_get_value(&context);
+                strcpy(ofilename, value);
+                printf("< output file iq: %s >\n", ofilename);
                 break;
 
             case 'h':
@@ -242,7 +196,7 @@ void parse_args(hpsdr_config_t *cfg, int argc, char *argv[]) {
 
 int main(int argc, char *argv[]) {
     printf("OpenHPSDR_p1 version: %d.%d.%d\n", HPSDR_VERSION_MAJOR, HPSDR_VERSION_MINOR, HPSDR_VERSION_PATCH);
-
+    uint8_t res = 0;
     hpsdr_config_t *cfg = malloc(sizeof(hpsdr_config_t));
     hpsdr_clear_config(&cfg);
 
@@ -260,20 +214,29 @@ int main(int argc, char *argv[]) {
         hpsdr_dbg_setlevel(1);
     }
 
-    // configure callbacks
-        cfg->cb.tx_init = iqtransmitter_init;
-      cfg->cb.tx_deinit = iqtransmitter_deinit;
-      cfg->cb.tx_thread = iqtransmitter_thread;
-        cfg->cb.rx_init = iqreceiver_init;
-      cfg->cb.rx_deinit = iqreceiver_deinit;
-      cfg->cb.rx_thread = iqreceiver_thread;
-            cfg->cb.ep2 = ep2_cbk;
+    cfg->ep2 = ep2_cbk;
 
     hpsdr_init(&cfg);
     hpsdr_start(&cfg);
 
-    while (1); // this time... do nothing
+    res = iqtransmitter_init();
+    if (res == -1)
+        printf("WARNING: tx_init failed\n");
+    res = iqreceiver_init();
+    if (res == -1)
+        printf("WARNING: rx_init failed\n");
 
+    pthread_create(&iqtransmitter_thread_id, NULL, &iqtransmitter_thread, (void*)cfg);
+    pthread_detach(iqtransmitter_thread_id);
+
+    pthread_create(&iqreceiver_thread_id, NULL, &iqreceiver_thread, (void*)cfg);
+    pthread_detach(iqreceiver_thread_id);
+
+    while (1)
+        ; // this time... do nothing
+
+    pthread_cancel(iqreceiver_thread_id);
+    pthread_cancel(iqtransmitter_thread_id);
     hpsdr_stop();
     hpsdr_deinit(&cfg);
 

@@ -66,34 +66,18 @@ typedef struct global {
 } global_t;
 
 /**
- * @brief Struct of Callbacks
- *
- * Struct of Internal Callbacks
- */
-typedef struct callbacks {
-         hw_init tx_init;     // transmitter initialize callback
-       hw_deinit tx_deinit;   // transmitter deinitialize callback
-       hw_thread tx_thread;   // transmitter thread callback
-
-         hw_init rx_init;     // receiver initialize callback
-       hw_deinit rx_deinit;   // receiver deinitialize callback
-       hw_thread rx_thread;   // receiver thread callback
-
-    ep2_callback ep2;         // ep2 packet callback
-} callbacks_t;
-
-/**
  * @brief Struct of Internal configuration
  *
  * Struct of internal configuration.
  */
 typedef struct hpsdr_config {
        global_t global;
-    callbacks_t cb;
+    //callbacks_t cb;
      protocol_t settings;
         RingBuf rxbuff;
         RingBuf txbuff;
            void *user;
+   ep2_callback ep2;         // ep2 packet callback
 } hpsdr_config_t;
 
 /**
@@ -165,7 +149,7 @@ bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
  * @param cfg configuration
  * @param data buffer data
  */
-void hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *data);
+bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *data);
 
 /**
  * @brief Read from rx buffer
@@ -175,6 +159,6 @@ void hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *data);
  * @param cfg configuration
  * @param data buffer data
  */
-void hpsdr_rxbuffer_read(hpsdr_config_t **cfg, float _Complex *data);
+bool hpsdr_rxbuffer_read(hpsdr_config_t **cfg, float _Complex *data);
 
 #endif /* HPSDR_P1_H_ */

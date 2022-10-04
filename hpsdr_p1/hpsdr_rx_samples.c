@@ -36,72 +36,25 @@
 #include "hpsdr_ring_buf.h"
 
 void hpsdr_get_rx_samples(hpsdr_config_t *cfg, int n, uint8_t *pointer) {
-    int j, k;
+    int j; //, k;
     float _Complex csample;
-    //int32_t dacisample = 0, dacqsample = 0;
-    //int32_t myisample, myqsample;
-    short IQdata;
+    uint8_t itemp;
 
     // TODO: complete
     for (j = 0; j < n; j++) {
         if (!RingBuf_get(&(cfg->rxbuff), &csample))
             csample = 0 + 0 * I;
 
-        for (k = 0; k < cfg->settings.receivers; k++) {
-            IQdata = (short) creal(csample);
-            *pointer++ = IQdata >> 8;
-            *pointer++ = IQdata & 0xff;
-            *pointer++ = 0;
-            IQdata = (short) cimag(csample);
-            *pointer++ = IQdata >> 8;
-            *pointer++ = IQdata & 0xff;
-            *pointer++ = 0;
+        itemp = creal(csample) >= 0.0 ? (uint8_t) floor((double) creal(csample) * 32767.0 + 0.5) : (uint8_t) ceil((double) creal(csample) * 32767.0 - 0.5);
+        *pointer++ = (uint8_t) ((itemp >> 16) & 0xff);
+        *pointer++ = (uint8_t) ((itemp >> 8) & 0xff);
+        *pointer++ = (uint8_t) (itemp & 0xff);
 
-
-            /*
-            myisample = 0;
-            myqsample = 0;
-            switch (cfg->settings.rx_adc[k]) {
-                case 0: // ADC1
-                    myisample = creal(csample);
-                    myqsample = cimag(csample);
-                    break;
-                case 1: // ADC2
-                    myisample = creal(csample);
-                    myqsample = cimag(csample);
-                    break;
-                default:
-                    myisample = 0;
-                    myqsample = 0;
-                    break;
-            }
-            if ((cfg->global.emulation == DEVICE_METIS || cfg->global.emulation == DEVICE_HERMES_LITE) && cfg->settings.ptt && (k == 1)) {
-                // METIS: TX DAC signal goes to RX2 when TXing
-                myisample = dacisample;
-                myqsample = dacqsample;
-            }
-            if ((cfg->global.emulation == DEVICE_HERMES || cfg->global.emulation == DEVICE_GRIFFIN || cfg->global.emulation == DEVICE_C25
-                    || cfg->global.emulation == DEVICE_HERMES_LITE2) && cfg->settings.ptt && (k == 3)) {
-                // HERMES: TX DAC signal goes to RX4 when TXing
-                myisample = dacisample;
-                myqsample = dacqsample;
-            }
-            if ((cfg->global.emulation == DEVICE_ANGELIA || cfg->global.emulation == DEVICE_ORION || cfg->global.emulation == DEVICE_ORION2)
-                    && cfg->settings.ptt && (k == 4)) {
-                // ANGELIA and beyond: TX DAC signal goes to RX5 when TXing
-                myisample = dacisample;
-                myqsample = dacqsample;
-            }
-
-            *pointer++ = (myisample >> 16) & 0xFF;
-            *pointer++ = (myisample >> 8) & 0xFF;
-            *pointer++ = (myisample >> 0) & 0xFF;
-            *pointer++ = (myqsample >> 16) & 0xFF;
-            *pointer++ = (myqsample >> 8) & 0xFF;
-            *pointer++ = (myqsample >> 0) & 0xFF;
-            */
-        }
-        // TODO: implement microphone
-        pointer += 2;
+        itemp = cimag(csample) >= 0.0 ? (uint8_t) floor((double) cimag(csample) * 32767.0 + 0.5) : (uint8_t) ceil((double) cimag(csample) * 32767.0 - 0.5);
+        *pointer++ = (uint8_t) ((itemp >> 16) & 0xff);
+        *pointer++ = (uint8_t) ((itemp >> 8) & 0xff);
+        *pointer++ = (uint8_t) (itemp & 0xff);
     }
+    // TODO: implement microphone
+    pointer += 2;
 }

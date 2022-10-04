@@ -42,8 +42,6 @@ int enable_thread;
 int active_thread;
 double c1, c2;
 
-pthread_t iqtransmitter_thread_id;
-pthread_t iqreceiver_thread_id;
 pthread_t network_thread_id;
 
 float _Complex rxbuf[BUFFLEN];
@@ -122,20 +120,11 @@ void hpsdr_clear_config(hpsdr_config_t **cfg) {
     (*cfg)->settings.CommonMercuryFreq = -1;
     (*cfg)->settings.freq = -1;
     (*cfg)->settings.diversity = 0;
-
-    (*cfg)->cb.tx_init = NULL;
-    (*cfg)->cb.tx_deinit = NULL;
-    (*cfg)->cb.tx_thread = NULL;
-    (*cfg)->cb.rx_init = NULL;
-    (*cfg)->cb.rx_deinit = NULL;
-    (*cfg)->cb.rx_thread = NULL;
-    (*cfg)->cb.ep2 = NULL;
+    (*cfg)->ep2 = NULL;
 }
 
 void hpsdr_init(hpsdr_config_t **cfg) {
     hpsdr_dbg_printf(1, "hpsdr_init\n");
-
-    uint8_t res = 0;
 
     switch ((*cfg)->global.emulation) {
 
@@ -196,58 +185,14 @@ void hpsdr_init(hpsdr_config_t **cfg) {
 
     RingBuf_ctor(&((*cfg)->txbuff), txbuf, ARRAY_LEN(txbuf));
     RingBuf_ctor(&((*cfg)->rxbuff), rxbuf, ARRAY_LEN(txbuf));
-
-    if ((*cfg)->cb.tx_init == NULL)
-        hpsdr_dbg_printf(0, "WARNING: tx_init not defined\n");
-    else
-        res = (*cfg)->cb.tx_init();
-    if (res == -1)
-        hpsdr_dbg_printf(0, "WARNING: tx_init failed\n");
-
-    if ((*cfg)->cb.rx_init == NULL)
-        hpsdr_dbg_printf(0, "WARNING: rx_init not defined\n");
-    else
-        res = (*cfg)->cb.rx_init();
-    if (res == -1) hpsdr_dbg_printf(0, "WARNING: rx_init failed\n");
 }
 
 void hpsdr_deinit(hpsdr_config_t **cfg) {
     hpsdr_dbg_printf(1, "hpsdr_init\n");
-    uint8_t res = 0;
-
-    if ((*cfg)->cb.rx_deinit == NULL)
-        hpsdr_dbg_printf(0, "WARNING: rx_deinit not defined\n");
-    else {
-        res = (*cfg)->cb.rx_deinit();
-        if (res == -1)
-            hpsdr_dbg_printf(0, "WARNING: rx_deinit failed\n");
-    }
-
-    if ((*cfg)->cb.tx_deinit == NULL)
-        hpsdr_dbg_printf(0, "WARNING: tx_deinit not defined\n");
-    else {
-        res = (*cfg)->cb.tx_deinit();
-        if (res == -1)
-            hpsdr_dbg_printf(0, "WARNING: tx_deinit failed\n");
-    }
 }
 
 void hpsdr_start(hpsdr_config_t **cfg) {
     hpsdr_dbg_printf(1, "hpsdr_start\n");
-
-    if ((*cfg)->cb.tx_thread == NULL)
-        hpsdr_dbg_printf(0, "WARNING: tx_thread not defined\n");
-    else {
-        pthread_create(&iqtransmitter_thread_id, NULL, (*cfg)->cb.tx_thread, (void*) (*cfg));
-        pthread_detach(iqtransmitter_thread_id);
-    }
-
-    if ((*cfg)->cb.tx_thread == NULL)
-        hpsdr_dbg_printf(0, "WARNING: rx_thread not defined\n");
-    else {
-        pthread_create(&iqreceiver_thread_id, NULL, (*cfg)->cb.rx_thread, (void*) (*cfg));
-        pthread_detach(iqreceiver_thread_id);
-    }
 
     pthread_create(&network_thread_id, NULL, hpsdr_network_handler, (void*) (*cfg));
     pthread_detach(network_thread_id);
@@ -257,8 +202,6 @@ void hpsdr_stop(void) {
     hpsdr_dbg_printf(1, "hpsdr_stop\n");
 
     pthread_cancel(network_thread_id);
-    pthread_cancel(iqreceiver_thread_id);
-    pthread_cancel(iqtransmitter_thread_id);
 }
 
 bool hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq) {
@@ -269,12 +212,10 @@ bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq) {
     return RingBuf_put(&((*cfg)->rxbuff), *iq);
 }
 
-void hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *data) {
-    if (!RingBuf_get(&((*cfg)->txbuff), data))
-        *data = 0 + 0 * I;
+bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *data) {
+    return RingBuf_get(&((*cfg)->txbuff), data);
 }
 
-void hpsdr_rxbuffer_read(hpsdr_config_t **cfg, float _Complex *data) {
-    if (!RingBuf_get(&((*cfg)->rxbuff), data))
-        *data = 0 + 0 * I;
+bool hpsdr_rxbuffer_read(hpsdr_config_t **cfg, float _Complex *data) {
+    return RingBuf_get(&((*cfg)->rxbuff), data);
 }
