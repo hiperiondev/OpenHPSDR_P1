@@ -28,6 +28,7 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <time.h>
+#include <unistd.h>
 
 #include "hpsdr_p1.h"
 
@@ -44,7 +45,6 @@ uint8_t iqtransmitter_deinit(void) {
     return 0;
 }
 
-
 void* iqtransmitter_thread(void *data) {
     hpsdr_config_t *cfg = (hpsdr_config_t*) data;
     float _Complex csample;
@@ -59,7 +59,9 @@ void* iqtransmitter_thread(void *data) {
             fwrite(&csample, sizeof(float _Complex), 1, fp);
         }
     } else
-        while (1);
+        while (1)
+            usleep(1000);
+
       return NULL;
 }
 
@@ -101,4 +103,3 @@ void* iqreceiver_thread(void *data) {
 
     return NULL;
 }
-

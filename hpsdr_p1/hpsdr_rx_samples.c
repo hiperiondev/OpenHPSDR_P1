@@ -36,7 +36,7 @@
 #include "hpsdr_ring_buf.h"
 
 void hpsdr_get_rx_samples(hpsdr_config_t *cfg, int n, uint8_t *pointer) {
-    int j; //, k;
+    int j;
     float _Complex csample;
     uint8_t itemp;
 

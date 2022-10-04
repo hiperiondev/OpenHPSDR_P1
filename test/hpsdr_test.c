@@ -31,6 +31,7 @@
 #include <complex.h>
 #include <stdlib.h>
 #include <pthread.h>
+#include <unistd.h>
 
 #include "hpsdr_debug.h"
 #include "hpsdr_definitions.h"
@@ -82,7 +83,6 @@ char exit_signal[33][17] = {
 
 void ep2_cbk (int func, char* name) {
     printf("ep2_cbk: %s (%d)\n", name, func);
-
 }
 
 static struct cag_option options[] = {
@@ -233,7 +233,7 @@ int main(int argc, char *argv[]) {
     pthread_detach(iqreceiver_thread_id);
 
     while (1)
-        ; // this time... do nothing
+        usleep(1000); // this time... do nothing
 
     pthread_cancel(iqreceiver_thread_id);
     pthread_cancel(iqtransmitter_thread_id);
