@@ -3,30 +3,20 @@
 {\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
 {\ttfamily \#include $<$signal.\+h$>$}\newline
-{\ttfamily \#include $<$time.\+h$>$}\newline
 {\ttfamily \#include $<$complex.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}hpsdr\+\_\+debug.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}hpsdr\+\_\+definitions.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}hpsdr\+\_\+version.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}hpsdr\+\_\+p1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hpsdr\+\_\+hardware\+\_\+fake.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}cargs.\+h\char`\"{}}\newline
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{hpsdr__test_8c_a40ada4fe8722e640d429f33ff5699e87}{ep2\+\_\+cbk}} (int func, char $\ast$name)
-\item 
-uint8\+\_\+t \mbox{\hyperlink{hpsdr__test_8c_a12decfaaef7e456a56637c1f6aa80c57}{iqtransmitter\+\_\+init}} (void)
-\item 
-uint8\+\_\+t \mbox{\hyperlink{hpsdr__test_8c_a2dfec92a17fa2cab9f41a4a28a9e9f13}{iqtransmitter\+\_\+deinit}} (void)
-\item 
-void $\ast$ \mbox{\hyperlink{hpsdr__test_8c_ac54186db1f8a1f6eb9cb10355fc88411}{iqtransmitter\+\_\+thread}} (void $\ast$data)
-\item 
-uint8\+\_\+t \mbox{\hyperlink{hpsdr__test_8c_a743d1c86fdee34d84fc68f587ef414d5}{iqreceiver\+\_\+init}} (void)
-\item 
-uint8\+\_\+t \mbox{\hyperlink{hpsdr__test_8c_a95339207e3d8625062a7da40b954b9b9}{iqreceiver\+\_\+deinit}} (void)
-\item 
-void $\ast$ \mbox{\hyperlink{hpsdr__test_8c_a85d13b75f77264c09d14080355d0eb21}{iqreceiver\+\_\+thread}} (void $\ast$data)
 \item 
 void \mbox{\hyperlink{hpsdr__test_8c_a3b96996bfdba0be2e261fcd9b7c4200f}{parse\+\_\+args}} (\mbox{\hyperlink{hpsdr__p1_8h_aa141720fea7d4178398cd2ab09bf229e}{hpsdr\+\_\+config\+\_\+t}} $\ast$cfg, int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
 \item 
@@ -34,6 +24,10 @@ int \mbox{\hyperlink{hpsdr__test_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (i
 \end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
+\item 
+pthread\+\_\+t \mbox{\hyperlink{hpsdr__test_8c_aff307349c404c2792ee0c222a801bc5f}{iqtransmitter\+\_\+thread\+\_\+id}}
+\item 
+pthread\+\_\+t \mbox{\hyperlink{hpsdr__test_8c_a81b2ddabc08ca74adb49b45a0e1eeb5f}{iqreceiver\+\_\+thread\+\_\+id}}
 \item 
 char \mbox{\hyperlink{hpsdr__test_8c_aed56968465a4b18dacd08f77fef94029}{exit\+\_\+signal}} \mbox{[}33\mbox{]}\mbox{[}17\mbox{]}
 \end{DoxyCompactItemize}
@@ -45,42 +39,6 @@ char \mbox{\hyperlink{hpsdr__test_8c_aed56968465a4b18dacd08f77fef94029}{exit\+\_
 \index{ep2\_cbk@{ep2\_cbk}!hpsdr\_test.c@{hpsdr\_test.c}}
 \doxysubsubsection{\texorpdfstring{ep2\_cbk()}{ep2\_cbk()}}
 {\footnotesize\ttfamily void ep2\+\_\+cbk (\begin{DoxyParamCaption}\item[{int}]{func,  }\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{hpsdr__test_8c_a95339207e3d8625062a7da40b954b9b9}\label{hpsdr__test_8c_a95339207e3d8625062a7da40b954b9b9}} 
-\index{hpsdr\_test.c@{hpsdr\_test.c}!iqreceiver\_deinit@{iqreceiver\_deinit}}
-\index{iqreceiver\_deinit@{iqreceiver\_deinit}!hpsdr\_test.c@{hpsdr\_test.c}}
-\doxysubsubsection{\texorpdfstring{iqreceiver\_deinit()}{iqreceiver\_deinit()}}
-{\footnotesize\ttfamily uint8\+\_\+t iqreceiver\+\_\+deinit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{hpsdr__test_8c_a743d1c86fdee34d84fc68f587ef414d5}\label{hpsdr__test_8c_a743d1c86fdee34d84fc68f587ef414d5}} 
-\index{hpsdr\_test.c@{hpsdr\_test.c}!iqreceiver\_init@{iqreceiver\_init}}
-\index{iqreceiver\_init@{iqreceiver\_init}!hpsdr\_test.c@{hpsdr\_test.c}}
-\doxysubsubsection{\texorpdfstring{iqreceiver\_init()}{iqreceiver\_init()}}
-{\footnotesize\ttfamily uint8\+\_\+t iqreceiver\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{hpsdr__test_8c_a85d13b75f77264c09d14080355d0eb21}\label{hpsdr__test_8c_a85d13b75f77264c09d14080355d0eb21}} 
-\index{hpsdr\_test.c@{hpsdr\_test.c}!iqreceiver\_thread@{iqreceiver\_thread}}
-\index{iqreceiver\_thread@{iqreceiver\_thread}!hpsdr\_test.c@{hpsdr\_test.c}}
-\doxysubsubsection{\texorpdfstring{iqreceiver\_thread()}{iqreceiver\_thread()}}
-{\footnotesize\ttfamily void$\ast$ iqreceiver\+\_\+thread (\begin{DoxyParamCaption}\item[{void $\ast$}]{data }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{hpsdr__test_8c_a2dfec92a17fa2cab9f41a4a28a9e9f13}\label{hpsdr__test_8c_a2dfec92a17fa2cab9f41a4a28a9e9f13}} 
-\index{hpsdr\_test.c@{hpsdr\_test.c}!iqtransmitter\_deinit@{iqtransmitter\_deinit}}
-\index{iqtransmitter\_deinit@{iqtransmitter\_deinit}!hpsdr\_test.c@{hpsdr\_test.c}}
-\doxysubsubsection{\texorpdfstring{iqtransmitter\_deinit()}{iqtransmitter\_deinit()}}
-{\footnotesize\ttfamily uint8\+\_\+t iqtransmitter\+\_\+deinit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{hpsdr__test_8c_a12decfaaef7e456a56637c1f6aa80c57}\label{hpsdr__test_8c_a12decfaaef7e456a56637c1f6aa80c57}} 
-\index{hpsdr\_test.c@{hpsdr\_test.c}!iqtransmitter\_init@{iqtransmitter\_init}}
-\index{iqtransmitter\_init@{iqtransmitter\_init}!hpsdr\_test.c@{hpsdr\_test.c}}
-\doxysubsubsection{\texorpdfstring{iqtransmitter\_init()}{iqtransmitter\_init()}}
-{\footnotesize\ttfamily uint8\+\_\+t iqtransmitter\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{hpsdr__test_8c_ac54186db1f8a1f6eb9cb10355fc88411}\label{hpsdr__test_8c_ac54186db1f8a1f6eb9cb10355fc88411}} 
-\index{hpsdr\_test.c@{hpsdr\_test.c}!iqtransmitter\_thread@{iqtransmitter\_thread}}
-\index{iqtransmitter\_thread@{iqtransmitter\_thread}!hpsdr\_test.c@{hpsdr\_test.c}}
-\doxysubsubsection{\texorpdfstring{iqtransmitter\_thread()}{iqtransmitter\_thread()}}
-{\footnotesize\ttfamily void$\ast$ iqtransmitter\+\_\+thread (\begin{DoxyParamCaption}\item[{void $\ast$}]{data }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{hpsdr__test_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{hpsdr__test_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
 \index{hpsdr\_test.c@{hpsdr\_test.c}!main@{main}}
@@ -102,4 +60,16 @@ char \mbox{\hyperlink{hpsdr__test_8c_aed56968465a4b18dacd08f77fef94029}{exit\+\_
 \index{exit\_signal@{exit\_signal}!hpsdr\_test.c@{hpsdr\_test.c}}
 \doxysubsubsection{\texorpdfstring{exit\_signal}{exit\_signal}}
 {\footnotesize\ttfamily char exit\+\_\+signal\mbox{[}33\mbox{]}\mbox{[}17\mbox{]}}
+
+\mbox{\Hypertarget{hpsdr__test_8c_a81b2ddabc08ca74adb49b45a0e1eeb5f}\label{hpsdr__test_8c_a81b2ddabc08ca74adb49b45a0e1eeb5f}} 
+\index{hpsdr\_test.c@{hpsdr\_test.c}!iqreceiver\_thread\_id@{iqreceiver\_thread\_id}}
+\index{iqreceiver\_thread\_id@{iqreceiver\_thread\_id}!hpsdr\_test.c@{hpsdr\_test.c}}
+\doxysubsubsection{\texorpdfstring{iqreceiver\_thread\_id}{iqreceiver\_thread\_id}}
+{\footnotesize\ttfamily pthread\+\_\+t iqreceiver\+\_\+thread\+\_\+id}
+
+\mbox{\Hypertarget{hpsdr__test_8c_aff307349c404c2792ee0c222a801bc5f}\label{hpsdr__test_8c_aff307349c404c2792ee0c222a801bc5f}} 
+\index{hpsdr\_test.c@{hpsdr\_test.c}!iqtransmitter\_thread\_id@{iqtransmitter\_thread\_id}}
+\index{iqtransmitter\_thread\_id@{iqtransmitter\_thread\_id}!hpsdr\_test.c@{hpsdr\_test.c}}
+\doxysubsubsection{\texorpdfstring{iqtransmitter\_thread\_id}{iqtransmitter\_thread\_id}}
+{\footnotesize\ttfamily pthread\+\_\+t iqtransmitter\+\_\+thread\+\_\+id}
 

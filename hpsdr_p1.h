@@ -49,9 +49,6 @@
  *
  * Callbacks prototypes
  */
-typedef uint8_t (*hw_init)(void);
-typedef uint8_t (*hw_deinit)(void);
-typedef   void* (*hw_thread)(void *data);
 typedef    void (*ep2_callback)(int func, char* name);
 
 /**
@@ -60,9 +57,9 @@ typedef    void (*ep2_callback)(int func, char* name);
  * Struct of Global configurations
  */
 typedef struct global {
-                bool debug;     // debug enabled
-                 int iqburst;   // burst for transmitter
-    emulation_type_t emulation; // emulation type
+                bool debug;     /*!< debug enabled */
+                 int iqburst;   /*!< burst for transmitter */
+    emulation_type_t emulation; /*!< emulation type */
 } global_t;
 
 /**
@@ -71,13 +68,12 @@ typedef struct global {
  * Struct of internal configuration.
  */
 typedef struct hpsdr_config {
-       global_t global;
-    //callbacks_t cb;
-     protocol_t settings;
-        RingBuf rxbuff;
-        RingBuf txbuff;
-           void *user;
-   ep2_callback ep2;         // ep2 packet callback
+       global_t global;   /*!< global settings*/
+     protocol_t settings; /*!< internal settings */
+        RingBuf rxbuff;   /*!< reception buffer */
+        RingBuf txbuff;   /*!< transmission buffer */
+           void *user;    /*!< user data */
+   ep2_callback ep2;      /*!< ep2 packet callback */
 } hpsdr_config_t;
 
 /**
@@ -125,8 +121,8 @@ void hpsdr_clear_config(hpsdr_config_t **cfg);
  * Push to tx buffer
  *
  * @param cfg configuration
- * @param iq sample
- * @return number of bytes wrote
+ * @param iq  sample
+ * @return result of write
  */
 bool hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
 
@@ -136,8 +132,8 @@ bool hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
  * Push to rx buffer
  *
  * @param cfg configuration
- * @param iq sample
- * @return number of bytes wrote
+ * @param iq  sample
+ * @return result of write
  */
 bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
 
@@ -147,9 +143,10 @@ bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
  * Push to tx buffer
  *
  * @param cfg configuration
- * @param data buffer data
+ * @param iq  buffer data
+ * @return result of read
  */
-bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *data);
+bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *iq);
 
 /**
  * @brief Read from rx buffer
@@ -157,8 +154,9 @@ bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *data);
  * Push to rx buffer
  *
  * @param cfg configuration
- * @param data buffer data
+ * @param iq  buffer data
+ * @return result of read
  */
-bool hpsdr_rxbuffer_read(hpsdr_config_t **cfg, float _Complex *data);
+bool hpsdr_rxbuffer_read(hpsdr_config_t **cfg, float _Complex *iq);
 
 #endif /* HPSDR_P1_H_ */

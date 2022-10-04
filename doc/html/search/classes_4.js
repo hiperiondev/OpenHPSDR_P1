@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ringbuf_406',['RingBuf',['../structRingBuf.html',1,'']]]
+  ['ringbuf_387',['RingBuf',['../structRingBuf.html',1,'']]]
 ];

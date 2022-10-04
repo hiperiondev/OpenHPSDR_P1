@@ -36,6 +36,7 @@
  *
  * Receive samples from network and push in TX queue.
  *
+ * @param cfg configuration
  * @param buffer Received buffer.
  */
 void samples_rcv(hpsdr_config_t *cfg, uint8_t *buffer);

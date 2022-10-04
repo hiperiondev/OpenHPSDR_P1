@@ -104,6 +104,7 @@
  *
  * EP2 handler.
  *
+ * @param cfg configuration
  * @param frame The received frame.
  */
 void ep2_handler(hpsdr_config_t *cfg, uint8_t *frame);

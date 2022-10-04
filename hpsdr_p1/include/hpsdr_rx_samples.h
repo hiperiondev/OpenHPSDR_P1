@@ -28,6 +28,15 @@
 #ifndef HPSDR_RX_SAMPLES_H_
 #define HPSDR_RX_SAMPLES_H_
 
+/**
+ * @brief Reception samples
+ *
+ * Reception samples.
+ *
+ * @param cfg Configuration
+ * @param n
+ * @param pointer packet pointer.
+ */
 void hpsdr_get_rx_samples(hpsdr_config_t *cfg, int n, uint8_t *pointer);
 
 #endif /* HPSDR_RX_SAMPLES_H_ */

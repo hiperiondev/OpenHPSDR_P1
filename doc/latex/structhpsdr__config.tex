@@ -14,8 +14,6 @@ Struct of Internal configuration.
 \item 
 \mbox{\hyperlink{hpsdr__p1_8h_a3c07efeda5ec189f0222d0a3aaacf842}{global\+\_\+t}} \mbox{\hyperlink{structhpsdr__config_a876d5ec7e2e03a92b0df0fa3cd38fdfa}{global}}
 \item 
-\mbox{\hyperlink{hpsdr__p1_8h_a102732ac126805d766bfb5533896ac55}{callbacks\+\_\+t}} \mbox{\hyperlink{structhpsdr__config_a9b619b46c8696c7dbfa6a8d2dd97dcb5}{cb}}
-\item 
 \mbox{\hyperlink{hpsdr__protocol_8h_af4123b90daf4a353344b4a9deb7c21b9}{protocol\+\_\+t}} \mbox{\hyperlink{structhpsdr__config_a404d5e5c7ae4f2f8ca33b4d4d8da333a}{settings}}
 \item 
 \mbox{\hyperlink{structRingBuf}{Ring\+Buf}} \mbox{\hyperlink{structhpsdr__config_a77abb2d24ddd90d8f5e26d31138b95ba}{rxbuff}}
@@ -23,6 +21,8 @@ Struct of Internal configuration.
 \mbox{\hyperlink{structRingBuf}{Ring\+Buf}} \mbox{\hyperlink{structhpsdr__config_a26a0692ffdf407a4429625fa44fa902c}{txbuff}}
 \item 
 void $\ast$ \mbox{\hyperlink{structhpsdr__config_a757f77b14cdcfb08da7a64183c4ab164}{user}}
+\item 
+\mbox{\hyperlink{hpsdr__p1_8h_afe3fc6aad786b73d059b5ab129b8dc73}{ep2\+\_\+callback}} \mbox{\hyperlink{structhpsdr__config_af760aa2cbf7bb281547d2fe0dcf47416}{ep2}}
 \end{DoxyCompactItemize}
 
 
@@ -32,43 +32,43 @@ Struct of Internal configuration.
 Struct of internal configuration. 
 
 \doxysubsection{Field Documentation}
-\mbox{\Hypertarget{structhpsdr__config_a9b619b46c8696c7dbfa6a8d2dd97dcb5}\label{structhpsdr__config_a9b619b46c8696c7dbfa6a8d2dd97dcb5}} 
-\index{hpsdr\_config@{hpsdr\_config}!cb@{cb}}
-\index{cb@{cb}!hpsdr\_config@{hpsdr\_config}}
-\doxysubsubsection{\texorpdfstring{cb}{cb}}
-{\footnotesize\ttfamily \mbox{\hyperlink{hpsdr__p1_8h_a102732ac126805d766bfb5533896ac55}{callbacks\+\_\+t}} hpsdr\+\_\+config\+::cb}
+\mbox{\Hypertarget{structhpsdr__config_af760aa2cbf7bb281547d2fe0dcf47416}\label{structhpsdr__config_af760aa2cbf7bb281547d2fe0dcf47416}} 
+\index{hpsdr\_config@{hpsdr\_config}!ep2@{ep2}}
+\index{ep2@{ep2}!hpsdr\_config@{hpsdr\_config}}
+\doxysubsubsection{\texorpdfstring{ep2}{ep2}}
+{\footnotesize\ttfamily \mbox{\hyperlink{hpsdr__p1_8h_afe3fc6aad786b73d059b5ab129b8dc73}{ep2\+\_\+callback}} hpsdr\+\_\+config\+::ep2}
 
-\mbox{\Hypertarget{structhpsdr__config_a876d5ec7e2e03a92b0df0fa3cd38fdfa}\label{structhpsdr__config_a876d5ec7e2e03a92b0df0fa3cd38fdfa}} 
+ep2 packet callback \mbox{\Hypertarget{structhpsdr__config_a876d5ec7e2e03a92b0df0fa3cd38fdfa}\label{structhpsdr__config_a876d5ec7e2e03a92b0df0fa3cd38fdfa}} 
 \index{hpsdr\_config@{hpsdr\_config}!global@{global}}
 \index{global@{global}!hpsdr\_config@{hpsdr\_config}}
 \doxysubsubsection{\texorpdfstring{global}{global}}
 {\footnotesize\ttfamily \mbox{\hyperlink{hpsdr__p1_8h_a3c07efeda5ec189f0222d0a3aaacf842}{global\+\_\+t}} hpsdr\+\_\+config\+::global}
 
-\mbox{\Hypertarget{structhpsdr__config_a77abb2d24ddd90d8f5e26d31138b95ba}\label{structhpsdr__config_a77abb2d24ddd90d8f5e26d31138b95ba}} 
+global settings \mbox{\Hypertarget{structhpsdr__config_a77abb2d24ddd90d8f5e26d31138b95ba}\label{structhpsdr__config_a77abb2d24ddd90d8f5e26d31138b95ba}} 
 \index{hpsdr\_config@{hpsdr\_config}!rxbuff@{rxbuff}}
 \index{rxbuff@{rxbuff}!hpsdr\_config@{hpsdr\_config}}
 \doxysubsubsection{\texorpdfstring{rxbuff}{rxbuff}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structRingBuf}{Ring\+Buf}} hpsdr\+\_\+config\+::rxbuff}
 
-\mbox{\Hypertarget{structhpsdr__config_a404d5e5c7ae4f2f8ca33b4d4d8da333a}\label{structhpsdr__config_a404d5e5c7ae4f2f8ca33b4d4d8da333a}} 
+reception buffer \mbox{\Hypertarget{structhpsdr__config_a404d5e5c7ae4f2f8ca33b4d4d8da333a}\label{structhpsdr__config_a404d5e5c7ae4f2f8ca33b4d4d8da333a}} 
 \index{hpsdr\_config@{hpsdr\_config}!settings@{settings}}
 \index{settings@{settings}!hpsdr\_config@{hpsdr\_config}}
 \doxysubsubsection{\texorpdfstring{settings}{settings}}
 {\footnotesize\ttfamily \mbox{\hyperlink{hpsdr__protocol_8h_af4123b90daf4a353344b4a9deb7c21b9}{protocol\+\_\+t}} hpsdr\+\_\+config\+::settings}
 
-\mbox{\Hypertarget{structhpsdr__config_a26a0692ffdf407a4429625fa44fa902c}\label{structhpsdr__config_a26a0692ffdf407a4429625fa44fa902c}} 
+internal settings \mbox{\Hypertarget{structhpsdr__config_a26a0692ffdf407a4429625fa44fa902c}\label{structhpsdr__config_a26a0692ffdf407a4429625fa44fa902c}} 
 \index{hpsdr\_config@{hpsdr\_config}!txbuff@{txbuff}}
 \index{txbuff@{txbuff}!hpsdr\_config@{hpsdr\_config}}
 \doxysubsubsection{\texorpdfstring{txbuff}{txbuff}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structRingBuf}{Ring\+Buf}} hpsdr\+\_\+config\+::txbuff}
 
-\mbox{\Hypertarget{structhpsdr__config_a757f77b14cdcfb08da7a64183c4ab164}\label{structhpsdr__config_a757f77b14cdcfb08da7a64183c4ab164}} 
+transmission buffer \mbox{\Hypertarget{structhpsdr__config_a757f77b14cdcfb08da7a64183c4ab164}\label{structhpsdr__config_a757f77b14cdcfb08da7a64183c4ab164}} 
 \index{hpsdr\_config@{hpsdr\_config}!user@{user}}
 \index{user@{user}!hpsdr\_config@{hpsdr\_config}}
 \doxysubsubsection{\texorpdfstring{user}{user}}
 {\footnotesize\ttfamily void$\ast$ hpsdr\+\_\+config\+::user}
 
-
+user data 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

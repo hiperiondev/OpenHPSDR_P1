@@ -143,7 +143,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">            <span class="keywordflow">if</span> ((a) != b) { \</div>
 <div class="line">                b = a; \</div>
-<div class="line">                cfg-&gt;cb.ep2(fun, c); \</div>
+<div class="line">                cfg-&gt;ep2(fun, c); \</div>
 <div class="line">            }</div>
 </div><!-- fragment -->
 </div>
@@ -179,6 +179,7 @@ Variables</h2></td></tr>
 <p>EP2 handler.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">cfg</td><td>configuration </td></tr>
     <tr><td class="paramname">frame</td><td>The received frame. </td></tr>
   </table>
   </dd>

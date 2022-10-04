@@ -212,10 +212,10 @@ bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq) {
     return RingBuf_put(&((*cfg)->rxbuff), *iq);
 }
 
-bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *data) {
-    return RingBuf_get(&((*cfg)->txbuff), data);
+bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *iq) {
+    return RingBuf_get(&((*cfg)->txbuff), iq);
 }
 
-bool hpsdr_rxbuffer_read(hpsdr_config_t **cfg, float _Complex *data) {
-    return RingBuf_get(&((*cfg)->rxbuff), data);
+bool hpsdr_rxbuffer_read(hpsdr_config_t **cfg, float _Complex *iq) {
+    return RingBuf_get(&((*cfg)->rxbuff), iq);
 }

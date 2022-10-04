@@ -67,46 +67,36 @@ $(function() {
 <div class="title">OpenHPSDR_P1 </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The objective of this project is to create a complete infrastructure that supports the Open HPSDR version 1 protocol to implement the control of any generic software-defined radio hardware.</p>
+<div class="textblock"><p>The objective of this project is to create a complete framework that supports the Open HPSDR version 1 protocol to implement the control of any generic software-defined radio hardware.</p>
 <p>It is only necessary to implement the hardware control functions.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
-Callbacks</h1>
-<h2><a class="anchor" id="autotoc_md2"></a>
-Functions for create and destroy hardware infrastructure.</h2>
-<p>This functions have not requirements and are called at start and end of the system.</p>
-<blockquote class="doxtable">
-<p>uint8_t (*hw_init)(void)</p>
-<p>uint8_t (*hw_deinit)(void) </p>
-</blockquote>
-<h2><a class="anchor" id="autotoc_md3"></a>
-Function for manage changes in internal setting.</h2>
-<p>Every time an ep2 packet change an internal state this function is called</p>
-<blockquote class="doxtable">
-<p>void (<em>ep2_callback)(int func, char</em> name) </p>
-</blockquote>
-<h2><a class="anchor" id="autotoc_md4"></a>
-Main thread for receive/transmit</h2>
-<p>This process push/poll data from IQ buffer and comunicate with hardware.</p>
-<p>Data receive hpsdr_config_t *cfg</p>
-<blockquote class="doxtable">
-<p>void* (*hw_thread)(void *data) </p>
-</blockquote>
-<h1><a class="anchor" id="autotoc_md5"></a>
+Callback for manage changes in internal setting.</h1>
+<p>Every time an ep2 packet change an internal state this function is called </p><div class="fragment"><div class="line">void (*<a class="code" href="hpsdr__p1_8h.html#afe3fc6aad786b73d059b5ab129b8dc73">ep2_callback</a>)(<span class="keywordtype">int</span> func, <span class="keywordtype">char</span>* name)</div>
+<div class="ttc" id="ahpsdr__p1_8h_html_afe3fc6aad786b73d059b5ab129b8dc73"><div class="ttname"><a href="hpsdr__p1_8h.html#afe3fc6aad786b73d059b5ab129b8dc73">ep2_callback</a></div><div class="ttdeci">void(* ep2_callback)(int func, char *name)</div><div class="ttdoc">Callbacks prototypes.</div><div class="ttdef"><b>Definition:</b> hpsdr_p1.h:52</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
 Buffers</h1>
-<p>RX/TX buffers are circular queues of float _Complex. All data write/read on an overflow/underflow conditions are discarded</p>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<p>RX/TX buffers are circular queues of float _Complex.</p>
+<h2><a class="anchor" id="autotoc_md3"></a>
 write functions</h2>
-<blockquote class="doxtable">
-<p>void <a class="el" href="hpsdr__p1_8h.html#a744e289dd7282a667563077d4361f53f" title="Write to tx buffer.">hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq)</a>;</p>
-<p>void <a class="el" href="hpsdr__p1_8h.html#a3d1030e7c1673854f1e6061b37191b2d" title="Write to rx buffer.">hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq)</a>; </p>
-</blockquote>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code" href="hpsdr__p1_8c.html#aeb6e52f4168b3f40ed1ce98b028bc600">hpsdr_txbuffer_write</a>(<a class="code" href="structhpsdr__config.html">hpsdr_config_t</a> **cfg, <span class="keywordtype">float</span> _Complex *iq);</div>
+<div class="line"><span class="keywordtype">bool</span> <a class="code" href="hpsdr__p1_8c.html#ae8e9692f299ffdca7d5360b6f2b5ad5e">hpsdr_rxbuffer_write</a>(<a class="code" href="structhpsdr__config.html">hpsdr_config_t</a> **cfg, <span class="keywordtype">float</span> _Complex *iq);</div>
+<div class="ttc" id="ahpsdr__p1_8c_html_ae8e9692f299ffdca7d5360b6f2b5ad5e"><div class="ttname"><a href="hpsdr__p1_8c.html#ae8e9692f299ffdca7d5360b6f2b5ad5e">hpsdr_rxbuffer_write</a></div><div class="ttdeci">bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq)</div><div class="ttdoc">Write to rx buffer.</div><div class="ttdef"><b>Definition:</b> hpsdr_p1.c:211</div></div>
+<div class="ttc" id="ahpsdr__p1_8c_html_aeb6e52f4168b3f40ed1ce98b028bc600"><div class="ttname"><a href="hpsdr__p1_8c.html#aeb6e52f4168b3f40ed1ce98b028bc600">hpsdr_txbuffer_write</a></div><div class="ttdeci">bool hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq)</div><div class="ttdoc">Write to tx buffer.</div><div class="ttdef"><b>Definition:</b> hpsdr_p1.c:207</div></div>
+<div class="ttc" id="astructhpsdr__config_html"><div class="ttname"><a href="structhpsdr__config.html">hpsdr_config</a></div><div class="ttdoc">Struct of Internal configuration.</div><div class="ttdef"><b>Definition:</b> hpsdr_p1.h:70</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
 read functions</h2>
-<blockquote class="doxtable">
-<p>void <a class="el" href="hpsdr__p1_8h.html#addaf8de4d5ee3e2fb89cf134eb75df72" title="Read from tx buffer.">hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *data)</a>;</p>
-<p>void <a class="el" href="hpsdr__p1_8h.html#a72c1946b6afbbdac6800455a8ba3c3ff" title="Read from rx buffer.">hpsdr_rxbuffer_read(hpsdr_config_t **cfg, float _Complex *data)</a>; </p>
-</blockquote>
-<h1><a class="anchor" id="autotoc_md8"></a>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code" href="hpsdr__p1_8c.html#a569522974b0daae1b80589cf7f60cd2f">hpsdr_txbuffer_read</a>(<a class="code" href="structhpsdr__config.html">hpsdr_config_t</a> **cfg, <span class="keywordtype">float</span> _Complex *iq);</div>
+<div class="line"><span class="keywordtype">bool</span> <a class="code" href="hpsdr__p1_8c.html#a2ff6ca4659df84ed83b2f1e11576b109">hpsdr_rxbuffer_read</a>(<a class="code" href="structhpsdr__config.html">hpsdr_config_t</a> **cfg, <span class="keywordtype">float</span> _Complex *iq);</div>
+<div class="ttc" id="ahpsdr__p1_8c_html_a2ff6ca4659df84ed83b2f1e11576b109"><div class="ttname"><a href="hpsdr__p1_8c.html#a2ff6ca4659df84ed83b2f1e11576b109">hpsdr_rxbuffer_read</a></div><div class="ttdeci">bool hpsdr_rxbuffer_read(hpsdr_config_t **cfg, float _Complex *iq)</div><div class="ttdoc">Read from rx buffer.</div><div class="ttdef"><b>Definition:</b> hpsdr_p1.c:219</div></div>
+<div class="ttc" id="ahpsdr__p1_8c_html_a569522974b0daae1b80589cf7f60cd2f"><div class="ttname"><a href="hpsdr__p1_8c.html#a569522974b0daae1b80589cf7f60cd2f">hpsdr_txbuffer_read</a></div><div class="ttdeci">bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *iq)</div><div class="ttdoc">Read from tx buffer.</div><div class="ttdef"><b>Definition:</b> hpsdr_p1.c:215</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
+Build test</h1>
+<div class="fragment"><div class="line">$ git clone https://github.com/hiperiondev/OpenHPSDR_P1.git</div>
+<div class="line">$ cd OpenHPSDR_P1</div>
+<div class="line">$ cd build</div>
+<div class="line">$ make all</div>
+<div class="line">$ ./OpenHPSDR_P1 -d</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md6"></a>
 TODO</h1>
 <ul>
 <li>[x] Add documentation</li>

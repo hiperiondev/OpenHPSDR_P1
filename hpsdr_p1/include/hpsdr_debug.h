@@ -53,7 +53,6 @@ int hpsdr_dbg_getlevel(void);
  *
  * @param Level Debug Level.
  * @param fmt Format.
- * @param others Like printf
  */
 void hpsdr_dbg_printf(int Level, const char *fmt, ...);
 

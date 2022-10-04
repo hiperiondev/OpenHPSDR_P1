@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['udp_5fretries_616',['udp_retries',['../hpsdr__network_8c.html#af0e3b24628a046a663cee592a345a792',1,'hpsdr_network.c']]],
-  ['user_617',['user',['../structhpsdr__config.html#a757f77b14cdcfb08da7a64183c4ab164',1,'hpsdr_config']]]
+  ['udp_5fretries_587',['udp_retries',['../hpsdr__network_8c.html#af0e3b24628a046a663cee592a345a792',1,'hpsdr_network.c']]],
+  ['user_588',['user',['../structhpsdr__config.html#a757f77b14cdcfb08da7a64183c4ab164',1,'hpsdr_config']]]
 ];

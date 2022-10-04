@@ -1,37 +1,37 @@
-The objective of this project is to create a complete infrastructure that supports the Open HPSDR version 1 protocol to implement the control of any generic software-\/defined radio hardware.
+The objective of this project is to create a complete framework that supports the Open HPSDR version 1 protocol to implement the control of any generic software-\/defined radio hardware.
 
-It is only necessary to implement the hardware control functions.\hypertarget{md_README_autotoc_md1}{}\doxysection{Callbacks}\label{md_README_autotoc_md1}
-\hypertarget{md_README_autotoc_md2}{}\doxysubsection{Functions for create and destroy hardware infrastructure.}\label{md_README_autotoc_md2}
-This functions have not requirements and are called at start and end of the system.
+It is only necessary to implement the hardware control functions.\hypertarget{md_README_autotoc_md1}{}\doxysection{Callback for manage changes in internal setting.}\label{md_README_autotoc_md1}
+Every time an ep2 packet change an internal state this function is called 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{void (*\mbox{\hyperlink{hpsdr__p1_8h_afe3fc6aad786b73d059b5ab129b8dc73}{ep2\_callback}})(\textcolor{keywordtype}{int} func, \textcolor{keywordtype}{char}* name)}
 
-\begin{quote}
-uint8\+\_\+t ($\ast$hw\+\_\+init)(void)
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md2}{}\doxysection{Buffers}\label{md_README_autotoc_md2}
+RX/\+TX buffers are circular queues of float \+\_\+\+Complex.\hypertarget{md_README_autotoc_md3}{}\doxysubsection{write functions}\label{md_README_autotoc_md3}
 
-uint8\+\_\+t ($\ast$hw\+\_\+deinit)(void) \end{quote}
-\hypertarget{md_README_autotoc_md3}{}\doxysubsection{Function for manage changes in internal setting.}\label{md_README_autotoc_md3}
-Every time an ep2 packet change an internal state this function is called
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{bool} \mbox{\hyperlink{hpsdr__p1_8c_aeb6e52f4168b3f40ed1ce98b028bc600}{hpsdr\_txbuffer\_write}}(\mbox{\hyperlink{structhpsdr__config}{hpsdr\_config\_t}} **cfg, \textcolor{keywordtype}{float} \_Complex *iq);}
+\DoxyCodeLine{\textcolor{keywordtype}{bool} \mbox{\hyperlink{hpsdr__p1_8c_ae8e9692f299ffdca7d5360b6f2b5ad5e}{hpsdr\_rxbuffer\_write}}(\mbox{\hyperlink{structhpsdr__config}{hpsdr\_config\_t}} **cfg, \textcolor{keywordtype}{float} \_Complex *iq);}
 
-\begin{quote}
-void ({\itshape ep2\+\_\+callback)(int func, char} name) \end{quote}
-\hypertarget{md_README_autotoc_md4}{}\doxysubsection{Main thread for receive/transmit}\label{md_README_autotoc_md4}
-This process push/poll data from IQ buffer and comunicate with hardware.
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md4}{}\doxysubsection{read functions}\label{md_README_autotoc_md4}
 
-Data receive hpsdr\+\_\+config\+\_\+t $\ast$cfg
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{bool} \mbox{\hyperlink{hpsdr__p1_8c_a569522974b0daae1b80589cf7f60cd2f}{hpsdr\_txbuffer\_read}}(\mbox{\hyperlink{structhpsdr__config}{hpsdr\_config\_t}} **cfg, \textcolor{keywordtype}{float} \_Complex *iq);}
+\DoxyCodeLine{\textcolor{keywordtype}{bool} \mbox{\hyperlink{hpsdr__p1_8c_a2ff6ca4659df84ed83b2f1e11576b109}{hpsdr\_rxbuffer\_read}}(\mbox{\hyperlink{structhpsdr__config}{hpsdr\_config\_t}} **cfg, \textcolor{keywordtype}{float} \_Complex *iq);}
 
-\begin{quote}
-void$\ast$ ($\ast$hw\+\_\+thread)(void $\ast$data) \end{quote}
-\hypertarget{md_README_autotoc_md5}{}\doxysection{Buffers}\label{md_README_autotoc_md5}
-RX/\+TX buffers are circular queues of float \+\_\+\+Complex. All data write/read on an overflow/underflow conditions are discarded\hypertarget{md_README_autotoc_md6}{}\doxysubsection{write functions}\label{md_README_autotoc_md6}
-\begin{quote}
-void \mbox{\hyperlink{hpsdr__p1_8h_a744e289dd7282a667563077d4361f53f}{hpsdr\+\_\+txbuffer\+\_\+write(hpsdr\+\_\+config\+\_\+t $\ast$$\ast$cfg, float \+\_\+\+Complex $\ast$iq)}};
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md5}{}\doxysection{Build test}\label{md_README_autotoc_md5}
 
-void \mbox{\hyperlink{hpsdr__p1_8h_a3d1030e7c1673854f1e6061b37191b2d}{hpsdr\+\_\+rxbuffer\+\_\+write(hpsdr\+\_\+config\+\_\+t $\ast$$\ast$cfg, float \+\_\+\+Complex $\ast$iq)}}; \end{quote}
-\hypertarget{md_README_autotoc_md7}{}\doxysubsection{read functions}\label{md_README_autotoc_md7}
-\begin{quote}
-void \mbox{\hyperlink{hpsdr__p1_8h_addaf8de4d5ee3e2fb89cf134eb75df72}{hpsdr\+\_\+txbuffer\+\_\+read(hpsdr\+\_\+config\+\_\+t $\ast$$\ast$cfg, float \+\_\+\+Complex $\ast$data)}};
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$ git clone https://github.com/hiperiondev/OpenHPSDR\_P1.git}
+\DoxyCodeLine{\$ cd OpenHPSDR\_P1}
+\DoxyCodeLine{\$ cd build}
+\DoxyCodeLine{\$ make all}
+\DoxyCodeLine{\$ ./OpenHPSDR\_P1 -\/d}
 
-void \mbox{\hyperlink{hpsdr__p1_8h_a72c1946b6afbbdac6800455a8ba3c3ff}{hpsdr\+\_\+rxbuffer\+\_\+read(hpsdr\+\_\+config\+\_\+t $\ast$$\ast$cfg, float \+\_\+\+Complex $\ast$data)}}; \end{quote}
-\hypertarget{md_README_autotoc_md8}{}\doxysection{TODO}\label{md_README_autotoc_md8}
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md6}{}\doxysection{TODO}\label{md_README_autotoc_md6}
 
 \begin{DoxyItemize}
 \item \mbox{[}x\mbox{]} Add documentation
