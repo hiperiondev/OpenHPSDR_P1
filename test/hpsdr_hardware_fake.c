@@ -47,7 +47,7 @@ uint8_t iqtransmitter_deinit(void) {
 
 void* iqtransmitter_thread(void *data) {
     hpsdr_config_t *cfg = (hpsdr_config_t*) data;
-    float _Complex csample;
+    double _Complex csample;
     FILE *fp = NULL;
 
     if (ofile) {
@@ -56,7 +56,7 @@ void* iqtransmitter_thread(void *data) {
 
         while (1) {
             while (!hpsdr_rxbuffer_read(&cfg, &csample));
-            fwrite(&csample, sizeof(float _Complex), 1, fp);
+            fwrite(&csample, sizeof(double _Complex), 1, fp);
         }
     } else
         while (1)
@@ -75,7 +75,7 @@ uint8_t iqreceiver_deinit(void) {
 
 void* iqreceiver_thread(void *data) {
     hpsdr_config_t *cfg = (hpsdr_config_t*) data;
-    float _Complex csample;
+    double _Complex csample;
     FILE *fp = NULL;
 
     if (ifile) {

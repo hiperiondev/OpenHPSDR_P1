@@ -65,16 +65,16 @@ typedef uint16_t RingBufCtr;
 
 /*! Ring buffer struct */
 typedef struct {
-        float _Complex *buf;  // pointer to the start of the ring buffer
+        double _Complex *buf;  // pointer to the start of the ring buffer
              RingBufCtr end;  // offset of the end of the ring buffer
     RingBufCtr volatile head; // offset to where next el. will be inserted
     RingBufCtr volatile tail; // offset of where next el. will be removed
 } RingBuf;
 
-      void RingBuf_ctor(RingBuf *const me, float _Complex sto[], RingBufCtr sto_len);
+      void RingBuf_ctor(RingBuf *const me, double _Complex sto[], RingBufCtr sto_len);
 RingBufCtr RingBuf_num_free(RingBuf *const me);
-      bool RingBuf_put(RingBuf *const me, float _Complex const el);
-      bool RingBuf_get(RingBuf *const me, float _Complex *pel);
+      bool RingBuf_put(RingBuf *const me, double _Complex const el);
+      bool RingBuf_get(RingBuf *const me, double _Complex *pel);
 
 /*! Ring buffer callback function for RingBuf_process_all()
  *

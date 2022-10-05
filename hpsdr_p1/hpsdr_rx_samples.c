@@ -37,7 +37,7 @@
 
 void hpsdr_get_rx_samples(hpsdr_config_t *cfg, int n, uint8_t *pointer) {
     int j;
-    float _Complex csample;
+    double _Complex csample;
     uint8_t itemp;
 
     // TODO: complete

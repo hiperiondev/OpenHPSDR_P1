@@ -44,8 +44,8 @@ double c1, c2;
 
 pthread_t network_thread_id;
 
-float _Complex rxbuf[BUFFLEN];
-float _Complex txbuf[BUFFLEN];
+double _Complex rxbuf[BUFFLEN];
+double _Complex txbuf[BUFFLEN];
 
 void hpsdr_clear_config(hpsdr_config_t **cfg) {
     (*cfg)->settings.AlexTXrel = -1;
@@ -204,18 +204,18 @@ void hpsdr_stop(void) {
     pthread_cancel(network_thread_id);
 }
 
-bool hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq) {
+bool hpsdr_txbuffer_write(hpsdr_config_t **cfg, double _Complex *iq) {
     return RingBuf_put(&((*cfg)->txbuff), *iq);
 }
 
-bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq) {
+bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, double _Complex *iq) {
     return RingBuf_put(&((*cfg)->rxbuff), *iq);
 }
 
-bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *iq) {
+bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, double _Complex *iq) {
     return RingBuf_get(&((*cfg)->txbuff), iq);
 }
 
-bool hpsdr_rxbuffer_read(hpsdr_config_t **cfg, float _Complex *iq) {
+bool hpsdr_rxbuffer_read(hpsdr_config_t **cfg, double _Complex *iq) {
     return RingBuf_get(&((*cfg)->rxbuff), iq);
 }

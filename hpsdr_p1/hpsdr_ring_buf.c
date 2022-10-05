@@ -33,7 +33,7 @@
 #include "hpsdr_ring_buf.h"
 
 ////////////////////////////////////////////////////////////////////////////////
-void RingBuf_ctor(RingBuf *const me, float _Complex sto[], RingBufCtr sto_len) {
+void RingBuf_ctor(RingBuf *const me, double _Complex sto[], RingBufCtr sto_len) {
     me->buf = &sto[0];
     me->end = sto_len;
     me->head = 0U;
@@ -41,7 +41,7 @@ void RingBuf_ctor(RingBuf *const me, float _Complex sto[], RingBufCtr sto_len) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-bool RingBuf_put(RingBuf *const me, float _Complex const el) {
+bool RingBuf_put(RingBuf *const me, double _Complex const el) {
     RingBufCtr head = me->head + 1U;
     if (head == me->end) {
         head = 0U;
@@ -56,7 +56,7 @@ bool RingBuf_put(RingBuf *const me, float _Complex const el) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-bool RingBuf_get(RingBuf *const me, float _Complex *pel) {
+bool RingBuf_get(RingBuf *const me, double _Complex *pel) {
     RingBufCtr tail = me->tail;
     if (me->head != tail) {     // ring buffer NOT empty?
         *pel = me->buf[tail];

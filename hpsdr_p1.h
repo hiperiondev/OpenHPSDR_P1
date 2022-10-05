@@ -124,7 +124,7 @@ void hpsdr_clear_config(hpsdr_config_t **cfg);
  * @param iq  sample
  * @return result of write
  */
-bool hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
+bool hpsdr_txbuffer_write(hpsdr_config_t **cfg, double _Complex *iq);
 
 /**
  * @brief Write to rx buffer
@@ -135,7 +135,7 @@ bool hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
  * @param iq  sample
  * @return result of write
  */
-bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
+bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, double _Complex *iq);
 
 /**
  * @brief Read from tx buffer
@@ -146,7 +146,7 @@ bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
  * @param iq  buffer data
  * @return result of read
  */
-bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *iq);
+bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, double _Complex *iq);
 
 /**
  * @brief Read from rx buffer
@@ -157,6 +157,6 @@ bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *iq);
  * @param iq  buffer data
  * @return result of read
  */
-bool hpsdr_rxbuffer_read(hpsdr_config_t **cfg, float _Complex *iq);
+bool hpsdr_rxbuffer_read(hpsdr_config_t **cfg, double _Complex *iq);
 
 #endif /* HPSDR_P1_H_ */
