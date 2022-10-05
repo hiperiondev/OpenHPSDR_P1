@@ -12,18 +12,18 @@ void (*ep2_callback)(int func, char* name)
 
 ## Buffers
 
-RX/TX buffers are circular queues of float _Complex.
+RX/TX buffers are circular queues of double _Complex.
 
 ### write functions
 ```c
-bool hpsdr_txbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
-bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, float _Complex *iq);
+bool hpsdr_txbuffer_write(hpsdr_config_t **cfg, double _Complex *iq);
+bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, double _Complex *iq);
 ```
 
 ### read functions
 ```c
-bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, float _Complex *iq);
-bool hpsdr_rxbuffer_read(hpsdr_config_t **cfg, float _Complex *iq);
+bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, double _Complex *iq);
+bool hpsdr_rxbuffer_read(hpsdr_config_t **cfg, double _Complex *iq);
 ```
 
 ## Build test
