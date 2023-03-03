@@ -50,7 +50,7 @@ typedef enum {
  *
  * EP2 functions.
  */
-typedef enum ep2_functions {
+typedef enum EP2_FUNCTIONS {
     EP2_PTT,                  //
     EP2_RATE,                 //
     EP2_REF10,                //
@@ -63,7 +63,7 @@ typedef enum ep2_functions {
     EP2_MICTS,                //
     EP2_COMMONMERCURYFREQ,    //
     EP2_TXFREQ,               //
-    EP2_RXFREQ,               //
+    EP2_RXFREQ1,              //
     EP2_RXFREQ2,              //
     EP2_RXFREQ3,              //
     EP2_RXFREQ4,              //

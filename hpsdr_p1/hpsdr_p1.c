@@ -30,7 +30,6 @@
 #include <math.h>
 
 #include "hpsdr_debug.h"
-#include "hpsdr_protocol.h"
 #include "hpsdr_internals.h"
 #include "hpsdr_network.h"
 #include "hpsdr_p1.h"
@@ -48,78 +47,9 @@ double _Complex rxbuf[BUFFLEN];
 double _Complex txbuf[BUFFLEN];
 
 void hpsdr_clear_config(hpsdr_config_t **cfg) {
-    (*cfg)->settings.AlexTXrel = -1;
-    (*cfg)->settings.alexRXout = -1;
-    (*cfg)->settings.alexRXant = -1;
-    (*cfg)->settings.MicTS = -1;
-    (*cfg)->settings.duplex = -1;
-    (*cfg)->settings.receivers = -1;
-    (*cfg)->settings.rate = -1;
-    (*cfg)->settings.preamp = -1;
-    (*cfg)->settings.LTdither = -1;
-    (*cfg)->settings.LTrandom = -1;
-    (*cfg)->settings.ref10 = -1;
-    (*cfg)->settings.src122 = -1;
-    (*cfg)->settings.PMconfig = -1;
-    (*cfg)->settings.MicSrc = -1;
-    (*cfg)->settings.txdrive = 255;
-    (*cfg)->settings.txatt = 0;
-    (*cfg)->settings.sidetone_volume = -1;
-    (*cfg)->settings.cw_internal = -1;
-    (*cfg)->settings.rx_att[0] = -1;
-    (*cfg)->settings.rx_att[1] = -1;
-    (*cfg)->settings.rx1_attE = -1;
-    (*cfg)->settings.rx_preamp[0] = -1;
-    (*cfg)->settings.rx_preamp[1] = -1;
-    (*cfg)->settings.rx_preamp[2] = -1;
-    (*cfg)->settings.rx_preamp[3] = -1;
-    (*cfg)->settings.MerTxATT0 = -1;
-    (*cfg)->settings.MerTxATT1 = -1;
-    (*cfg)->settings.MetisDB9 = -1;
-    (*cfg)->settings.PeneSel = -1;
-    (*cfg)->settings.PureSignal = -1;
-    (*cfg)->settings.LineGain = -1;
-    (*cfg)->settings.MicPTT = -1;
-    (*cfg)->settings.tip_ring = -1;
-    (*cfg)->settings.MicBias = -1;
-    (*cfg)->settings.ptt = 0;
-    (*cfg)->settings.AlexAtt = -1;
-    (*cfg)->settings.TX_class_E = -1;
-    (*cfg)->settings.OpenCollectorOutputs = -1;
-    (*cfg)->settings.tx_freq = -1;
-    (*cfg)->settings.rx_freq[0] = -1;
-    (*cfg)->settings.rx_freq[1] = -1;
-    (*cfg)->settings.rx_freq[2] = -1;
-    (*cfg)->settings.rx_freq[3] = -1;
-    (*cfg)->settings.rx_freq[4] = -1;
-    (*cfg)->settings.rx_freq[5] = -1;
-    (*cfg)->settings.rx_freq[6] = -1;
-    (*cfg)->settings.hermes_config = -1;
-    (*cfg)->settings.alex_lpf = -1;
-    (*cfg)->settings.alex_hpf = -1;
-    (*cfg)->settings.alex_manual = -1;
-    (*cfg)->settings.alex_bypass = -1;
-    (*cfg)->settings.lna6m = -1;
-    (*cfg)->settings.alexTRdisable = -1;
-    (*cfg)->settings.vna = -1;
-    (*cfg)->settings.c25_ext_board_i2c_data = -1;
-    (*cfg)->settings.rx_adc[0] = -1;
-    (*cfg)->settings.rx_adc[1] = -1;
-    (*cfg)->settings.rx_adc[2] = -1;
-    (*cfg)->settings.rx_adc[3] = -1;
-    (*cfg)->settings.rx_adc[4] = -1;
-    (*cfg)->settings.rx_adc[5] = -1;
-    (*cfg)->settings.rx_adc[6] = -1;
-    (*cfg)->settings.cw_hang = -1;
-    (*cfg)->settings.cw_reversed = -1;
-    (*cfg)->settings.cw_speed = -1;
-    (*cfg)->settings.cw_mode = -1;
-    (*cfg)->settings.cw_weight = -1;
-    (*cfg)->settings.cw_spacing = -1;
-    (*cfg)->settings.cw_delay = -1;
-    (*cfg)->settings.CommonMercuryFreq = -1;
-    (*cfg)->settings.freq = -1;
-    (*cfg)->settings.diversity = 0;
+    for (int n = 0; n < 72; n++)
+        (*cfg)->ep2_value[n] = 0;
+
     (*cfg)->ep2 = NULL;
 }
 

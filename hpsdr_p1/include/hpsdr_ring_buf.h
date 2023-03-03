@@ -65,7 +65,7 @@ typedef uint16_t RingBufCtr;
 
 /*! Ring buffer struct */
 typedef struct {
-        double _Complex *buf;  // pointer to the start of the ring buffer
+        double _Complex *buf; // pointer to the start of the ring buffer
              RingBufCtr end;  // offset of the end of the ring buffer
     RingBufCtr volatile head; // offset to where next el. will be inserted
     RingBufCtr volatile tail; // offset of where next el. will be removed

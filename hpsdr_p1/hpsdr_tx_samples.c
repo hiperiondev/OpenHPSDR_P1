@@ -32,7 +32,6 @@
 #include <complex.h>
 
 #include "hpsdr_debug.h"
-#include "hpsdr_protocol.h"
 #include "hpsdr_p1.h"
 #include "hpsdr_ring_buf.h"
 
@@ -62,7 +61,7 @@ void samples_rcv(hpsdr_config_t *cfg, uint8_t *buffer) {
         sampleq |= (int) ((signed char) *bp++ & 0xFF);
         dqsample = sampleq * 0.000030518509476;
 
-        switch (cfg->settings.rate) {
+        switch (cfg->ep2_value[EP2_RATE]) {
             case 0:  // RX sample rate = TX sample rate = 48000
                 isample = disample;
                 qsample = dqsample;

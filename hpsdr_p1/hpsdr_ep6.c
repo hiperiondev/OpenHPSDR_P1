@@ -37,7 +37,6 @@
 #include "hpsdr_internals.h"
 #include "hpsdr_p1.h"
 #include "hpsdr_network.h"
-#include "hpsdr_protocol.h"
 #include "hpsdr_rx_samples.h"
 
 void* ep6_handler(void *arg) {
@@ -57,10 +56,10 @@ void* ep6_handler(void *arg) {
     long wait;
 
     uint8_t id[4] = { //
-            0xef, //
-            0xfe, //
-            1,    //
-            6     //
+            0xef,     //
+            0xfe,     //
+            1,        //
+            6         //
     };
 
     uint8_t header[40] = { //
@@ -83,13 +82,13 @@ void* ep6_handler(void *arg) {
     while (1) {
         if (!enable_thread) break;
 
-        size = cfg->settings.receivers * 6 + 2;
+        size = cfg->ep2_value[EP2_RECEIVERS] * 6 + 2;
         n = 504 / size;  // number of samples per 512-byte-block
         // time (in nanosecs) to "collect" the samples sent in one sendmsg
-        if ((48 << cfg->settings.rate) == 0) {
+        if ((48 << cfg->ep2_value[EP2_RATE]) == 0) {
             wait = (2 * n * 1000000L);
         } else {
-            wait = (2 * n * 1000000L) / (48 << cfg->settings.rate);
+            wait = (2 * n * 1000000L) / (48 << cfg->ep2_value[EP2_RATE]);
 
         }
 
@@ -119,7 +118,7 @@ void* ep6_handler(void *arg) {
                     } else {
                         // ain5: exciter power
                         *(pointer + 4) = 0;  // about 500 mW
-                        *(pointer + 5) = cfg->settings.txdrive;
+                        *(pointer + 5) = cfg->ep2_value[EP2_TXDRIVE];
                     }
                     // ain1: forward power
                     j = (int) ((4095.0 / c1) * sqrt(100.0 * txlevel * c2));

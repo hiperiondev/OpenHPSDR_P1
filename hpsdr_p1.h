@@ -34,7 +34,6 @@
 #include <complex.h>
 
 #include "hpsdr_definitions.h"
-#include "hpsdr_protocol.h"
 #include "hpsdr_ring_buf.h"
 
 /**
@@ -68,12 +67,12 @@ typedef struct global {
  * Struct of internal configuration.
  */
 typedef struct hpsdr_config {
-       global_t global;   /*!< global settings*/
-     protocol_t settings; /*!< internal settings */
-        RingBuf rxbuff;   /*!< reception buffer */
-        RingBuf txbuff;   /*!< transmission buffer */
-           void *user;    /*!< user data */
-   ep2_callback ep2;      /*!< ep2 packet callback */
+       global_t global;        /*!< global settings*/
+       uint32_t ep2_value[72]; /*!< ep2 protol values */
+        RingBuf rxbuff;        /*!< reception buffer */
+        RingBuf txbuff;        /*!< transmission buffer */
+           void *user;         /*!< user data */
+   ep2_callback ep2;           /*!< ep2 packet callback */
 } hpsdr_config_t;
 
 /**

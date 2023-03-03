@@ -42,7 +42,6 @@
 #include "hpsdr_ep2.h"
 #include "hpsdr_ep6.h"
 #include "hpsdr_p1.h"
-#include "hpsdr_protocol.h"
 #include "hpsdr_tx_samples.h"
 
          pthread_t op_handler_ep6_id;
@@ -232,7 +231,6 @@ int hpsdr_network_process(hpsdr_config_t *cfg) {
     hpsdr_dbg_printf(2, "-- code received: %04x (%d)\n", code, code);
 
     switch (code) {
-
         // pc to sdr transmission via process_ep2
         case 0x0201feef:
             // processing an invalid packet is too dangerous -- skip it!
