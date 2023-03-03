@@ -50,7 +50,7 @@ void hpsdr_clear_config(hpsdr_config_t **cfg) {
     for (int n = 0; n < 72; n++)
         (*cfg)->ep2_value[n] = 0;
 
-    (*cfg)->ep2 = NULL;
+    (*cfg)->ep2_cb = NULL;
 }
 
 void hpsdr_init(hpsdr_config_t **cfg) {

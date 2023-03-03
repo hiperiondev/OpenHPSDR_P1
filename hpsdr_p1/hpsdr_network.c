@@ -63,17 +63,17 @@ struct sockaddr_in addr_from;
           uint32_t *code0 = (uint32_t*) buffer;  // fast access to code of first buffer
 
 uint8_t reply[11] = {
-        0xef, //
-        0xfe, //
-        2,    //
-        0xaa, //
-        0xbb, //
-        0xcc, //
-        0xdd, //
-        0xee, //
-        0xff, //
-        0,    //
-        1     //
+        0xef,     //
+        0xfe,     //
+        2,        //
+        MACADDR1, //
+        MACADDR2, //
+        MACADDR3, //
+        MACADDR4, //
+        MACADDR5, //
+        MACADDR6, //
+        0,        //
+        1         //
         };
 
 uint8_t id[4] = {

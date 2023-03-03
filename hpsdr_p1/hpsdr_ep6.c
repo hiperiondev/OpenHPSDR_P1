@@ -147,7 +147,6 @@ void* ep6_handler(void *arg) {
             memset(pointer, 0, 504);
 
             hpsdr_get_rx_samples(cfg, n, pointer);
-
         }
 
         // wait until the time has passed for all these samples

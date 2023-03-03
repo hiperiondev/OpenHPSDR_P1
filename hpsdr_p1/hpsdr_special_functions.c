@@ -39,12 +39,13 @@ void hpsdr_erase_packet(uint8_t *buffer) {
     buffer[0] = 0xEF;
     buffer[1] = 0xFE;
     buffer[2] = 0x03;
-    buffer[3] = 0xAA;
+    // mac: aa:bb:cc:dd:ee:ff
+    buffer[3] = 0xAA; // mac MSB
     buffer[4] = 0xBB;
     buffer[5] = 0xCC;
     buffer[6] = 0xDD;
     buffer[7] = 0xEE;
-    buffer[8] = 0xFF;
+    buffer[8] = 0xFF; // mac LSB
 }
 
 void hpsdr_program(uint8_t *buffer) {

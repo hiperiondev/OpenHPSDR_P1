@@ -81,8 +81,8 @@ char exit_signal[33][17] = {
         "SIGSYS/SIGUNUSED",
 };
 
-void ep2_cbk (int func, char* name) {
-    printf("ep2_cbk: %s (%d)\n", name, func);
+void ep2_cbk (uint32_t *ep2_value, int func, char* name) {
+    printf("ep2_cbk: (%d) %s = %d\n", func, name, (int) ep2_value[func]);
 }
 
 static struct cag_option options[] = {
@@ -99,17 +99,17 @@ static struct cag_option options[] = {
                     .value_name = "VALUE",
                    .description = "Emulation Type (metis, hermes, griffin, angelia, orion, hermes, hermes_lite, orion2, c25)"
         }, {
-                    .identifier = 'f',
-                .access_letters = "f",
+                    .identifier = 'i',
+                .access_letters = "i",
                    .access_name = "ifilename",
                     .value_name = "VALUE",
                    .description = "Read I/Q samples from file and return as receiver"
         }, {
                     .identifier = 'o',
                 .access_letters = "o",
-                   .access_name = "ifilename",
+                   .access_name = "ofilename",
                     .value_name = "VALUE",
-                   .description = "Write I/Q samples to ifile"
+                   .description = "Write I/Q samples to file"
         }, {
                     .identifier = 'h',
                 .access_letters = "h",
@@ -214,7 +214,7 @@ int main(int argc, char *argv[]) {
         hpsdr_dbg_setlevel(1);
     }
 
-    cfg->ep2 = ep2_cbk;
+    cfg->ep2_cb = ep2_cbk;
 
     hpsdr_init(&cfg);
     hpsdr_start(&cfg);

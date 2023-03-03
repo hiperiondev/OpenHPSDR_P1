@@ -36,6 +36,13 @@
 #include "hpsdr_definitions.h"
 #include "hpsdr_ring_buf.h"
 
+#define MACADDR1 0xAA
+#define MACADDR2 0xBB
+#define MACADDR3 0xCC
+#define MACADDR4 0xDD
+#define MACADDR5 0xEE
+#define MACADDR6 0xFF
+
 /**
  * @brief Max buffers
  *
@@ -48,7 +55,7 @@
  *
  * Callbacks prototypes
  */
-typedef    void (*ep2_callback)(int func, char* name);
+typedef    void (*ep2_callback)(uint32_t *ep2_value, int func, char* name);
 
 /**
  * @brief Struct of Global configuration
@@ -72,7 +79,7 @@ typedef struct hpsdr_config {
         RingBuf rxbuff;        /*!< reception buffer */
         RingBuf txbuff;        /*!< transmission buffer */
            void *user;         /*!< user data */
-   ep2_callback ep2;           /*!< ep2 packet callback */
+   ep2_callback ep2_cb;        /*!< ep2 packet callback */
 } hpsdr_config_t;
 
 /**

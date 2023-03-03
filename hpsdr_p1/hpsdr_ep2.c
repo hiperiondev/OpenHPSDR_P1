@@ -38,39 +38,39 @@ double txatt_dbl = 1.0;
 double rxatt_dbl[4] = { 1.0, 1.0, 1.0, 1.0 };  // this reflects both att and preamp
 double txdrv_dbl = 0.99;
 
-#define chk_data(value,str,fun)                   \
-		    if ((value) != cfg->ep2_value[fun]) { \
-		    	cfg->ep2_value[fun] = value;      \
-		        cfg->ep2(fun, str);               \
-		    }
+#define chk_data(fun,str) \
+		if (FR_##fun(frame) != cfg->ep2_value[fun]) { \
+		    cfg->ep2_value[fun] = FR_##fun(frame);    \
+		    cfg->ep2_cb(cfg->ep2_value, fun, str);    \
+		}
 
 void ep2_handler(hpsdr_config_t *cfg, uint8_t *frame) {
     uint16_t data;
 
-    chk_data(FR_EP2_PTT(frame), "PTT", EP2_PTT);
+    chk_data(EP2_PTT, "PTT");
     switch (frame[0]) {
     case 0:
     case 1:
-        chk_data(FR_EP2_RATE(frame)                , "SampleRate"             , EP2_RATE);
-        chk_data(FR_EP2_REF10(frame)               , "Ref10MHz"               , EP2_REF10);
-        chk_data(FR_EP2_SRC122(frame)              , "Source122MHz"           , EP2_SRC122);
-        chk_data(FR_EP2_PMCONFIG(frame)            , "Penelope/Mercury config", EP2_PMCONFIG);
-        chk_data(FR_EP2_MICSRC(frame)              , "MicSource"              , EP2_MICSRC);
-        chk_data(FR_EP2_TXCLASSC(frame)            , "TX CLASS-E"             , EP2_TXCLASSC);
-        chk_data(FR_EP2_OPENCOLLECTOROUTPUTS(frame), "OpenCollector"          , EP2_OPENCOLLECTOROUTPUTS);
-        chk_data(FR_EP2_RECEIVERS(frame)           , "RECEIVERS"              , EP2_RECEIVERS);
-        chk_data(FR_EP2_MICTS(frame)               , "TimeStampMic"           , EP2_MICTS);
-        chk_data(FR_EP2_COMMONMERCURYFREQ(frame)   , "Common Mercury Freq"    , EP2_COMMONMERCURYFREQ);
+        chk_data(EP2_RATE                , "SampleRate"             );
+        chk_data(EP2_REF10               , "Ref10MHz"               );
+        chk_data(EP2_SRC122              , "Source122MHz"           );
+        chk_data(EP2_PMCONFIG            , "Penelope/Mercury config");
+        chk_data(EP2_MICSRC              , "Mic Source"             );
+        chk_data(EP2_TXCLASSC            , "TX Class E"             );
+        chk_data(EP2_OPENCOLLECTOROUTPUTS, "OpenCollector"          );
+        chk_data(EP2_RECEIVERS           , "Receivers"              );
+        chk_data(EP2_MICTS               , "TimeStampMic"           );
+        chk_data(EP2_COMMONMERCURYFREQ   , "Common Mercury Freq"    );
 
-        chk_data(FR_EP2_ALEXATT(frame)             , "AlexAtt"                , EP2_ALEXATT);
-        chk_data(FR_EP2_PREAMP(frame)              , "Preamp"                 , EP2_PREAMP);
-        chk_data(FR_EP2_LTDITHER(frame)            , "LTdither"               , EP2_LTDITHER);
-        chk_data(FR_EP2_LTRANDOM(frame)            , "LTrandom"               , EP2_LTRANDOM);
+        chk_data(EP2_ALEXATT             , "AlexAtt"                );
+        chk_data(EP2_PREAMP              , "Preamp"                 );
+        chk_data(EP2_LTDITHER            , "LTdither"               );
+        chk_data(EP2_LTRANDOM            , "LTrandom"               );
 
-        chk_data(FR_EP2_ALEXRXANT(frame)           , "AlexRXant"              , EP2_ALEXRXANT);
-        chk_data(FR_EP2_ALEXXRXOUT(frame)          , "AlexRXant"              , EP2_ALEXRXANT);
-        chk_data(FR_EP2_ALETXREL(frame)            , "AlexTXrel"              , EP2_ALETXREL);
-        chk_data(FR_EP2_DUPLEX(frame)              , "Duplex"                 , EP2_DUPLEX);
+        chk_data(EP2_ALEXRXANT           , "AlexRXant"              );
+        chk_data(EP2_ALEXXRXOUT          , "AlexRXout"              );
+        chk_data(EP2_ALETXREL            , "AlexTXrel"              );
+        chk_data(EP2_DUPLEX              , "Duplex"                 );
 
         if (cfg->global.emulation == DEVICE_C25) {
             // charly25: has two 18-dB preamps that are switched with "preamp" and "dither"
@@ -87,74 +87,74 @@ void ep2_handler(hpsdr_config_t *cfg, uint8_t *frame) {
 
     case 2:
     case 3:
-        chk_data(FR_EP2_TXFREQ(frame), "TX FREQ", EP2_TXFREQ);
+        chk_data(EP2_TXFREQ,   "TX Frequency");
         break;
 
     case 4:
     case 5:
-        chk_data(FR_EP2_RXFREQ(frame), "RX FREQ1", EP2_RXFREQ1);
+        chk_data(EP2_RXFREQ1, "RX Frequency 1");
         break;
 
     case 6:
     case 7:
-        chk_data(FR_EP2_RXFREQ(frame), "RX FREQ2", EP2_RXFREQ2);
+        chk_data(EP2_RXFREQ2, "RX Frequency 2");
         break;
 
     case 8:
     case 9:
-        chk_data(FR_EP2_RXFREQ(frame), "RX FREQ3", EP2_RXFREQ3);
+        chk_data(EP2_RXFREQ3, "RX Frequency 3");
         break;
 
     case 10:
     case 11:
-        chk_data(FR_EP2_RXFREQ(frame), "RX FREQ4", EP2_RXFREQ4);
+        chk_data(EP2_RXFREQ4, "RX Frequency 4");
         break;
 
     case 12:
     case 13:
-        chk_data(FR_EP2_RXFREQ(frame), "RX FREQ5", EP2_RXFREQ5);
+        chk_data(EP2_RXFREQ5, "RX Frequency 5");
         break;
 
     case 14:
     case 15:
-        chk_data(FR_EP2_RXFREQ(frame), "RX FREQ6", EP2_RXFREQ6);
+        chk_data(EP2_RXFREQ6, "RX Frequency 6");
         break;
 
     case 16:
     case 17:
-        chk_data(FR_EP2_RXFREQ(frame), "RX FREQ7", EP2_RXFREQ7);
+        chk_data(EP2_RXFREQ7, "RX Frequency 7");
         break;
 
     case 18:
     case 19:
-        chk_data(FR_EP2_TXDRIVE(frame)         , "TX DRIVE"           , EP2_TXDRIVE);
-        chk_data(FR_EP2_HERMESCONFIG(frame)    , "HERMES CONFIG"      , EP2_HERMESCONFIG);
-        chk_data(FR_EP2_ALEXMANUALHPFLPF(frame), "ALEX manual HPF/LPF", EP2_ALEXMANUALHPFLPF);
-        chk_data(FR_EP2_VNA(frame)             , "VNA mode"           , EP2_VNA);
-        chk_data(FR_EP2_ALEXHPF(frame)         , "ALEX HPF"           , EP2_ALEXHPF);
-        chk_data(FR_EP2_ALEXBYPASS(frame)      , "ALEX Bypass HPFs"   , EP2_ALEXBYPASS);
-        chk_data(FR_EP2_LNA6M(frame)           , "ALEX 6m LNA"        , EP2_LNA6M);
-        chk_data(FR_EP2_ALEXTRDISABLE(frame)   , "ALEX T/R disable"   , EP2_ALEXTRDISABLE);
-        chk_data(FR_EP2_ALEXLPF(frame)         , "ALEX LPF"           , EP2_ALEXLPF);
+        chk_data(EP2_TXDRIVE         , "TX Drive"           );
+        chk_data(EP2_HERMESCONFIG    , "HERMES Config"      );
+        chk_data(EP2_ALEXMANUALHPFLPF, "ALEX manual HPF/LPF");
+        chk_data(EP2_VNA             , "VNA mode"           );
+        chk_data(EP2_ALEXHPF         , "ALEX HPF"           );
+        chk_data(EP2_ALEXBYPASS      , "ALEX Bypass HPFs"   );
+        chk_data(EP2_LNA6M           , "ALEX 6m LNA"        );
+        chk_data(EP2_ALEXTRDISABLE   , "ALEX T/R disable"   );
+        chk_data(EP2_ALEXLPF         , "ALEX LPF"           );
         // reset tx level. leave a little head-room for noise
         txdrv_dbl = (double) cfg->ep2_value[EP2_TXDRIVE] * 0.00390625;  // div. by. 256
         break;
 
     case 20:
     case 21:
-        chk_data(FR_EP2_ADC1PREAMP(frame), "ADC1 preamp"        , EP2_ADC1PREAMP);
-        chk_data(FR_EP2_ADC2PREAMP(frame), "ADC2 preamp"        , EP2_ADC2PREAMP);
-        chk_data(FR_EP2_ADC3PREAMP(frame), "ADC3 preamp"        , EP2_ADC3PREAMP);
-        chk_data(FR_EP2_ADC4PREAMP(frame), "ADC4 preamp"        , EP2_ADC4PREAMP);
-        chk_data(FR_EP2_TIPRING(frame)   , "TIP/Ring"           , EP2_TIPRING);
-        chk_data(FR_EP2_MICBIAS(frame)   , "MicBias"            , EP2_MICBIAS);
-        chk_data(FR_EP2_MICPTT(frame)    , "MicPTT"             , EP2_MICPTT);
-        chk_data(FR_EP2_LINEGAIN(frame)  , "LineGain"           , EP2_LINEGAIN);
-        chk_data(FR_EP2_MERTXATT0(frame) , "Mercury Att on TX/0", EP2_MERTXATT0);
-        chk_data(FR_EP2_PURESIGNAL(frame), "PureSignal"         , EP2_PURESIGNAL);
-        chk_data(FR_EP2_PENESEL(frame)   , "PenelopeSelect"     , EP2_PENESEL);
-        chk_data(FR_EP2_METISDB9(frame)  , "MetisDB9"           , EP2_METISDB9);
-        chk_data(FR_EP2_MERTXATT1(frame) , "Mercury Att on TX/1", EP2_MERTXATT1);
+        chk_data(EP2_ADC1PREAMP, "ADC1 preamp"         );
+        chk_data(EP2_ADC2PREAMP, "ADC2 preamp"         );
+        chk_data(EP2_ADC3PREAMP, "ADC3 preamp"         );
+        chk_data(EP2_ADC4PREAMP, "ADC4 preamp"         );
+        chk_data(EP2_TIPRING   , "TIP/Ring"            );
+        chk_data(EP2_MICBIAS   , "Mic Bias"            );
+        chk_data(EP2_MICPTT    , "Mic PTT"             );
+        chk_data(EP2_LINEGAIN  , "Line Gain"           );
+        chk_data(EP2_MERTXATT0 , "Mercury Att on TX/0" );
+        chk_data(EP2_PURESIGNAL, "Pure Signal"         );
+        chk_data(EP2_PENESEL   , "Penelope Select"     );
+        chk_data(EP2_METISDB9  , "Metis DB9"           );
+        chk_data(EP2_MERTXATT1 , "Mercury Att on TX/1" );
 
         if (frame[4] & 0x40) {
             // some firmware/emulators use bit6 to indicate a 6-bit format
@@ -163,10 +163,10 @@ void ep2_handler(hpsdr_config_t *cfg, uint8_t *frame) {
             // to an rx gain of -12 to +48 dB. however, we set here that
             // a value of +16 (that is, 28 on the 0-60 scale) corresponds to
             // "zero attenuation"
-            chk_data(FR_EP2_RX1HLATTGAIN(frame), "RX1 HL ATT/GAIN", EP2_RX1HLATTGAIN);
+            chk_data(EP2_RX1HLATTGAIN, "RX1 HL ATT/Gain");
         } else {
-            chk_data(FR_EP2_RX1ATT(frame)      , "RX1 ATT"        , EP2_RX1ATT);
-            chk_data(FR_EP2_RX1ATTENABLE(frame), "RX1 ATT enable" , EP2_RX1ATTENABLE);
+            chk_data(EP2_RX1ATT      , "RX1 ATT"        );
+            chk_data(EP2_RX1ATTENABLE, "RX1 ATT enable" );
             //
             // some hardware emulates "switching off att and preamp" by setting ATT
             // to 20 dB, because the preamp cannot be switched.
@@ -183,12 +183,12 @@ void ep2_handler(hpsdr_config_t *cfg, uint8_t *frame) {
 
     case 22:
     case 23:
-        chk_data(FR_EP2_RX2ATT(frame)   , "RX2 ATT"   , EP2_RX2ATT);
-        chk_data(FR_EP2_CWREV(frame)    , "CW REV"    , EP2_CWREV);
-        chk_data(FR_EP2_CWSPEED(frame)  , "CW SPEED"  , EP2_CWSPEED);
-        chk_data(FR_EP2_CWMODE(frame)   , "CW MODE"   , EP2_CWMODE);
-        chk_data(FR_EP2_CWWEIGHT(frame) , "CW WEIGHT" , EP2_CWWEIGHT);
-        chk_data(FR_EP2_CWSPACING(frame), "CW SPACING", EP2_CWSPACING);
+        chk_data(EP2_RX2ATT   , "RX2 ATT"   );
+        chk_data(EP2_CWREV    , "CW REV"    );
+        chk_data(EP2_CWSPEED  , "CW Speed"  );
+        chk_data(EP2_CWMODE   , "CW Mode"   );
+        chk_data(EP2_CWWEIGHT , "CW Weight" );
+        chk_data(EP2_CWSPACING, "CW Spacing");
 
         // set rx amplification factors.
         rxatt_dbl[1] = pow(10.0, -0.05 * (cfg->ep2_value[EP2_RX2ATT]));
@@ -198,19 +198,19 @@ void ep2_handler(hpsdr_config_t *cfg, uint8_t *frame) {
     case 25:
         data = frame[1];
         data |= frame[2] << 8;
-        chk_data(FR_EP2_C25EXTBOARDDATA(frame), "C25 EXT BOARD DATA", EP2_C25EXTBOARDDATA);
+        chk_data(EP2_C25EXTBOARDDATA, "C25 Ext Board Data");
         break;
 
     case 28:
     case 29:
-        chk_data(FR_EP2_RX1ADC(frame), "RX1 ADC", EP2_RX1ADC);
-        chk_data(FR_EP2_RX2ADC(frame), "RX2 ADC", EP2_RX2ADC);
-        chk_data(FR_EP2_RX3ADC(frame), "RX3 ADC", EP2_RX3ADC);
-        chk_data(FR_EP2_RX4ADC(frame), "RX4 ADC", EP2_RX4ADC);
-        chk_data(FR_EP2_RX5ADC(frame), "RX5 ADC", EP2_RX5ADC);
-        chk_data(FR_EP2_RX6ADC(frame), "RX6 ADC", EP2_RX6ADC);
-        chk_data(FR_EP2_RX7ADC(frame), "RX7 ADC", EP2_RX7ADC);
-        chk_data(FR_EP2_TXATT(frame) , "TX ATT" , EP2_TXATT);
+        chk_data(EP2_RX1ADC, "RX1 ADC");
+        chk_data(EP2_RX2ADC, "RX2 ADC");
+        chk_data(EP2_RX3ADC, "RX3 ADC");
+        chk_data(EP2_RX4ADC, "RX4 ADC");
+        chk_data(EP2_RX5ADC, "RX5 ADC");
+        chk_data(EP2_RX6ADC, "RX6 ADC");
+        chk_data(EP2_RX7ADC, "RX7 ADC");
+        chk_data(EP2_TXATT , "TX ATT" );
         txatt_dbl = pow(10.0, -0.05 * (double) cfg->ep2_value[EP2_TXATT]);
         if (cfg->global.emulation == DEVICE_C25) {
             // redpitaya: hard-wired adc cfg->settings.
@@ -222,16 +222,16 @@ void ep2_handler(hpsdr_config_t *cfg, uint8_t *frame) {
 
     case 30:
     case 31:
-        chk_data(FR_EP2_CWINT(frame)         , "CW INT"          , EP2_CWINT);
-        chk_data(FR_EP2_SIDETONEVOLUME(frame), "SIDE TONE VOLUME", EP2_SIDETONEVOLUME);
-        chk_data(FR_EP2_CWDELAY(frame)       , "CW DELAY"        , EP2_CWDELAY);
+        chk_data(EP2_CWINT         , "CW INT"          );
+        chk_data(EP2_SIDETONEVOLUME, "Side Tone Volume");
+        chk_data(EP2_CWDELAY       , "CW Delay"        );
         cfg->ep2_value[EP2_CWDELAY] = frame[3];
         break;
 
     case 32:
     case 33:
-        chk_data(FR_EP2_CWHANG(frame)      , "CW HANG"       , EP2_CWHANG);
-        chk_data(FR_EP2_SIDETONEFREQ(frame), "SIDE TONE FREQ", EP2_SIDETONEFREQ);
+        chk_data(EP2_CWHANG      , "CW Hang"       );
+        chk_data(EP2_SIDETONEFREQ, "Side Tone Frequency");
         break;
     }
 }
