@@ -4,6 +4,7 @@
  *
  * This is based on other projects:
  *    HPSDR simulator (https://github.com/g0orx/pihpsdr)
+ *    Lock-free ring buffer (https://github.com/QuantumLeaps/lock-free-ring-buffer)
  *    Others: see individual files
  *
  *    please contact their authors for more information.
@@ -35,6 +36,7 @@
 #include <errno.h>
 #include <unistd.h>
 #include <pthread.h>
+#include <stdio.h>
 
 #include "hpsdr_internals.h"
 #include "hpsdr_special_functions.h"
@@ -43,6 +45,15 @@
 #include "hpsdr_ep6.h"
 #include "hpsdr_p1.h"
 #include "hpsdr_tx_samples.h"
+
+#define NAME0 'H'
+#define NAME1 'P'
+#define NAME2 'S'
+#define NAME3 'D'
+#define NAME4 'R'
+#define NAME5 '_'
+#define NAME6 'P'
+#define NAME7 '1'
 
          pthread_t op_handler_ep6_id;
                int sock_TCP_Server;
@@ -62,7 +73,7 @@ struct sockaddr_in addr_from;
           uint32_t code;
           uint32_t *code0 = (uint32_t*) buffer;  // fast access to code of first buffer
 
-uint8_t reply[11] = {
+uint8_t reply[19] = {
         0xef,     //
         0xfe,     //
         2,        //
@@ -73,7 +84,15 @@ uint8_t reply[11] = {
         MACADDR5, //
         MACADDR6, //
         0,        //
-        1         //
+        1,        //
+        NAME0,    //
+        NAME1,    //
+        NAME2,    //
+        NAME3,    //
+        NAME4,    //
+        NAME5,    //
+        NAME6,    //
+        NAME7,    //
         };
 
 uint8_t id[4] = {
@@ -252,7 +271,7 @@ int hpsdr_network_process(hpsdr_config_t *cfg) {
             ep2_handler(cfg, buffer + 523);
 
             if (active_thread) {
-                samples_rcv(cfg, buffer);
+                hpsdr_get_tx_samples(cfg, buffer);
             }
             break;
 
@@ -265,9 +284,9 @@ int hpsdr_network_process(hpsdr_config_t *cfg) {
                 hpsdr_dbg_printf(1, "InvalidLength: RvcMsg Code=0x%08x Len=%d\n", code, (int) bytes_read);
                 break;
             }
-            reply[2] = 2;
+            reply[2] = 2; // Response to Discovery
             if (active_thread) {
-                reply[2] = 3;
+                reply[2] = 3; // Response to Discovery
             }
             reply[9] = 31; // software version
             reply[10] = cfg->global.emulation;
@@ -277,7 +296,7 @@ int hpsdr_network_process(hpsdr_config_t *cfg) {
                 reply[10] = DEVICE_HERMES_LITE;
             }
             memset(buffer, 0, 60);
-            memcpy(buffer, reply, 11);
+            memcpy(buffer, reply, 19);
 
             if (sock_TCP_Client > -1) {
                 // we will get into trouble if we respond via tcp while the radio is

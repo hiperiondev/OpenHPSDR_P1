@@ -4,6 +4,7 @@
  *
  * This is based on other projects:
  *    HPSDR simulator (https://github.com/g0orx/pihpsdr)
+ *    Lock-free ring buffer (https://github.com/QuantumLeaps/lock-free-ring-buffer)
  *    Others: see individual files
  *
  *    please contact their authors for more information.
@@ -30,30 +31,36 @@
 #include <complex.h>
 #include <stdio.h>
 
+#include "hpsdr_utils.h"
 #include "hpsdr_p1.h"
 #include "hpsdr_debug.h"
 #include "hpsdr_definitions.h"
-#include "hpsdr_ring_buf.h"
+#include "hpsdr_ring_buf_IQ.h"
 
-void hpsdr_get_rx_samples(hpsdr_config_t *cfg, int n, uint8_t *pointer) {
-    int j;
-    double _Complex csample;
-    uint8_t itemp;
+void hpsdr_get_rx_samples(hpsdr_config_t *cfg, int samples_qty, uint8_t *pointer) {
+    int j, k;
+    iq_t sample;
 
     // TODO: complete
-    for (j = 0; j < n; j++) {
-        if (!RingBuf_get(&(cfg->rxbuff), &csample))
-            csample = 0 + 0 * I;
+    for (j = 0; j < samples_qty; j++) {
 
-        itemp = creal(csample) >= 0.0 ? (uint8_t) floor((double) creal(csample) * 32767.0 + 0.5) : (uint8_t) ceil((double) creal(csample) * 32767.0 - 0.5);
-        *pointer++ = (uint8_t) ((itemp >> 16) & 0xff);
-        *pointer++ = (uint8_t) ((itemp >> 8) & 0xff);
-        *pointer++ = (uint8_t) (itemp & 0xff);
+        if (circular_buf_get(*(cfg->rxbuff_iq), &sample) != 0) {
+            sample.i.s24 = 0;
+            sample.q.s24 = 0;
+        }
 
-        itemp = cimag(csample) >= 0.0 ? (uint8_t) floor((double) cimag(csample) * 32767.0 + 0.5) : (uint8_t) ceil((double) cimag(csample) * 32767.0 - 0.5);
-        *pointer++ = (uint8_t) ((itemp >> 16) & 0xff);
-        *pointer++ = (uint8_t) ((itemp >> 8) & 0xff);
-        *pointer++ = (uint8_t) (itemp & 0xff);
+        uint8_t *bi = (uint8_t*) &sample.i.s24;
+        uint8_t *bq = (uint8_t*) &sample.q.s24;
+
+        for (k = 0; k < cfg->ep2_value[EP2_RECEIVERS]; k++) {
+            *pointer++ = (*bi >> 16) & 0xff;
+            *pointer++ = (*bi >> 8) & 0xff;
+            *pointer++ = *bi & 0xff;
+
+            *pointer++ = (*bq >> 16) & 0xff;
+            *pointer++ = (*bq >> 8) & 0xff;
+            *pointer++ = *bq & 0xff;
+        }
     }
     // TODO: implement microphone
     pointer += 2;

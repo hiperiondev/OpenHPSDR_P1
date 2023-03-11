@@ -4,6 +4,7 @@
  *
  * This is based on other projects:
  *    HPSDR simulator (https://github.com/g0orx/pihpsdr)
+ *    Lock-free ring buffer (https://github.com/QuantumLeaps/lock-free-ring-buffer)
  *    Others: see individual files
  *
  *    please contact their authors for more information.
@@ -33,9 +34,7 @@
 #include "hpsdr_internals.h"
 #include "hpsdr_network.h"
 #include "hpsdr_p1.h"
-#include "hpsdr_ring_buf.h"
-
-#define ARRAY_LEN(a_) (sizeof(a_)/sizeof(a_[0]))
+#include "hpsdr_ring_buf_IQ.h"
 
 int enable_thread;
 int active_thread;
@@ -43,14 +42,18 @@ double c1, c2;
 
 pthread_t network_thread_id;
 
-double _Complex rxbuf[BUFFLEN];
-double _Complex txbuf[BUFFLEN];
+iq_t rxbuf_iq[BUFFLEN] = { 0 };
+iq_t txbuf_iq[BUFFLEN] = { 0 };
+cbuf_handle_t rxbp;
+cbuf_handle_t txbp;
 
 void hpsdr_clear_config(hpsdr_config_t **cfg) {
     for (int n = 0; n < 72; n++)
         (*cfg)->ep2_value[n] = 0;
 
     (*cfg)->ep2_cb = NULL;
+    (*cfg)->global.debug = false;
+    (*cfg)->global.replay = false;
 }
 
 void hpsdr_init(hpsdr_config_t **cfg) {
@@ -113,11 +116,16 @@ void hpsdr_init(hpsdr_config_t **cfg) {
             break;
     }
 
-    RingBuf_ctor(&((*cfg)->txbuff), txbuf, ARRAY_LEN(txbuf));
-    RingBuf_ctor(&((*cfg)->rxbuff), rxbuf, ARRAY_LEN(txbuf));
+    rxbp = circular_buf_init(rxbuf_iq, BUFFLEN);
+    txbp = circular_buf_init(txbuf_iq, BUFFLEN);
+    (*cfg)->rxbuff_iq = &rxbp;
+    (*cfg)->txbuff_iq = &txbp;
 }
 
 void hpsdr_deinit(hpsdr_config_t **cfg) {
+    circular_buf_free(*((*cfg)->rxbuff_iq));
+    circular_buf_free(*((*cfg)->txbuff_iq));
+
     hpsdr_dbg_printf(1, "hpsdr_init\n");
 }
 
@@ -134,18 +142,18 @@ void hpsdr_stop(void) {
     pthread_cancel(network_thread_id);
 }
 
-bool hpsdr_txbuffer_write(hpsdr_config_t **cfg, double _Complex *iq) {
-    return RingBuf_put(&((*cfg)->txbuff), *iq);
+bool hpsdr_txbuffer_write(hpsdr_config_t **cfg, iq_t iq) {
+    return (circular_buf_try_put(*((*cfg)->txbuff_iq), iq) != -1);
 }
 
-bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, double _Complex *iq) {
-    return RingBuf_put(&((*cfg)->rxbuff), *iq);
+bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, iq_t iq) {
+    return (circular_buf_try_put(*((*cfg)->rxbuff_iq), iq) != -1);
 }
 
-bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, double _Complex *iq) {
-    return RingBuf_get(&((*cfg)->txbuff), iq);
+bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, iq_t **iq) {
+    return (circular_buf_get(*((*cfg)->txbuff_iq), *iq) != -1);
 }
 
-bool hpsdr_rxbuffer_read(hpsdr_config_t **cfg, double _Complex *iq) {
-    return RingBuf_get(&((*cfg)->rxbuff), iq);
+bool hpsdr_rxbuffer_read(hpsdr_config_t **cfg, iq_t **iq) {
+    return (circular_buf_get(*((*cfg)->rxbuff_iq), *iq) != -1);
 }

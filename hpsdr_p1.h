@@ -4,6 +4,7 @@
  *
  * This is based on other projects:
  *    HPSDR simulator (https://github.com/g0orx/pihpsdr)
+ *    Lock-free ring buffer (https://github.com/QuantumLeaps/lock-free-ring-buffer)
  *    Others: see individual files
  *
  *    please contact their authors for more information.
@@ -34,7 +35,7 @@
 #include <complex.h>
 
 #include "hpsdr_definitions.h"
-#include "hpsdr_ring_buf.h"
+#include "hpsdr_ring_buf_IQ.h"
 
 #define MACADDR1 0xAA
 #define MACADDR2 0xBB
@@ -64,6 +65,7 @@ typedef    void (*ep2_callback)(uint32_t *ep2_value, int func, char* name);
  */
 typedef struct global {
                 bool debug;     /*!< debug enabled */
+                bool replay;    /*!< replay tx to rx */
                  int iqburst;   /*!< burst for transmitter */
     emulation_type_t emulation; /*!< emulation type */
 } global_t;
@@ -74,12 +76,12 @@ typedef struct global {
  * Struct of internal configuration.
  */
 typedef struct hpsdr_config {
-       global_t global;        /*!< global settings*/
-       uint32_t ep2_value[72]; /*!< ep2 protol values */
-        RingBuf rxbuff;        /*!< reception buffer */
-        RingBuf txbuff;        /*!< transmission buffer */
-           void *user;         /*!< user data */
-   ep2_callback ep2_cb;        /*!< ep2 packet callback */
+         global_t global;        /*!< global settings*/
+         uint32_t ep2_value[72]; /*!< ep2 protocol values */
+    cbuf_handle_t *rxbuff_iq;    /*!< reception buffer */
+    cbuf_handle_t *txbuff_iq;    /*!< transmission buffer */
+             void *user;         /*!< user data */
+     ep2_callback ep2_cb;        /*!< ep2 packet callback */
 } hpsdr_config_t;
 
 /**
@@ -130,7 +132,7 @@ void hpsdr_clear_config(hpsdr_config_t **cfg);
  * @param iq  sample
  * @return result of write
  */
-bool hpsdr_txbuffer_write(hpsdr_config_t **cfg, double _Complex *iq);
+bool hpsdr_txbuffer_write(hpsdr_config_t **cfg, iq_t iq);
 
 /**
  * @brief Write to rx buffer
@@ -141,7 +143,7 @@ bool hpsdr_txbuffer_write(hpsdr_config_t **cfg, double _Complex *iq);
  * @param iq  sample
  * @return result of write
  */
-bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, double _Complex *iq);
+bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, iq_t iq);
 
 /**
  * @brief Read from tx buffer
@@ -152,7 +154,7 @@ bool hpsdr_rxbuffer_write(hpsdr_config_t **cfg, double _Complex *iq);
  * @param iq  buffer data
  * @return result of read
  */
-bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, double _Complex *iq);
+bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, iq_t **iq);
 
 /**
  * @brief Read from rx buffer
@@ -163,6 +165,6 @@ bool hpsdr_txbuffer_read(hpsdr_config_t **cfg, double _Complex *iq);
  * @param iq  buffer data
  * @return result of read
  */
-bool hpsdr_rxbuffer_read(hpsdr_config_t **cfg, double _Complex *iq);
+bool hpsdr_rxbuffer_read(hpsdr_config_t **cfg, iq_t **iq);
 
 #endif /* HPSDR_P1_H_ */

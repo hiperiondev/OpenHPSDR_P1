@@ -4,6 +4,7 @@
  *
  * This is based on other projects:
  *    HPSDR simulator (https://github.com/g0orx/pihpsdr)
+ *    Lock-free ring buffer (https://github.com/QuantumLeaps/lock-free-ring-buffer)
  *    Others: see individual files
  *
  *    please contact their authors for more information.
@@ -39,13 +40,12 @@ void hpsdr_erase_packet(uint8_t *buffer) {
     buffer[0] = 0xEF;
     buffer[1] = 0xFE;
     buffer[2] = 0x03;
-    // mac: aa:bb:cc:dd:ee:ff
-    buffer[3] = 0xAA; // mac MSB
-    buffer[4] = 0xBB;
-    buffer[5] = 0xCC;
-    buffer[6] = 0xDD;
-    buffer[7] = 0xEE;
-    buffer[8] = 0xFF; // mac LSB
+    buffer[3] = MACADDR1;
+    buffer[4] = MACADDR2;
+    buffer[5] = MACADDR3;
+    buffer[6] = MACADDR4;
+    buffer[7] = MACADDR5;
+    buffer[8] = MACADDR6;
 }
 
 void hpsdr_program(uint8_t *buffer) {
@@ -54,12 +54,12 @@ void hpsdr_program(uint8_t *buffer) {
     buffer[0] = 0xEF;
     buffer[1] = 0xFE;
     buffer[2] = 0x04;
-    buffer[3] = 0xAA;
-    buffer[4] = 0xBB;
-    buffer[5] = 0xCC;
-    buffer[6] = 0xDD;
-    buffer[7] = 0xEE;
-    buffer[8] = 0xFF;
+    buffer[3] = MACADDR1;
+    buffer[4] = MACADDR2;
+    buffer[5] = MACADDR3;
+    buffer[6] = MACADDR4;
+    buffer[7] = MACADDR5;
+    buffer[8] = MACADDR6;
 }
 
 void hpsdr_set_ip(uint8_t *buffer) {

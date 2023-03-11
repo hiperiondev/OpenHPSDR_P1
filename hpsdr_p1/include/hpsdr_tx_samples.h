@@ -4,6 +4,7 @@
  *
  * This is based on other projects:
  *    HPSDR simulator (https://github.com/g0orx/pihpsdr)
+ *    Lock-free ring buffer (https://github.com/QuantumLeaps/lock-free-ring-buffer)
  *    Others: see individual files
  *
  *    please contact their authors for more information.
@@ -39,6 +40,6 @@
  * @param cfg configuration
  * @param buffer Received buffer.
  */
-void samples_rcv(hpsdr_config_t *cfg, uint8_t *buffer);
+void hpsdr_get_tx_samples(hpsdr_config_t *cfg, uint8_t *buffer);
 
 #endif /* HPSDR_TX_SAMPLES_H_ */

@@ -4,6 +4,7 @@
  *
  * This is based on other projects:
  *    HPSDR simulator (https://github.com/g0orx/pihpsdr)
+ *    Lock-free ring buffer (https://github.com/QuantumLeaps/lock-free-ring-buffer)
  *    Others: see individual files
  *
  *    please contact their authors for more information.
@@ -34,6 +35,7 @@
 #include <netinet/in.h>
 
 #include "hpsdr_debug.h"
+#include "hpsdr_utils.h"
 #include "hpsdr_internals.h"
 #include "hpsdr_p1.h"
 #include "hpsdr_network.h"
@@ -46,14 +48,15 @@ void* ep6_handler(void *arg) {
 
     static double txlevel;
     int i, j;
-    int n;
+    int samples_qty;
     int size;
     int header_offset;
+    int bitsPerCycle;
+    long nanosPerCycle;
+    struct timespec ts_sleep, rm_sleep;
     uint32_t counter;
     uint8_t buffer[1032];
     uint8_t *pointer;
-    struct timespec delay;
-    long wait;
 
     uint8_t id[4] = { //
             0xef,     //
@@ -63,34 +66,31 @@ void* ep6_handler(void *arg) {
     };
 
     uint8_t header[40] = { //
-                    //  C0   C1   C2   C3   C4
-                       127, 127, 127,   0,   0, //
-                        33,  17,  21, 127, 127, //
-                       127,   8,   0,   0,   0, //
-                         0, 127, 127, 127,  16, //
-                         0,   0,   0,   0, 127, //
-                       127, 127,  24,   0,   0, //
-                         0,   0, 127, 127, 127, //
-                        32,  66,  66,  66,   66 //
+        //  C0   C1   C2   C3   C4
+            127, 127, 127, 0,   0,   //
+            33,  17,  21,  127, 127, //
+            127, 8,   0,   0,   0,   //
+            0,   127, 127, 127, 16,  //
+            0,   0,   0,   0,   127, //
+            127, 127, 24,  0,   0,   //
+            0,   0,   127, 127, 127, //
+            32,  66,  66,  66,  66   //
     };
 
     memcpy(buffer, id, 4);
     header_offset = 0;
     counter = 0;
 
-    clock_gettime(CLOCK_MONOTONIC, &delay);
     while (1) {
         if (!enable_thread) break;
 
-        size = cfg->ep2_value[EP2_RECEIVERS] * 6 + 2;
-        n = 504 / size;  // number of samples per 512-byte-block
-        // time (in nanosecs) to "collect" the samples sent in one sendmsg
-        if ((48 << cfg->ep2_value[EP2_RATE]) == 0) {
-            wait = (2 * n * 1000000L);
-        } else {
-            wait = (2 * n * 1000000L) / (48 << cfg->ep2_value[EP2_RATE]);
+        long cycleStart = get_nanos();
 
-        }
+        size = (cfg->ep2_value[EP2_RECEIVERS] * 6) + 2;
+        samples_qty = 504 / size;  // number of samples per 512-byte-block
+
+        bitsPerCycle = 8 * size;
+        nanosPerCycle = (long) (((double) bitsPerCycle) / ((double) (48000 * (2 ^ (cfg->ep2_value[EP2_RATE])))) * 10000000000L);
 
         // plug in sequence numbers
         *(uint32_t*) (buffer + 4) = htonl(counter);
@@ -146,19 +146,14 @@ void* ep6_handler(void *arg) {
             pointer += 8;
             memset(pointer, 0, 504);
 
-            hpsdr_get_rx_samples(cfg, n, pointer);
+            hpsdr_get_rx_samples(cfg, samples_qty, pointer);
         }
-
-        // wait until the time has passed for all these samples
-        delay.tv_nsec += wait;
-        while (delay.tv_nsec >= 1000000000) {
-            delay.tv_nsec -= 1000000000;
-            delay.tv_sec++;
-        }
-
-        clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &delay, NULL);
 
         hpsdr_network_send(buffer, 1032);
+
+        ts_sleep.tv_sec = 0;
+        ts_sleep.tv_nsec = nanosPerCycle - (get_nanos() - cycleStart);
+        nanosleep(&ts_sleep, &rm_sleep);
     }
     active_thread = 0;
     seqnum = 0;
@@ -168,3 +163,4 @@ void* ep6_handler(void *arg) {
 
     return NULL;
 }
+

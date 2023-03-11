@@ -41,6 +41,7 @@
 
 #include "cargs.h"
 
+hpsdr_config_t *cfg;
 
 pthread_t iqtransmitter_thread_id;
 pthread_t iqreceiver_thread_id;
@@ -93,6 +94,12 @@ static struct cag_option options[] = {
                     .value_name = NULL,
                    .description = "Debug"
         }, {
+                    .identifier = 'n',
+                .access_letters = "n",
+                   .access_name = NULL,
+                    .value_name = NULL,
+                   .description = "Receiver noise"
+        }, {
                     .identifier = 'e',
                 .access_letters = "e",
                    .access_name = "emulation_type",
@@ -137,6 +144,10 @@ void parse_args(hpsdr_config_t *cfg, int argc, char *argv[]) {
                 cfg->global.debug = true;
                 break;
 
+            case 'n':
+                cfg->global.replay = true;
+                break;
+
             case 'e':
                 value = cag_option_get_value(&context);
                 if (!strcmp(value, "metis")) {
@@ -172,7 +183,7 @@ void parse_args(hpsdr_config_t *cfg, int argc, char *argv[]) {
                 }
                 break;
 
-            case 'f':
+            case 'i':
                 ifile = true;
                 value = cag_option_get_value(&context);
                 strcpy(ifilename, value);
@@ -197,7 +208,7 @@ void parse_args(hpsdr_config_t *cfg, int argc, char *argv[]) {
 int main(int argc, char *argv[]) {
     printf("OpenHPSDR_p1 version: %d.%d.%d\n", HPSDR_VERSION_MAJOR, HPSDR_VERSION_MINOR, HPSDR_VERSION_PATCH);
     uint8_t res = 0;
-    hpsdr_config_t *cfg = malloc(sizeof(hpsdr_config_t));
+    cfg = malloc(sizeof(hpsdr_config_t));
     hpsdr_clear_config(&cfg);
 
     for (int i = 0; i < 64; i++) {
@@ -226,11 +237,11 @@ int main(int argc, char *argv[]) {
     if (res == -1)
         printf("WARNING: rx_init failed\n");
 
-    pthread_create(&iqtransmitter_thread_id, NULL, &iqtransmitter_thread, (void*)cfg);
-    pthread_detach(iqtransmitter_thread_id);
+    pthread_create(&iqtransmitter_thread_id, NULL, &iqtransmitter_thread, (void*) cfg);
+    //pthread_detach(iqtransmitter_thread_id);
 
-    pthread_create(&iqreceiver_thread_id, NULL, &iqreceiver_thread, (void*)cfg);
-    pthread_detach(iqreceiver_thread_id);
+    pthread_create(&iqreceiver_thread_id, NULL, &iqreceiver_thread, (void*) cfg);
+    //pthread_detach(iqreceiver_thread_id);
 
     while (1)
         usleep(1000); // this time... do nothing

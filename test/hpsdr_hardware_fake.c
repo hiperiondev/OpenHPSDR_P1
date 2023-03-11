@@ -31,6 +31,7 @@
 #include <unistd.h>
 
 #include "hpsdr_p1.h"
+#include "hpsdr_utils.h"
 
 bool ifile = false;
 bool ofile = false;
@@ -47,22 +48,27 @@ uint8_t iqtransmitter_deinit(void) {
 
 void* iqtransmitter_thread(void *data) {
     hpsdr_config_t *cfg = (hpsdr_config_t*) data;
-    double _Complex csample;
+    iq_t *sample = malloc(sizeof(iq_t));
     FILE *fp = NULL;
 
     if (ofile) {
         fp = fopen(ofilename, "w+");
-        if (NULL == fp) printf("WARNING: output file \"%s\" can't be opened\n", ifilename);
+        if (NULL == fp) {
+            printf("WARNING: output file \"%s\" can't be opened\n", ifilename);
+            exit(1);
+        }
 
         while (1) {
-            while (!hpsdr_rxbuffer_read(&cfg, &csample));
-            fwrite(&csample, sizeof(double _Complex), 1, fp);
+            if (hpsdr_txbuffer_read(&cfg, &sample))
+                fwrite(&sample, sizeof(iq_t), 1, fp);
         }
     } else
         while (1)
             usleep(1000);
 
-      return NULL;
+    free(sample);
+
+    return NULL;
 }
 
 uint8_t iqreceiver_init(void) {
@@ -75,7 +81,7 @@ uint8_t iqreceiver_deinit(void) {
 
 void* iqreceiver_thread(void *data) {
     hpsdr_config_t *cfg = (hpsdr_config_t*) data;
-    double _Complex csample;
+    iq_t *sample = malloc(sizeof(iq_t));
     FILE *fp = NULL;
 
     if (ifile) {
@@ -90,16 +96,26 @@ void* iqreceiver_thread(void *data) {
 
     while (1) {
         if (ifile) {
-            if(feof(fp))
-                rewind(fp);
-            fread(&csample, sizeof(float _Complex), 1, fp);
+            if (feof(fp)) rewind(fp);
+            fread(sample, sizeof(iq_t), 1, fp);
         } else {
-            // make some noise
-            csample = (rand() % 10000) + (rand() % 10000) * I;
+            if (cfg->global.replay) {
+                // make some noise
+                sample->i.s16 = (rand() % 10000);
+                sample->q.s16 = (rand() % 10000);
+            } else {
+                sample->i.s16 = 0;
+                sample->q.s16 = 0;
+            }
         }
 
-        while(!hpsdr_rxbuffer_write(&cfg, &csample));
+        sample->i.s24 = convert_s16_to_s24(sample->i.s16);
+        sample->q.s24 = convert_s16_to_s24(sample->q.s16);
+
+        hpsdr_rxbuffer_write(&cfg, *sample);
     }
+
+    free(sample);
 
     return NULL;
 }
