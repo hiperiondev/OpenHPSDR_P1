@@ -76,12 +76,14 @@ typedef struct global {
  * Struct of internal configuration.
  */
 typedef struct hpsdr_config {
-         global_t global;        /*!< global settings*/
-         uint32_t ep2_value[72]; /*!< ep2 protocol values */
-    cbuf_handle_t *rxbuff_iq;    /*!< reception buffer */
-    cbuf_handle_t *txbuff_iq;    /*!< transmission buffer */
-             void *user;         /*!< user data */
-     ep2_callback ep2_cb;        /*!< ep2 packet callback */
+               bool tx_disabled;   /*!< tx_disabled*/
+               bool rx_disabled;   /*!< rx_disabled*/
+           global_t global;        /*!< global settings*/
+    ep2_functions_t ep2_value[72]; /*!< ep2 protocol values */
+      cbuf_handle_t *rxbuff_iq;    /*!< reception buffer */
+      cbuf_handle_t *txbuff_iq;    /*!< transmission buffer */
+               void *user;         /*!< user data */
+       ep2_callback ep2_cb;        /*!< ep2 packet callback */
 } hpsdr_config_t;
 
 /**

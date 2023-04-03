@@ -187,6 +187,9 @@ void hpsdr_get_tx_samples(hpsdr_config_t *cfg, uint8_t *buffer) {
                 TX_REPLAY;
 
                 break;
+
+            default:
+                break;
         }
 
         last_i_sample = isample;

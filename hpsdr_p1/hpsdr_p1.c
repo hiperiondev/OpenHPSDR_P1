@@ -59,6 +59,9 @@ void hpsdr_clear_config(hpsdr_config_t **cfg) {
 void hpsdr_init(hpsdr_config_t **cfg) {
     hpsdr_dbg_printf(1, "hpsdr_init\n");
 
+    (*cfg)->tx_disabled = false;
+    (*cfg)->rx_disabled = false;
+
     switch ((*cfg)->global.emulation) {
 
         case DEVICE_METIS:
